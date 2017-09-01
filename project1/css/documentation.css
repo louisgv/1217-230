@@ -1,0 +1,23 @@
+.Absolute {
+	position: absolute;
+}
+
+.TopLeft {
+	left: 0;
+	background: black;
+	width: 100px;
+	height: 100px;
+}
+
+.TopRight {
+	right: 0;
+}
+
+.Bottom {
+	bottom: 0;
+}
+
+.Center {
+	top: 50vh;
+	left: 50vw;
+}
