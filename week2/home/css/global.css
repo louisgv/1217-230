@@ -17,6 +17,33 @@ h3 {
   font-size: 1.17em;
 }
 
+a {
+	opacity: 0.54;
+
+	transition: 0.36s;
+}
+
+a:link {
+	color: dodgerblue;
+}
+
+a:visited {
+	color: gray;
+}
+
+a:visited:hover {
+	color: dodgerblue;
+}
+
+a:hover {
+	opacity: 1;
+	text-decoration: underline;
+}
+
+a:active {
+	text-decoration: none;
+}
+
 #Copyright {
 	bottom: 0;
 	width: 100vw;
@@ -28,17 +55,20 @@ h3 {
 	animation-delay: 5s;
 }
 
-#Copyright a {
-	text-decoration: none;
-	color: orangered;
+#LicenseLogoAnchor:hover {
+	background: white;
 }
 
-.cc {
+.LicenseLogo {
 	display: inline-block;
-	vertical-align: -0.2em;
 	border: none;
 	height: 1em;
-	opacity: 0.4;
+	opacity: 0.45;
+	transition: 0.36s;
+}
+
+.LicenseLogo:hover {
+	opacity: 1;
 }
 
 #TopLeft {
@@ -60,12 +90,13 @@ h3 {
 }
 
 .CircleButton {
+	opacity: 1;
 	border-radius: 45px;
   width: 45px;
   height: 45px;
-  border: 1.8px solid orangered;
+  border: 1.8px solid dodgerblue;
 	text-decoration: none;
-	color: orangered;
+	color: dodgerblue;
 	font-family: monospace;
 	font-size: 1.44em;
 	transition: 0.36s;
@@ -73,25 +104,53 @@ h3 {
 
 .CircleButton:hover {
 	width: 180px;
-	background: orangered;
+	background: dodgerblue;
 	color: white;
+	text-decoration: none;
+}
+
+.CircleButton:visited {
+	color: gray;
+	border: 1.8px solid gray;
+}
+
+.CircleButton:visited:hover {
+	width: 180px;
+	background: dodgerblue;
+	border: 1.8px solid dodgerblue;
+	color: white;
+	text-decoration: none;
 }
 
 .BubbleButton {
+	opacity: 1;
   border-radius: 45px;
   width: 180px;
   height: 45px;
-  border: 1.8px solid orangered;
+  border: 1.8px solid dodgerblue;
 	text-decoration: none;
-	color: orangered;
+	color: dodgerblue;
 	font-family: monospace;
 	font-size: 1.44em;
 	transition: 0.36s;
 }
 
 .BubbleButton:hover {
-	background: orangered;
+	background: dodgerblue;
 	color: white;
+	text-decoration: none;
+}
+
+.BubbleButton:visited {
+	color: gray;
+	border: 1.8px solid gray;
+}
+
+.BubbleButton:visited:hover {
+	background: dodgerblue;
+	color: white;
+	text-decoration: none;
+	border: 1.8px solid dodgerblue;
 }
 
 .Absolute {

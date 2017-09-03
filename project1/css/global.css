@@ -17,6 +17,12 @@ h3 {
   font-size: 1.17em;
 }
 
+a {
+	opacity: 0.54;
+
+	transition: 0.36s;
+}
+
 a:link {
 	color: dodgerblue;
 }
@@ -30,6 +36,7 @@ a:visited:hover {
 }
 
 a:hover {
+	opacity: 1;
 	text-decoration: underline;
 }
 
@@ -57,7 +64,7 @@ a:active {
 	border: none;
 	height: 1em;
 	opacity: 0.45;
-	transition: 1s;
+	transition: 0.36s;
 }
 
 .LicenseLogo:hover {
@@ -83,6 +90,7 @@ a:active {
 }
 
 .CircleButton {
+	opacity: 1;
 	border-radius: 45px;
   width: 45px;
   height: 45px;
@@ -115,6 +123,7 @@ a:active {
 }
 
 .BubbleButton {
+	opacity: 1;
   border-radius: 45px;
   width: 180px;
   height: 45px;
