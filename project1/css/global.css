@@ -22,6 +22,10 @@ h3 {
 	width: 100vw;
 	color: gray;
 	text-align: center;
+
+	opacity: 0;
+	animation: appear 0.5s ease-in forwards;
+	animation-delay: 5s;
 }
 
 #Copyright a {
@@ -33,7 +37,6 @@ h3 {
 	display: inline-block;
 	vertical-align: -0.2em;
 	border: none;
-	width: 1em;
 	height: 1em;
 	opacity: 0.4;
 }
