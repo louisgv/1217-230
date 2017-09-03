@@ -17,26 +17,6 @@ h3 {
   font-size: 1.17em;
 }
 
-a:link {
-	color: dodgerblue;
-}
-
-a:visited {
-	color: gray;
-}
-
-a:visited:hover {
-	color: dodgerblue;
-}
-
-a:hover {
-	text-decoration: underline;
-}
-
-a:active {
-	text-decoration: none;
-}
-
 #Copyright {
 	bottom: 0;
 	width: 100vw;
@@ -48,20 +28,17 @@ a:active {
 	animation-delay: 5s;
 }
 
-#LicenseLogoAnchor:hover {
-	background: white;
+#Copyright a {
+	text-decoration: none;
+	color: orangered;
 }
 
-.LicenseLogo {
+.cc {
 	display: inline-block;
+	vertical-align: -0.2em;
 	border: none;
 	height: 1em;
-	opacity: 0.45;
-	transition: 1s;
-}
-
-.LicenseLogo:hover {
-	opacity: 1;
+	opacity: 0.4;
 }
 
 #TopLeft {
@@ -86,9 +63,9 @@ a:active {
 	border-radius: 45px;
   width: 45px;
   height: 45px;
-  border: 1.8px solid dodgerblue;
+  border: 1.8px solid orangered;
 	text-decoration: none;
-	color: dodgerblue;
+	color: orangered;
 	font-family: monospace;
 	font-size: 1.44em;
 	transition: 0.36s;
@@ -96,52 +73,25 @@ a:active {
 
 .CircleButton:hover {
 	width: 180px;
-	background: dodgerblue;
+	background: orangered;
 	color: white;
-	text-decoration: none;
-}
-
-.CircleButton:visited {
-	color: gray;
-	border: 1.8px solid gray;
-}
-
-.CircleButton:visited:hover {
-	width: 180px;
-	background: dodgerblue;
-	border: 1.8px solid dodgerblue;
-	color: white;
-	text-decoration: none;
 }
 
 .BubbleButton {
   border-radius: 45px;
   width: 180px;
   height: 45px;
-  border: 1.8px solid dodgerblue;
+  border: 1.8px solid orangered;
 	text-decoration: none;
-	color: dodgerblue;
+	color: orangered;
 	font-family: monospace;
 	font-size: 1.44em;
 	transition: 0.36s;
 }
 
 .BubbleButton:hover {
-	background: dodgerblue;
+	background: orangered;
 	color: white;
-	text-decoration: none;
-}
-
-.BubbleButton:visited {
-	color: gray;
-	border: 1.8px solid gray;
-}
-
-.BubbleButton:visited:hover {
-	background: dodgerblue;
-	color: white;
-	text-decoration: none;
-	border: 1.8px solid dodgerblue;
 }
 
 .Absolute {
