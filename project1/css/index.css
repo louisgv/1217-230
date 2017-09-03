@@ -1,23 +1,95 @@
+body {
+	overflow: hidden;
+}
+
+.BubbleButton {
+	border-radius: 100%;
+	width: 90px;
+	height: 90px;
+	border-width: 2px;
+	border: 2px solid dodgerblue;
+}
+
+.BubbleButton a {
+	text-decoration: none;
+	color: dodgerblue;
+	font-family: sans-serif;
+}
+
 .Absolute {
-	position: absolute;
+  position: absolute;
 }
 
-.TopLeft {
-	left: 0;
-	background: black;
-	width: 100px;
-	height: 100px;
+.FlexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.TopRight {
-	right: 0;
+#TopLeft {
+  left: 0;
+  width: 100px;
+  height: 100px;
 }
 
-.Bottom {
-	bottom: 0;
+#TopRight {
+  right: 0;
 }
 
-.Center {
-	top: 50vh;
-	left: 50vw;
+#Bottom {
+  bottom: 0;
+	width: 100vw;
+	height: 18vh;
+}
+
+#Center {
+  top: calc(50vh - 150px);
+  left: calc(50vw - 150px);
+  height: 300px;
+  width: 300px;
+  flex-direction: column;
+}
+
+#Title {
+  font-size: 2.7em;
+}
+
+#Subtitle {
+  font-size: 1.44em;
+}
+
+#Description {
+	font-size: 1.17em;
+}
+
+#Icon {
+	width: 0px;
+	height: 0px;
+	transform: rotate(135deg);
+	background-color: dodgerblue;
+	z-index: -1;
+	animation: droplet 4.5s infinite ease-in;
+}
+
+.Droplet {
+	filter: url(#goo);
+}
+
+@keyframes droplet {
+	0% {
+		top: -100px;
+		border-radius: 50% 50% 50% 50%;
+	}
+
+	30% {
+		height: 36px;
+		width: 36px;
+		border-radius: 50% 50% 50% 4.5%;
+	}
+
+	72% {
+		top: 300px;
+		width: 0;
+		height: 0;
+	}
 }
