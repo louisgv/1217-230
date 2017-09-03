@@ -1,19 +1,48 @@
 body {
-	overflow: hidden;
+  overflow: hidden;
+}
+
+#Documentation::before {
+	content: "d";
+}
+
+#Documentation:hover::after {
+	content: "ocumentation";
+}
+
+.CircleButton {
+	border-radius: 45px;
+  width: 45px;
+  height: 45px;
+  border: 1.8px solid dodgerblue;
+	text-decoration: none;
+	color: dodgerblue;
+	font-family: monospace;
+	font-size: 1.44em;
+	transition: 0.36s;
+}
+
+.CircleButton:hover {
+	width: 180px;
+	background: dodgerblue;
+	color: white;
 }
 
 .BubbleButton {
-	border-radius: 100%;
-	width: 90px;
-	height: 90px;
-	border-width: 2px;
-	border: 2px solid dodgerblue;
-}
-
-.BubbleButton a {
+  border-radius: 45px;
+  width: 180px;
+  height: 45px;
+  border: 1.8px solid dodgerblue;
 	text-decoration: none;
 	color: dodgerblue;
-	font-family: sans-serif;
+	font-family: monospace;
+	font-size: 1.44em;
+	transition: 0.36s;
+}
+
+.BubbleButton:hover {
+	background: dodgerblue;
+	color: white;
 }
 
 .Absolute {
@@ -26,20 +55,25 @@ body {
   align-items: center;
 }
 
+.LastAppear {
+	opacity: 0;
+	animation: appear 0.5s ease-in forwards;
+	animation-delay: 4s;
+}
+
 #TopLeft {
-  left: 0;
-  width: 100px;
-  height: 100px;
+	top: 45px;
+  left: 45px;
 }
 
 #TopRight {
-  right: 0;
+	top: 45px;
+  right: 45px;
 }
 
 #Bottom {
-  bottom: 0;
-	width: 100vw;
-	height: 18vh;
+  bottom: 45px;
+  width: 100vw;
 }
 
 #Center {
@@ -51,45 +85,64 @@ body {
 }
 
 #Title {
-  font-size: 2.7em;
+	font-size: 2.7em;
+
+	opacity: 0;
+	animation: appear 0.5s ease-in forwards;
+	animation-delay: 1s;
 }
 
 #Subtitle {
-  font-size: 1.44em;
+  font-size: 1.35em;
+	color: gray;
+
+	opacity: 0;
+	animation: appear 0.5s ease-in forwards;
+	animation-delay: 2s;
 }
 
 #Description {
-	font-size: 1.17em;
+  font-size: 1.17em;
+
+	opacity: 0;
+	animation: appear 0.5s ease-in forwards;
+	animation-delay: 3s;
 }
 
 #Icon {
-	width: 0px;
-	height: 0px;
-	transform: rotate(135deg);
-	background-color: dodgerblue;
-	z-index: -1;
-	animation: droplet 4.5s infinite ease-in;
+  width: 0px;
+  height: 0px;
+  transform: rotate(135deg);
+	border: 1.8px dodgerblue solid;
+  /*background-color: dodgerblue;*/
+  z-index: -1;
+  animation: droplet 1s ease-out forwards;
+  animation-delay: 0;
 }
 
-.Droplet {
-	filter: url(#goo);
+#Icon:hover {
+	width: 1;
+	background-color: dodgerblue;
 }
 
 @keyframes droplet {
+  0% {
+    top: -270px;
+    border-radius: 50% 50% 50% 50%;
+  }
+  100% {
+    top: 45px;
+    height: 36px;
+    width: 36px;
+    border-radius: 50% 50% 50% 4.5%;
+  }
+}
+
+@keyframes appear {
 	0% {
-		top: -100px;
-		border-radius: 50% 50% 50% 50%;
+		opacity: 0;
 	}
-
-	30% {
-		height: 36px;
-		width: 36px;
-		border-radius: 50% 50% 50% 4.5%;
-	}
-
-	72% {
-		top: 300px;
-		width: 0;
-		height: 0;
+	100% {
+		opacity: 1;
 	}
 }
