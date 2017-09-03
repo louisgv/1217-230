@@ -10,69 +10,16 @@ body {
 	content: "ocumentation";
 }
 
-.CircleButton {
-	border-radius: 45px;
-  width: 45px;
-  height: 45px;
-  border: 1.8px solid dodgerblue;
-	text-decoration: none;
-	color: dodgerblue;
-	font-family: monospace;
-	font-size: 1.44em;
-	transition: 0.36s;
+#Proposal::before {
+	content: "p";
 }
 
-.CircleButton:hover {
-	width: 180px;
-	background: dodgerblue;
-	color: white;
-}
-
-.BubbleButton {
-  border-radius: 45px;
-  width: 180px;
-  height: 45px;
-  border: 1.8px solid dodgerblue;
-	text-decoration: none;
-	color: dodgerblue;
-	font-family: monospace;
-	font-size: 1.44em;
-	transition: 0.36s;
-}
-
-.BubbleButton:hover {
-	background: dodgerblue;
-	color: white;
-}
-
-.Absolute {
-  position: absolute;
-}
-
-.FlexCenter {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.LastAppear {
-	opacity: 0;
-	animation: appear 0.5s ease-in forwards;
-	animation-delay: 4s;
-}
-
-#TopLeft {
-	top: 45px;
-  left: 45px;
-}
-
-#TopRight {
-	top: 45px;
-  right: 45px;
+#Proposal:hover::after {
+	content: "roposal";
 }
 
 #Bottom {
-  bottom: 45px;
+  bottom: 90px;
   width: 100vw;
 }
 
@@ -85,25 +32,18 @@ body {
 }
 
 #Title {
-	font-size: 2.7em;
-
 	opacity: 0;
 	animation: appear 0.5s ease-in forwards;
 	animation-delay: 1s;
 }
 
 #Subtitle {
-  font-size: 1.35em;
-	color: gray;
-
 	opacity: 0;
 	animation: appear 0.5s ease-in forwards;
 	animation-delay: 2s;
 }
 
 #Description {
-  font-size: 1.17em;
-
 	opacity: 0;
 	animation: appear 0.5s ease-in forwards;
 	animation-delay: 3s;
@@ -115,34 +55,11 @@ body {
   transform: rotate(135deg);
 	border: 1.8px dodgerblue solid;
   /*background-color: dodgerblue;*/
-  z-index: -1;
   animation: droplet 1s ease-out forwards;
   animation-delay: 0;
+  transition: 0.5s;
 }
 
 #Icon:hover {
-	width: 1;
 	background-color: dodgerblue;
-}
-
-@keyframes droplet {
-  0% {
-    top: -270px;
-    border-radius: 50% 50% 50% 50%;
-  }
-  100% {
-    top: 45px;
-    height: 36px;
-    width: 36px;
-    border-radius: 50% 50% 50% 4.5%;
-  }
-}
-
-@keyframes appear {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
 }

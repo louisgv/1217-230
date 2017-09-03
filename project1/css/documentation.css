@@ -1,23 +1,17 @@
-.Absolute {
-	position: absolute;
+#Center {
+  top: 135px;
+  left: calc(50vw - 27vw);
+  height: auto;
+  width: 54vw;
+  flex-direction: column;
+  margin-bottom: 90px;
+
+  opacity: 0;
+  animation: appear 0.5s ease-in forwards;
+  animation-delay: 0.5s;
 }
 
-.TopLeft {
-	left: 0;
-	background: black;
-	width: 100px;
-	height: 100px;
-}
-
-.TopRight {
-	right: 0;
-}
-
-.Bottom {
-	bottom: 0;
-}
-
-.Center {
-	top: 50vh;
-	left: 50vw;
+li {
+  margin-bottom: 0.9em;
+  line-height: 1.35em;
 }
