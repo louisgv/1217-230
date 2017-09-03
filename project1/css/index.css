@@ -56,7 +56,6 @@ body {
 	border: 1.8px dodgerblue solid;
   /*background-color: dodgerblue;*/
   animation: droplet 1s ease-out forwards;
-  animation-delay: 0;
   transition: 0.5s;
 }
 
