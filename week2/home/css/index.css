@@ -68,3 +68,8 @@ li {
 #GithubIcon:hover {
   fill: orangered;
 }
+
+#ProjectLinksContainer {
+  height: 90px;
+  width: 100%;
+}

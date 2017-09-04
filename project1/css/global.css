@@ -59,6 +59,10 @@ a:active {
 	background: white;
 }
 
+#CopyrightText {
+	background: white;
+}
+
 .LicenseLogo {
 	display: inline-block;
 	border: none;
