@@ -1,3 +1,7 @@
+body {
+  overflow-x: hidden;
+}
+
 #Center {
   top: 135px;
   left: calc(50vw - 27vw);
@@ -32,4 +36,35 @@ li {
 	opacity: 0;
 	animation: appear 0.5s ease-in forwards;
 	animation-delay: 3s;
+}
+
+#PortraitContainer {
+  right: 0;
+  top: 0;
+}
+
+#Portrait {
+  height: 45vh;
+  transform: rotate(-18deg) translateX(63px);
+}
+
+@media only screen and (max-device-width: 1024px){
+  #Portrait {
+    max-height: 450px;
+    transform: rotate(-18deg) translateX(90px);
+  }
+}
+
+#GithubLinkContainer {
+  right: 45px;
+  bottom: 45px;
+}
+
+#GithubIcon {
+  transition: 0.36s;
+  border-radius: 100%;
+}
+
+#GithubIcon:hover {
+  fill: orangered;
 }

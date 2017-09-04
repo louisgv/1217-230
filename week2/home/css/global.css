@@ -24,7 +24,7 @@ a {
 }
 
 a:link {
-	color: dodgerblue;
+	color: orangered;
 }
 
 a:visited {
@@ -32,7 +32,7 @@ a:visited {
 }
 
 a:visited:hover {
-	color: dodgerblue;
+	color: orangered;
 }
 
 a:hover {
@@ -89,14 +89,18 @@ a:active {
 	content: "back";
 }
 
+.ResponsiveButton {
+	width: 45px;
+  height: 45px;
+}
+
 .CircleButton {
 	opacity: 1;
 	border-radius: 45px;
-  width: 45px;
-  height: 45px;
-  border: 1.8px solid dodgerblue;
+
+  border: 1.8px solid orangered;
 	text-decoration: none;
-	color: dodgerblue;
+	color: orangered;
 	font-family: monospace;
 	font-size: 1.44em;
 	transition: 0.36s;
@@ -104,7 +108,7 @@ a:active {
 
 .CircleButton:hover {
 	width: 180px;
-	background: dodgerblue;
+	background: orangered;
 	color: white;
 	text-decoration: none;
 }
@@ -116,8 +120,8 @@ a:active {
 
 .CircleButton:visited:hover {
 	width: 180px;
-	background: dodgerblue;
-	border: 1.8px solid dodgerblue;
+	background: orangered;
+	border: 1.8px solid orangered;
 	color: white;
 	text-decoration: none;
 }
@@ -127,16 +131,16 @@ a:active {
   border-radius: 45px;
   width: 180px;
   height: 45px;
-  border: 1.8px solid dodgerblue;
+  border: 1.8px solid orangered;
 	text-decoration: none;
-	color: dodgerblue;
+	color: orangered;
 	font-family: monospace;
 	font-size: 1.44em;
 	transition: 0.36s;
 }
 
 .BubbleButton:hover {
-	background: dodgerblue;
+	background: orangered;
 	color: white;
 	text-decoration: none;
 }
@@ -147,14 +151,18 @@ a:active {
 }
 
 .BubbleButton:visited:hover {
-	background: dodgerblue;
+	background: orangered;
 	color: white;
 	text-decoration: none;
-	border: 1.8px solid dodgerblue;
+	border: 1.8px solid orangered;
 }
 
 .Absolute {
   position: absolute;
+}
+
+.Fixed  {
+	position: fixed;
 }
 
 .FlexCenter {
