@@ -15,3 +15,9 @@ li {
   margin-bottom: 0.9em;
   line-height: 1.35em;
 }
+
+@media only screen and (max-device-width: 540px){
+	#Center {
+		top: 270px;
+	}
+}

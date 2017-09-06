@@ -4,6 +4,7 @@
   height: auto;
   width: 54vw;
   flex-direction: column;
+	margin-bottom: 90px;
 }
 
 #Center > h1 {
@@ -20,6 +21,10 @@
 }
 
 @media only screen and (max-device-width: 540px){
+	#Center {
+		top: 270px;
+	}
+
   #Center > p {
     font-size: 1.17em;
     text-align: justify;

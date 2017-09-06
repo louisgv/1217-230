@@ -2,22 +2,6 @@ body {
   overflow: hidden;
 }
 
-#Documentation::before {
-	content: "d";
-}
-
-#Documentation:hover::after {
-	content: "ocumentation";
-}
-
-#Proposal::before {
-	content: "p";
-}
-
-#Proposal:hover::after {
-	content: "roposal";
-}
-
 #Bottom {
   bottom: 90px;
   width: 100vw;

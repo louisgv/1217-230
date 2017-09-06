@@ -1,4 +1,10 @@
+body {
+	overflow-x: hidden;
+	margin: 0;
+}
+
 h1, h2, h3 {
+	font-family: monospace;
 	display: block;
 	margin: 0;
 	font-weight: lighter;
@@ -49,6 +55,7 @@ a:active {
 	width: 100vw;
 	color: gray;
 	text-align: center;
+  background: white;
 
 	opacity: 0;
 	animation: appear 0.5s ease-in forwards;
@@ -73,6 +80,13 @@ a:active {
 
 .LicenseLogo:hover {
 	opacity: 1;
+}
+
+#Top {
+	top: 45px;
+	width: 100vw;
+	display: flex;
+	justify-content: space-around;
 }
 
 #TopLeft {
@@ -157,6 +171,21 @@ a:active {
 	border: 1.8px solid dodgerblue;
 }
 
+.ActiveButton {
+	background: dodgerblue;
+	color: white;
+	border: 1.8px solid dodgerblue;
+}
+
+.ActiveButton:visited {
+	color: white;
+	border: 1.8px solid dodgerblue;
+}
+
+.Fixed {
+	position: fixed;
+}
+
 .Absolute {
   position: absolute;
 }
@@ -192,5 +221,18 @@ a:active {
 	}
 	100% {
 		opacity: 1;
+	}
+}
+
+@media only screen and (max-device-width: 540px){
+	#Top {
+			height: 180px;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-around;
+	}
+
+	.BubbleButton {
+		width: 90vw;
 	}
 }
