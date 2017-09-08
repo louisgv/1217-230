@@ -125,7 +125,7 @@ a:active {
 .CircleButton:visited:hover {
 	width: 180px;
 	background: orangered;
-	border: 1.8px solid orangered;
+	border: 1.8px solid white;
 	color: white;
 	text-decoration: none;
 }
@@ -158,7 +158,7 @@ a:active {
 	background: orangered;
 	color: white;
 	text-decoration: none;
-	border: 1.8px solid orangered;
+	border: 1.8px solid white;
 }
 
 .Absolute {

@@ -57,12 +57,12 @@ li {
   fill: orangered;
 }
 
-#ProjectLinksContainer {
+.ProjectLinksContainer {
   width: 100%;
   margin-top: 18px;
   margin-bottom: 18px;
 }
 
-#ProjectLinksContainer a {
+.ProjectLinksContainer a {
   margin: 9px;
 }
