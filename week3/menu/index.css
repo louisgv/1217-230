@@ -1,0 +1,46 @@
+body {
+	display: flex;
+	justify-content: space-around;
+}
+
+h3 {
+	display: block;
+	margin: 0;
+}
+
+.Menu {
+	background: black;
+	height: 1em;
+	width: 360px;
+	padding: 1em;
+	overflow: hidden;
+	color: white;
+	font-family: monospace;
+	transition: 1s;
+	/*display: flex;
+	flex-direction: column;
+	justify-content: center;*/
+}
+
+#Menu1:hover {
+	height: 30em;
+}
+
+#Menu2:hover {
+	height: 13em;
+}
+
+.Menu li a {
+	text-decoration: none;
+	color: white;
+}
+
+.Menu li {
+	list-style-type: none;
+	padding: 1em;
+}
+
+.Menu li:hover {
+	color: white;
+	background: orange;
+}
