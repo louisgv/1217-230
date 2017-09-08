@@ -224,7 +224,7 @@ a:active {
 	}
 }
 
-@media only screen and (max-device-width: 540px){
+@media only screen and (max-width: 630px){
 	#Top {
 			height: 180px;
 			flex-direction: column;
