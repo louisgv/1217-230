@@ -1,12 +1,31 @@
-# Project 1
+# leau.web.meta
 
-## Content
+## I. High concept
 
-Name        | Value
------------ | -------------------------------------------------
-Title       | leau.web
-Description | A web app made to promote my senior project
-index.html  | In the center is the word `l'eau.web.meta` with a subtitle underneath containing its pronunciation `[lo dɑt wɛb dɑt ˈmitə]` and the text `the making of leau.web`.<br/><br/> Top left is a `History` nav links to `documentation.html`.<br/><br/> Top right is a `About` nav links to `proposal.html`.<br/><br/> Bottom center is a `Enter` button links to `project.html`
-project.html | this page route the user to `leau.web`
-proposal.html | l'eau.web is an interactive web app made to promote l'eau, an adventure game where the main goal is to build an oasis in the middle of a post-apocalyptic desert.  <br/><br/> The web app will have 3 pages. The first page is titled `the world.` It contains a list of location the player will be explore in the main game. These locations will be contained in a card element, which will expand as the user click on them. <br/><br/> The second page is titled `characters.` It contains a list of characters from the game, each also in a card, with description and their roles in the universe. <br/><br/> Lastly, a `credit` page which reference the project and the team member involved, each also contained in a card element.<br/><br/> The overall goal of the web app is make visitor be interested in the unniverse behind l'eau by allowing them to explore and learn trivia non-spoiler detail about the l'eau universe.
-documentation.html| this page will consist mainly of a note, as all content and code were created from the ground up by hand and thus does not require references.
+It's Poker mixed with Gwent, with only power-up cards for hero.
+
+## II. Genre
+
+"Push your luck" card game
+
+## III. Platform
+
+Desktop web
+
+## IV. Story
+
+The player choose a hero as their avatar to play with another player. The game has 3 rounds, each round has 2 phases: prepare and combat. In the prepare phase, each player take turn either drawing a card or using a card on their hand. The card will not be revealed to the other player. In the combat phase, players reveal their cards. Whoever has the stronger avatar win the round. Winner of 2 rounds win the game.
+
+## V. Aesthetics
+
+Graphic: Abstract Ink Sketch, Line heavy for each card.
+
+Music: Ambient funk
+
+Sound Effect: Card drawing, card dealing, and card revealing.
+
+## VI. Gameplay
+
+### Mechanics
+
+Player can choose their initial hero avatar. Each avatar has a certain chance of drawing certain type of power-up card.
