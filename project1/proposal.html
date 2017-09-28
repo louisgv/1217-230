@@ -47,11 +47,11 @@
 			<h1>aesthetics</h1>
 			<hr>
 			<h2>Graphic</h2>
-			<p>Abstract line sketch.</p>
+			<p>Abstract line sketch</p>
 			<h2>Music</h2>
 			<p>Ambient funk</p>
 			<h2>Sound Effect</h2>
-			<p>Card drawing, card dealing, and card revealing.</p>
+			<p>Card drawing, card dealing, and card revealing</p>
 		</article>
 
 		<article class="FadeInArticle Sixth">
@@ -60,13 +60,12 @@
 			<h2>Mechanics</h2>
 			<p>Player first choose their initial hero avatar. Each avatar has:</p>
 			<ul>
-				<li>A visual drawing of a characters</li>
-				<li>An unique maximum amount of card in the deck</li>
-				<li>An unique probability to draw certain type of card.</li>
+				<li>A unique maximum amount of card in the deck</li>
+				<li>A unique probability to draw a certain type of card.</li>
 			</ul>
-			<p>With the avatar, player proceed to play with an NPC.</p>
-			<p>The game has 3 rounds, each round has 2 phases: prepare and combat. In the prepare phase, each player take turn either drawing a card or using a card on their hand. The card will not be revealed to the other player. In the combat phase, players reveal
-				their cards. Whoever has the stronger avatar win the round. Used cards are discarded, and the next round repeat the same process. Winner of 2 rounds win the game.</p>
+			<p>With the avatar, player proceeds to play with an NPC.</p>
+			<p>The game has 3 rounds, each round has 2 phases: <b>prepare</b> and <b>combat</b>. In the prepare phase, each player takes the turn either drawing a card or using a card on their hand. The card will not be revealed to the other player. In the combat phase, players reveal
+				their cards. Whoever has the stronger avatar win the round. Used cards are discarded, and the next round repeats the same process. Winner of 2 rounds wins the game.</p>
 			<p>There are 5 types of attacking cards, each represented by an alchemy element:</p>
 			<ul>
 				<li>Fire</li>
@@ -75,10 +74,28 @@
 				<li>Earth</li>
 				<li>Ether</li>
 			</ul>
-			<p>Certain types of card nullifies one another during the combat phase: Ether nullifies itself and anything with the most amount, Water nullifies Fire, Fire nullifies Wind, Wind nullifies Earth, Earth nullifies Water.</p>
-			<p>Water "nullifies" fire means, if Alice has 3 water and Bob has 4 fire, Bob's water points will be reduced by Alice's fire point. After nullify, Alice will still have 3 water however Bob will have only 1 fire. If Bob has less than 3 fire, he will lose
-				all of it.</p>
-			<p>Ether nullification will be applied first, and it will nullify ether before nullify the type with the most amount.</p>
+			<p>Certain types of cards "nullify" one another during the combat phase:
+			</p>
+			<ul>
+				<li>
+					Ether nullifies itself and anything with the most count
+				</li>
+				<li>
+					Water nullifies Fire
+				</li>
+				<li>
+					Fire nullifies Wind
+				</li>
+				<li>
+					Wind nullifies Earth
+				</li>
+				<li>
+					Earth nullifies Water
+				</li>
+			</ul>
+
+			<p>Water "nullifies" fire means, if Alice has 3 water and Bob has 4 fire, Bob's water points will be reduced by Alice's fire point. After nullify, Alice will still have 3 water, however, Bob will have only 1 fire. If Bob has less than 3 fire, he will lose all of it.</p>
+			<p>Ether nullification will be applied first, and it will nullify ether before nullifying the type with the most amount.</p>
 			<p>After nullifying, the remaining element points are used to determine the strength of the avatar, except Ether.</p>
 			<p>For example:</p>
 			<ul>
@@ -101,10 +118,13 @@
 				<li>B has 5 Water, 3 Earth</li>
 			</ul>
 			<p>The winner is determined by the sum of all remaining elements. In this case, B won with 8 points.</p>
+
 			<h2>Control</h2>
-			<p>Mouse to interact with the menu UI, the cards and the deck.</p>
+			<p>Mouse to interact with the menu UI, the cards, and the deck.</p>
+
 			<h2>Onboarding</h2>
 			<p>On the player's very first round, they will be handhold on all available action in the game via overlay messages.</p>
+
 			<h2>Player learning</h2>
 			<p>The player need mainly luck to win the game.</p>
 
