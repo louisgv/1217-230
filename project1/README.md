@@ -85,7 +85,11 @@ The player need mainly luck to win the game.
 
 ### Screenshots
 
-### other
+![concept_0](./media/concept_0.png)
+
+![concept_1](./media/concept_1.png)
+
+![concept_2](./media/concept_2.png)
 
 ### About the developer(s)
 
