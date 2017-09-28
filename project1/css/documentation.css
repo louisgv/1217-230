@@ -12,8 +12,3 @@
   animation: appear 0.5s ease-in forwards;
   animation-delay: 0.5s;
 }
-
-li {
-  margin-bottom: 0.9em;
-  line-height: 1.35em;
-}

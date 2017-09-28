@@ -62,7 +62,12 @@ a:active {
 }
 
 article {
-	padding-bottom: 2em;
+	padding-top: 2em;
+}
+
+li {
+  margin-bottom: 0.9em;
+  line-height: 1.35em;
 }
 
 #Copyright {
