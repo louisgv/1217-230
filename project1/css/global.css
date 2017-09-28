@@ -3,6 +3,10 @@ body {
 	margin: 0;
 }
 
+hr {
+	margin-bottom: 2em;
+}
+
 h1, h2, h3 {
 	font-family: monospace;
 	display: block;
@@ -21,6 +25,10 @@ h2 {
 
 h3 {
   font-size: 1.17em;
+}
+
+ul {
+	list-style-type: circle;
 }
 
 a {
@@ -48,6 +56,10 @@ a:hover {
 
 a:active {
 	text-decoration: none;
+}
+
+article {
+	padding-bottom: 2em;
 }
 
 #Copyright {
@@ -224,12 +236,27 @@ a:active {
 	}
 }
 
+@keyframes appear03 {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0.3;
+	}
+}
+
 @media only screen and (max-width: 630px){
 	#Top {
 			height: 180px;
 			flex-direction: column;
 			align-items: center;
 			justify-content: space-around;
+	}
+
+	#Center {
+		top: 270px;
+		width: 90vw;
+		left: 5vw;
 	}
 
 	.BubbleButton {

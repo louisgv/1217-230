@@ -46,3 +46,23 @@ body {
 #Icon:hover {
 	background-color: dodgerblue;
 }
+
+.Concept {
+	position: fixed;
+	right: 0;
+	top: 100px;
+	height: 100%;
+
+	opacity: 0;
+
+	animation: appear03 0.5s ease-in forwards;
+	animation-delay: 4.5s;
+
+}
+
+@media only screen and (max-width: 630px){
+	.Concept {
+		width: 100%;
+		height: auto;
+	}
+}

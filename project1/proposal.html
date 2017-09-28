@@ -1,57 +1,145 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" />
-		<link rel="shortcut icon" href="./media/favicon.png">
-		<title>proposal</title>
 
-		<link rel="stylesheet" href="./css/global.css" />
-		<link rel="stylesheet" href="./css/proposal.css" />
-	</head>
-	<body>
-		<nav class="Absolute" id="Top">
-			<a class="BubbleButton FlexCenter" id="Documentation" href="./documentation.html"> doc </a>
-			<a class="BubbleButton FlexCenter" id="Home" href="./"> home </a>
-			<a class="BubbleButton FlexCenter ActiveButton" id="Proposal" href="./proposal.html"> about </a>
-		</nav>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" />
+	<link rel="shortcut icon" href="./media/favicon.png">
+	<title>proposal</title>
 
-		<section class="Absolute" id="Center">
-			<h1>
-				proposal
-			</h1>
+	<link rel="stylesheet" href="./css/proposal.css" />
+	<link rel="stylesheet" href="./css/global.css" />
+</head>
+
+<body>
+	<nav class="Absolute" id="Top">
+		<a class="BubbleButton FlexCenter" id="Documentation" href="./documentation.html"> document </a>
+		<a class="BubbleButton FlexCenter" id="Home" href="./"> home </a>
+		<a class="BubbleButton FlexCenter ActiveButton" id="Proposal" href="./proposal.html"> proposal </a>
+	</nav>
+
+	<section class="Absolute" id="Center">
+		<article class="FadeInArticle First">
+			<h1>concept</h1>
 			<hr>
-			<article class="FadeInArticle">
-				<p>
-					l'eau.web is an interactive web app made to promote l'eau, an adventure game where the main goal is to build an oasis in the middle of a post-apocalyptic desert.
-				</p>
+			<p>A digital poker mixed with Gwent and alchemy concepts</p>
+		</article>
 
-				<p>
-					The web app will have 3 pages. The first page is titled "the world". It contains a list of location the player will be explore in the main game. These locations will be contained in a card element, which will expand as the user click on them.
-				</p>
+		<article class="FadeInArticle Second">
+			<h1>genre</h1>
+			<hr>
+			<p>"push your luck" card game</p>
+		</article>
 
-				<p>
-					The second page is titled "characters." It contains a list of characters from the game, each also in a card, with description and their roles in the universe.
-				</p>
+		<article class="FadeInArticle Third">
+			<h1>platform</h1>
+			<hr>
+			<p>Desktop web</p>
+		</article>
 
-				<p>
-					Lastly, a "credit" page which reference the project and the team member involved, each also contained in a card element.
-				</p>
+		<article class="FadeInArticle Forth">
+			<h1>story</h1>
+			<hr>
+			<p>The main purpose of this game is to be used as a supporting material for L'eau, my senior project. It does not have a story, but the artworks and contents will reflect the L'eau universe.</p>
+		</article>
 
-				<p>
-					The overall goal of the web app is make visitor be interested in the unniverse behind l'eau by allowing them to explore and learn trivia non-spoiler detail about the l'eau universe.
-				</p>
+		<article class="FadeInArticle Fifth">
+			<h1>aesthetics</h1>
+			<hr>
+			<h2>Graphic</h2>
+			<p>Abstract line sketch.</p>
+			<h2>Music</h2>
+			<p>Ambient funk</p>
+			<h2>Sound Effect</h2>
+			<p>Card drawing, card dealing, and card revealing.</p>
+		</article>
+
+		<article class="FadeInArticle Sixth">
+			<h1>gameplay</h1>
+			<hr>
+			<h2>Mechanics</h2>
+			<p>Player first choose their initial hero avatar. Each avatar has:</p>
+			<ul>
+				<li>A visual drawing of a characters</li>
+				<li>An unique maximum amount of card in the deck</li>
+				<li>An unique probability to draw certain type of card.</li>
+			</ul>
+			<p>With the avatar, player proceed to play with an NPC.</p>
+			<p>The game has 3 rounds, each round has 2 phases: prepare and combat. In the prepare phase, each player take turn either drawing a card or using a card on their hand. The card will not be revealed to the other player. In the combat phase, players reveal
+				their cards. Whoever has the stronger avatar win the round. Used cards are discarded, and the next round repeat the same process. Winner of 2 rounds win the game.</p>
+			<p>There are 5 types of attacking cards, each represented by an alchemy element:</p>
+			<ul>
+				<li>Fire</li>
+				<li>Water</li>
+				<li>Wind</li>
+				<li>Earth</li>
+				<li>Ether</li>
+			</ul>
+			<p>Certain types of card nullifies one another during the combat phase: Ether nullifies itself and anything with the most amount, Water nullifies Fire, Fire nullifies Wind, Wind nullifies Earth, Earth nullifies Water.</p>
+			<p>Water "nullifies" fire means, if Alice has 3 water and Bob has 4 fire, Bob's water points will be reduced by Alice's fire point. After nullify, Alice will still have 3 water however Bob will have only 1 fire. If Bob has less than 3 fire, he will lose
+				all of it.</p>
+			<p>Ether nullification will be applied first, and it will nullify ether before nullify the type with the most amount.</p>
+			<p>After nullifying, the remaining element points are used to determine the strength of the avatar, except Ether.</p>
+			<p>For example:</p>
+			<ul>
+				<li>A has 2 Fire, 4 Water, 1 Wind, 5 Ether</li>
+				<li>B has 5 Water, 6 Earth, 3 Ether</li>
+			</ul>
+			<p>After ether nullifying ether, they each will have:</p>
+			<ul>
+				<li>A has 2 Fire, 4 Water, 1 Wind, 2 Ether</li>
+				<li>B has 5 Water, 6 Earth</li>
+			</ul>
+			<p>After ether nullifying the most amount, they each will have:</p>
+			<ul>
+				<li>A has 2 Fire, 4 Water, 1 Wind</li>
+				<li>B has 5 Water, 4 Earth</li>
+			</ul>
+			<p>After normal nullifying:</p>
+			<ul>
+				<li>A has 4 Water, 1 Wind</li>
+				<li>B has 5 Water, 3 Earth</li>
+			</ul>
+			<p>The winner is determined by the sum of all remaining elements. In this case, B won with 8 points.</p>
+			<h2>Control</h2>
+			<p>Mouse to interact with the menu UI, the cards and the deck.</p>
+			<h2>Onboarding</h2>
+			<p>On the player's very first round, they will be handhold on all available action in the game via overlay messages.</p>
+			<h2>Player learning</h2>
+			<p>The player need mainly luck to win the game.</p>
+
+		</article>
+
+		<article class="FadeInArticle Sixth">
+			<h1>screenshots</h1>
+			<hr>
+			<div class="ConceptContainer">
+				<img src="./media/concept_0.png" alt="Concept 0" id="Concept0">
+			</div>
+			<div class="ConceptContainer">
+				<img src="./media/concept_1.png" alt="Concept 1" id="Concept1">
+			</div>
+			<div class="ConceptContainer">
+				<img src="./media/concept_2.png" alt="Concept 2" id="Concept2">
+			</div>
+		</article>
 
 
-			</article>
-		</section>
+		<article class="FadeInArticle Sixth">
+			<h1>developer</h1>
+			<hr>
+			<p>lab, gdd, interested in <a href="http://bfy.tw/DjIj">machine learning</a>, <a href="http://bfy.tw/DjIq">lifespan extension</a>, and <a href="http://bfy.tw/DjIr">decentralization</a></p>
+		</article>
 
-		<footer class="Fixed FlexCenter" id="Copyright">
-			<p>
-				<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.html" id="LicenseLogoAnchor">
+		</article>
+	</section>
+
+	<footer class="Fixed FlexCenter" id="Copyright">
+		<p>
+			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.html" id="LicenseLogoAnchor">
 					<img src="https://www.gnu.org/graphics/gplv3-88x31.png" class="LicenseLogo" alt="GPLv3" />
-				</a>
-				This work is licensed under a <a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License</a>
-			</p>
-		</footer>
+				</a> This work is licensed under a <a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License</a>
+		</p>
+	</footer>
+
 </html>

@@ -7,64 +7,69 @@
 	margin-bottom: 90px;
 }
 
-#Center > h1 {
-  opacity: 0;
-
-  font-size: 2.7em;
-  animation: appear 0.5s ease-in forwards;
-  animation-delay: 0.5s;
+.FadeInArticle {
+	opacity: 0;
+	animation: appear 0.5s ease-in forwards;
 }
 
 .FadeInArticle > p {
   font-size: 1.35em;
   text-align: justify;
+	padding-left: 2em;
 }
 
-@media only screen and (max-width: 540px){
-	#Center {
-		top: 270px;
-	}
+.FadeInArticle > ul {
+	padding-left: 4em;
+}
+
+@media only screen and (max-width: 630px){
 
   .FadeInArticle > p {
     font-size: 1.17em;
-    text-align: justify;
   }
 }
 
-#Center > hr {
-  opacity: 0;
-  animation: appear 0.5s ease-in forwards;
+.ConceptContainer {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+#Concept0 {
+	width: 90%;
+	height: 90%;
+}
+
+#Concept1 {
+	width: 90%;
+	height: 90%;
+}
+
+#Concept2 {
+	width: 90%;
+	height: 90%;
+}
+
+.First {
   animation-delay: 0.5s;
 }
 
-
-.FadeInArticle > p:nth-child(1) {
-  opacity: 0;
-  animation: appear 0.5s ease-in forwards;
+.Second {
   animation-delay: 1.5s;
 }
 
-.FadeInArticle > p:nth-child(2) {
-  opacity: 0;
-  animation: appear 0.5s ease-in forwards;
+.Third {
   animation-delay: 2.5s;
 }
 
-.FadeInArticle > p:nth-child(3) {
-  opacity: 0;
-  animation: appear 0.5s ease-in forwards;
+.Forth {
   animation-delay: 3.5s;
 }
 
-.FadeInArticle > p:nth-child(4) {
-  opacity: 0;
-  animation: appear 0.5s ease-in forwards;
+.Fifth {
   animation-delay: 4.5s;
 }
 
-
-.FadeInArticle > p:nth-child(5) {
-  opacity: 0;
-  animation: appear 0.5s ease-in forwards;
+.Sixth {
   animation-delay: 5.5s;
 }
