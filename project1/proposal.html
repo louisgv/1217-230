@@ -19,7 +19,7 @@
 	</nav>
 
 	<section class="Absolute" id="Center">
-		<h1>proposal</h1>
+		<h1 class="FadeInArticle First">proposal</h1>
 		<article class="FadeInArticle First">
 			<h2>concept</h2>
 			<hr>
@@ -67,58 +67,6 @@
 			<p>With the avatar, player proceeds to play with an NPC.</p>
 			<p>The game has 3 rounds, each round has 2 phases: <b>prepare</b> and <b>combat</b>. In the prepare phase, each player takes the turn either drawing a card or using a card on their hand. The card will not be revealed to the other player. In the combat phase, players reveal
 				their cards. Whoever has the stronger avatar win the round. Used cards are discarded, and the next round repeats the same process. Winner of 2 rounds wins the game.</p>
-			<p>There are 5 types of attacking cards, each represented by an alchemy element:</p>
-			<ul>
-				<li>Fire</li>
-				<li>Water</li>
-				<li>Wind</li>
-				<li>Earth</li>
-				<li>Ether</li>
-			</ul>
-			<p>Certain types of cards "nullify" one another during the combat phase:
-			</p>
-			<ul>
-				<li>
-					Ether nullifies itself and anything with the most count
-				</li>
-				<li>
-					Water nullifies Fire
-				</li>
-				<li>
-					Fire nullifies Wind
-				</li>
-				<li>
-					Wind nullifies Earth
-				</li>
-				<li>
-					Earth nullifies Water
-				</li>
-			</ul>
-
-			<p>Water "nullifies" fire means, if Alice has 3 water and Bob has 4 fire, Bob's water points will be reduced by Alice's fire point. After nullify, Alice will still have 3 water, however, Bob will have only 1 fire. If Bob has less than 3 fire, he will lose all of it.</p>
-			<p>Ether nullification will be applied first, and it will nullify ether before nullifying the type with the most amount.</p>
-			<p>After nullifying, the remaining element points are used to determine the strength of the avatar, except Ether.</p>
-			<p>For example:</p>
-			<ul>
-				<li>A has 2 Fire, 4 Water, 1 Wind, 5 Ether</li>
-				<li>B has 5 Water, 6 Earth, 3 Ether</li>
-			</ul>
-			<p>After ether nullifying ether, they each will have:</p>
-			<ul>
-				<li>A has 2 Fire, 4 Water, 1 Wind, 2 Ether</li>
-				<li>B has 5 Water, 6 Earth</li>
-			</ul>
-			<p>After ether nullifying the most amount, they each will have:</p>
-			<ul>
-				<li>A has 2 Fire, 4 Water, 1 Wind</li>
-				<li>B has 5 Water, 4 Earth</li>
-			</ul>
-			<p>After normal nullifying:</p>
-			<ul>
-				<li>A has 4 Water, 1 Wind</li>
-				<li>B has 5 Water, 3 Earth</li>
-			</ul>
-			<p>The winner is determined by the sum of all remaining elements. In this case, B won with 8 points.</p>
 
 			<h3>Control</h3>
 			<p>Mouse to interact with the menu UI, the cards, and the deck.</p>
