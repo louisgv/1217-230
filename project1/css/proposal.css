@@ -1,5 +1,9 @@
 /* Proposal style */
 
+p {
+	margin-top: 0.5em;
+}
+
 #Center {
   top: 135px;
   left: calc(50vw - 27vw);
@@ -24,31 +28,16 @@
 	padding-left: 4em;
 }
 
-@media only screen and (max-width: 630px){
-  .FadeInArticle > p {
-    font-size: 1.17em;
-  }
-}
-
 .ConceptContainer {
-	width: 100%;
 	display: flex;
 	justify-content: center;
+	flex-direction: row;
+	align-items: center;
+	width: 100%;
 }
 
-#Concept0 {
-	width: 90%;
-	height: 90%;
-}
-
-#Concept1 {
-	width: 90%;
-	height: 90%;
-}
-
-#Concept2 {
-	width: 90%;
-	height: 90%;
+.Concept {
+	width: 30%;
 }
 
 .First {
@@ -73,4 +62,18 @@
 
 .Sixth {
   animation-delay: 5.5s;
+}
+
+@media only screen and (max-width: 900px){
+  .FadeInArticle > p {
+    font-size: 1.17em;
+		padding-right: 1em;
+  }
+
+	.ConceptContainer {
+		flex-direction: column;
+	}
+	.Concept {
+		width: 90%;
+	}
 }
