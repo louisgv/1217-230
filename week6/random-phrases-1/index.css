@@ -1,0 +1,198 @@
+@font-face {
+  font-family: Calligraffitti;
+  src: url('./Calligraffitti-Regular.ttf');
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+header {
+  position: fixed;
+  top: 2em;
+  font-size: 3em;
+}
+
+.ContentContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 90%;
+}
+
+#RandomPhrase {
+  font-size: 5em;
+  font-family: 'Calligraffitti', cursive;
+  animation: ZoomIn 1s forwards;
+}
+
+.MyName {
+  position: fixed;
+  bottom: 0;
+  left: 45px;
+  ;
+}
+
+#Copyright {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  color: lightgray;
+  text-align: center;
+  /*background: white;*/
+}
+
+a {
+  color: white;
+}
+
+.LicenseLogo {
+  display: inline-block;
+  border: none;
+  height: 1em;
+  opacity: 0.45;
+  transition: 0.36s;
+}
+
+.LicenseLogo:hover {
+  opacity: 1;
+}
+
+#ShufflePhraseButton {
+  width: 200px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  margin: 20px;
+  height: 55px;
+  text-align: center;
+  border: none;
+  background-size: 300% 100%;
+  border-radius: 50px;
+  moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+  background-image: linear-gradient(to right, #0ba360, #3cba92, #30dd8a, #2bb673);
+  box-shadow: 0 4px 15px 0 rgba(23, 168, 108, 0.75);
+}
+
+#ShufflePhraseButton:hover {
+  background-position: 100% 0;
+  moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+#ShufflePhraseButton:focus {
+  outline: none;
+}
+
+#ShufflePhraseButton:active {
+  width: 360px;
+}
+
+@media only screen and (max-width: 630px) {
+  header {
+    font-size: 3em;
+  }
+  #Copyright {
+    font-size: 5em;
+  }
+}
+
+
+/*Gradient color gathered from https://uigradients.com/*/
+
+.FireWatch {
+	opacity: 0;
+  background: #cb2d3e;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #ef473a, #cb2d3e);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #ef473a, #cb2d3e);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  animation: FadeIn 1s forwards;
+}
+
+.Lust {
+	opacity: 0;
+
+  background: #56ab2f;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #a8e063, #56ab2f);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #a8e063, #56ab2f);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  animation: FadeIn 1s forwards;
+}
+
+.Frost {
+	opacity: 0;
+
+  background: #000428;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #004e92, #000428);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #004e92, #000428);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  animation: FadeIn 1s forwards;
+}
+
+.Mauve {
+	opacity: 0;
+
+  background: #42275a;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #734b6d, #42275a);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #734b6d, #42275a);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  animation: FadeIn 1s forwards;
+}
+
+.Royal {
+	opacity: 0;
+
+  background: #141E30;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #243B55, #141E30);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #243B55, #141E30);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  animation: FadeIn 1s forwards;
+}
+
+
+@keyframes ZoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(.3, .3, .3);
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes FadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
