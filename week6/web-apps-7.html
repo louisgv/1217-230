@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Web Apps-4</title>
+	<style>
+		body{border:1px solid gray;}
+	</style>
+</head>
+<body>
+<h1>My Favorites</h1>
+
+<h2>My Favorite Links</h1>
+
+<ol id="linksList">
+
+</ol>
+
+<script>
+let links = {
+		"RIT": "http://www.rit.edu",
+		"RWAG" : "https://www.facebook.com/RWAGclub",
+		"New Media Club" : "http://newmediaclub.cias.rit.edu",
+		"My Site" : "https://people.rit.edu/hhn2884/230/"
+	}
+
+let linksListEl = document.getElementById('linksList');
+
+for (let key in links) {
+	if (links.hasOwnProperty(key)) {
+
+		let linkEl = document.createElement('li');
+		let anchorEl = document.createElement('a');
+
+		anchorEl.innerHTML = key;
+		anchorEl.setAttribute('href', links[key]);
+
+		linkEl.appendChild(anchorEl);
+
+		linksListEl.appendChild(linkEl);
+	}
+}
+
+</script>
+</body>
+</html>
