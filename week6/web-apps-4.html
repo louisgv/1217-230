@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Web Apps-4</title>
+	<style>
+		body{border:1px solid gray;}
+	</style>
+</head>
+<body>
+<h1>My Favorites</h1>
+<h2>My Favorite Colors</h1>
+
+<ol id="colorsList">
+
+</ol>
+
+<h2>My Favorite Foods</h1>
+
+<ol id="foodsList">
+
+</ol>
+
+<h2>My Favorite Links</h1>
+
+<ol id="linksList">
+
+</ol>
+
+<script>
+let colors = ["red","green","blue","purple","pink"];
+let foods = ["sushi","pizza", "larva", "steak", "burger", "omelet"]; // add some foods
+
+let colorsListEl = document.getElementById('colorsList');
+// 1. Write code that loops through the `colors` array, generates list items, and appends them to the appropriate list element. For this array use a classic `for` loop.
+for (let i = 0; i < colors.length; i++) {
+	let colorEl = document.createElement('li');
+	colorEl.innerHTML = colors[i];
+	colorEl.style.color = colors[i];
+
+	colorsListEl.appendChild(colorEl);
+}
+
+let foodListEl = document.getElementById('foodsList');
+// 1. Write code that loops through the `foods` array, generates list items, and appends them to the appropriate list element. For this array use an ES6 `for...of` loop.
+for (let food in foods) {
+	if (foods.hasOwnProperty(food)) {
+			let foodEl = document.createElement('li');
+			foodEl.innerHTML = foods[food];
+
+			foodListEl.appendChild(foodEl);
+	}
+}
+
+// 1. Be sure that your code uses `document.createElement()` to create each element.
+
+// Optional (worth an extra 5 points) - can you figure out how to pull the key
+// and value from the links object literal?
+let links = {
+		"RIT": "http://www.rit.edu",
+		"RWAG" : "https://www.facebook.com/RWAGclub",
+		"New Media Club" : "http://newmediaclub.cias.rit.edu",
+		"My Site" : "https://people.rit.edu/hhn2884/230/"
+	}
+
+let linksListEl = document.getElementById('linksList');
+
+for (let key in links) {
+	if (links.hasOwnProperty(key)) {
+
+		let linkEl = document.createElement('li');
+		let anchorEl = document.createElement('a');
+
+		anchorEl.innerHTML = key;
+		anchorEl.setAttribute('href', links[key]);
+
+		linkEl.appendChild(anchorEl);
+
+		linksListEl.appendChild(linkEl);
+	}
+}
+
+</script>
+</body>
+</html>

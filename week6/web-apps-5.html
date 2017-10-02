@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Web Apps-5</title>
+	<style>
+		body{border:1px solid gray;}
+	</style>
+</head>
+<body>
+<h1>My Favorites</h1>
+<h2>My Favorite Colors</h1>
+
+<ol id="colorsList">
+
+</ol>
+
+<h2>My Favorite Foods</h1>
+
+<ol id="foodsList">
+
+</ol>
+
+<h2>My Favorite Links</h1>
+
+<ol id="linksList">
+
+</ol>
+
+<script>
+
+function addListItem(listEl, items = ["puppydogs", "butterflies", "lollipops"]) {
+	for (let i = 0; i < items.length; i++) {
+		let liEl = document.createElement('li');
+		liEl.innerHTML = items[i];
+		listEl.appendChild(liEl);
+	}
+}
+
+let colors = ["red","green","blue","purple","pink"];
+let foods = ["sushi","pizza", "larva", "steak", "burger", "omelet"]; // add some foods
+
+let colorsListEl = document.getElementById('colorsList');
+
+addListItem(colorsListEl, colors);
+
+let foodListEl = document.getElementById('foodsList');
+
+addListItem(foodListEl, foods);
+
+let links = {
+		"RIT": "http://www.rit.edu",
+		"RWAG" : "https://www.facebook.com/RWAGclub",
+		"New Media Club" : "http://newmediaclub.cias.rit.edu",
+		"My Site" : "https://people.rit.edu/hhn2884/230/"
+	}
+
+let linksListEl = document.getElementById('linksList');
+
+for (let key in links) {
+	if (links.hasOwnProperty(key)) {
+
+		let linkEl = document.createElement('li');
+		let anchorEl = document.createElement('a');
+
+		anchorEl.innerHTML = key;
+		anchorEl.setAttribute('href', links[key]);
+
+		linkEl.appendChild(anchorEl);
+
+		linksListEl.appendChild(linkEl);
+	}
+}
+
+</script>
+</body>
+</html>
