@@ -1,0 +1,42 @@
+.HalfPlayingBoard {
+  background: #444;
+  width: 63vw;
+  height: 45vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Stats {
+  background: #111;
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.Equip {
+  background: #555;
+  width: 100%;
+  height: 30%;
+}
+
+.Hand {
+  background: white;
+  width: 100%;
+  height: 40%;
+}
+
+.Avatar {
+  background: white;
+  height: 100%;
+  width: 19%;
+}
+
+.Point {
+  background: gray;
+  height: 100%;
+  width: 19%;
+}

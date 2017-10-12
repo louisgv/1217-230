@@ -7,6 +7,7 @@
 	<link rel="shortcut icon" href="./media/favicon.png">
 	<title>eau.web</title>
 	<link rel="stylesheet" href="./css/global.css" />
+	<link rel="stylesheet" href="./css/playing-board.css">
 	<link rel="stylesheet" href="./css/index.css" />
 </head>
 
@@ -18,30 +19,30 @@
 
 	<section id="GameContainer">
 
-		<div id="NPCSide">
-			<div id="NPCHand"></div>
-			<div id="NPCEquip"></div>
-			<div id="NPCStats">
-				<div class="FirePoint"></div>
-				<div class="WaterPoint"></div>
+		<div id="NPCSide" class="HalfPlayingBoard">
+			<div class="Hand"></div>
+			<div class="Equip"></div>
+			<div class="Stats">
+				<div class="Fire Point"></div>
+				<div class="Water Point"></div>
 				<div class="Avatar"></div>
-				<div class="EarthPoint"></div>
-				<div class="WindPoint"></div>
+				<div class="Earth Point"></div>
+				<div class="Wind Point"></div>
 			</div>
 		</div>
 
-
-		<div id="PlayerSide">
-			<div id="PlayerStats">
-				<div class="FirePoint"></div>
-				<div class="WaterPoint"></div>
+		<div id="PlayerSide" class="HalfPlayingBoard">
+			<div class="Stats">
+				<div class="Fire Point"></div>
+				<div class="Water Point"></div>
 				<div class="Avatar"></div>
-				<div class="EarthPoint"></div>
-				<div class="WindPoint"></div>
+				<div class="Earth Point"></div>
+				<div class="Wind Point"></div>
 			</div>
-			<div id="PlayerEquip"></div>
-			<div id="PlayerHand"></div>
+			<div class="Equip"></div>
+			<div class="Hand"></div>
 		</div>
+
 	</section>
 
 	<section id="RightColumn" class="FlexCenter">
