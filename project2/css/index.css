@@ -1,0 +1,73 @@
+/* Index/Home style */
+
+body {
+  overflow: hidden;
+  background: #222;
+}
+
+#GameContainer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#Interface {
+  position: absolute;
+  background: #444;
+  width: 14.4vw;
+  height: 100vh;
+}
+
+#RightColumn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 14.4vw;
+  height: 100vh;
+  background: #111;
+}
+
+#CentralDeck {
+  background: #444;
+  width: 90%;
+  max-width: 90px;
+  height: 135px;
+}
+
+#NPCSide {
+  background: #444;
+  width: 63vw;
+  height: 45vh;
+  flex-direction: column;
+}
+
+#PlayerSide {
+  background: #444;
+  width: 63vw;
+  height: 45vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#PlayerStats {
+  background: #111;
+  width: 30%;
+  height: 30%;
+}
+
+#PlayerEquip {
+  background: #555;
+  width: 100%;
+  height: 30%;
+}
+
+#PlayerHand {
+  background: white;
+  width: 100%;
+  height: 40%;
+}
