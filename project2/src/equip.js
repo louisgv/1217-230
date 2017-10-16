@@ -1,11 +1,5 @@
-class Card {
-	constructor(name) {
-		this.name = name;
-	}
-}
-
-function CreateCard(clickCallback) {
-	const cardEl = CreateElementWithClass('div', 'Card');
+function CreateEquip() {
+	const equipEl = CreateElementWithClass('div', 'Equip');
 
 	const cardFaceEl = CreateElementWithClass('div', 'CardFace')
 

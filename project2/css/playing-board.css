@@ -1,7 +1,7 @@
 .HalfPlayingBoard {
   background: #444;
   width: 63vw;
-  height: 45vh;
+  height: 47.7vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -17,26 +17,34 @@
   justify-content: space-between;
 }
 
-.Equip {
+.Equipment {
   background: #555;
   width: 100%;
-  height: 30%;
+  height: 40%;
 }
 
 .Hand {
   background: white;
   width: 100%;
-  height: 40%;
+  height: 30%;
+
+  display: flex;
+  justify-content: space-around;
 }
 
 .Avatar {
   background: white;
   height: 100%;
-  width: 19%;
+  width: 20%;
 }
 
 .Point {
   background: gray;
   height: 100%;
-  width: 19%;
+  width: 15%;
+}
+
+#NPCSide .Hand {
+  transform: rotateX(180deg);
+  pointer-events: none;
 }

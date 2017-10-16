@@ -8,6 +8,8 @@
 	<title>eau.web</title>
 	<link rel="stylesheet" href="./css/global.css" />
 	<link rel="stylesheet" href="./css/playing-board.css">
+
+	<link rel="stylesheet" href="./css/card.css">
 	<link rel="stylesheet" href="./css/index.css" />
 </head>
 
@@ -21,7 +23,7 @@
 
 		<div id="NPCSide" class="HalfPlayingBoard">
 			<div class="Hand"></div>
-			<div class="Equip"></div>
+			<div class="Equipment"></div>
 			<div class="Stats">
 				<div class="Fire Point"></div>
 				<div class="Water Point"></div>
@@ -39,7 +41,7 @@
 				<div class="Earth Point"></div>
 				<div class="Wind Point"></div>
 			</div>
-			<div class="Equip"></div>
+			<div class="Equipment"></div>
 			<div class="Hand"></div>
 		</div>
 
@@ -62,7 +64,18 @@
 		<button id="HideCopyright">hide</button>
 	</footer>
 
+	<!-- Utility and local storage -->
+	<script src="./src/utils.js" charset="utf-8"></script>
 	<script src="./src/store.js" charset="utf-8"></script>
+	<script src="./src/card.js" charset="utf-8"></script>
+
+	<!-- Player behavior -->
+	<script src="./src/player.js" charset="utf-8"></script>
+	<script src="./src/npc.js" charset="utf-8"></script>
+
+	<script src="./src/game.js" charset="utf-8"></script>
+
+	<!-- Setup script -->
 	<script src="./src/setup.js" charset="utf-8"></script>
 	<script src="./src/copyright-hiding.js" charset="utf-8"></script>
 </body>
