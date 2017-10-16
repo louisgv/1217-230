@@ -1,5 +1,3 @@
-const playerHand = GetPlayerHand();
-
 const total = 5;
 
 function Setup() {

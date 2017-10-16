@@ -5,3 +5,7 @@ function NPCDrawCard() {
 
   npc.hand.appendChild(card);
 }
+
+function NPCPlayCard() {
+
+}

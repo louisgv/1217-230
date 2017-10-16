@@ -17,7 +17,9 @@ function PlayerDrawCard() {
   if (IsNPCTurn()) {
     return;
   }
-  const card = CreateCard(OnCardPlayed);
 
-  player.hand.appendChild(card);
+
+  const cardEl = CreateCard(OnCardPlayed);
+
+  player.hand.appendChild(cardEl);
 }

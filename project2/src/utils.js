@@ -25,3 +25,7 @@ function IsPlayerTurn(){
 function IsNPCTurn() {
   return !IsPlayerTurn();
 }
+
+function GetRandomInArray(array) {
+  return array[Math.floor(Math.random() * array.length)]
+}
