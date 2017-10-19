@@ -1,3 +1,4 @@
+// Global constant for the game's configuration
 const CONSTANT = {
 	PLAYER_TURN: 'PLAYER_TURN', // 0 Player, 1 NPC
 	NPC_TURN: 'NPC_TURN',
@@ -21,10 +22,12 @@ const CONSTANT = {
 	ELEMENTS: ['WATER', 'FIRE', 'EARTH', 'AERIAL', ' ETHER']
 }
 
+// Get data from a data source, using localStorage for now.
 function GetData(key) {
 	return localStorage.getItem(key);
 }
 
+// Set the data in a data source, using localStorage for now.
 function SetData(key, value) {
 	localStorage.setItem(key, value);
 }

@@ -2,7 +2,8 @@ const HeroSelectionOverlayEl = document.querySelector('#HeroSelectionOverlay');
 
 // Callback handle to log the selected hero and start the main game
 function OnHeroSelected() {
-  console.log("Hero selected!");
+  HeroSelectionOverlayEl.style.display = "none";
+
 }
 
 // Spawn all of the hero selection cards

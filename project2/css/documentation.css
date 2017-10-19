@@ -16,6 +16,8 @@ li {
 
 #Content {
   padding-top: 90px;
+  width: 72vw;
+  max-width: 720px;
 }
 
 @media only screen and (max-width: 630px) {

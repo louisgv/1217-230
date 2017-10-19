@@ -12,6 +12,7 @@ class Card {
 	}
 }
 
+// Get a random card
 function GetRandomCard(heroElement) {
 	const prob = Math.random();
 

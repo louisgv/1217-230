@@ -1,3 +1,4 @@
+// Create an equipment element card
 function CreateEquip() {
 	const equipEl = CreateElementWithClass('div', 'Equip');
 

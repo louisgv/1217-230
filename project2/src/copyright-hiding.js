@@ -4,6 +4,7 @@ const CopyrightEl = document.querySelector('#Copyright');
 
 const HideCopyrightEl = document.querySelector('#HideCopyright');
 
+// Change the state of the copyright notice based on its new state
 function ChangeCopyright(isShow, newState, background, color) {
 	CopyrightEl.style.opacity = isShow
 		? 1

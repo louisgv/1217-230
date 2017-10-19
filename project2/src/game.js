@@ -1,5 +1,6 @@
 const centralDeck = document.querySelector('#CentralDeck');
 
+// Handle event when player click on the drawing deck
 function OnCentralDeckClicked() {
   if (IsNPCTurn() ||
       playerHand.children.length >= CONSTANT.CARD_LIMIT) {
@@ -10,6 +11,7 @@ function OnCentralDeckClicked() {
   SwitchTurn();
 }
 
+// Handle switching turn and invoke NPC's logic
 function SwitchTurn() {
   const currentTurn = GetData("TURN");
 

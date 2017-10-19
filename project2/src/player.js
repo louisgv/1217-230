@@ -1,9 +1,7 @@
 const player = GetPlayingSide('#PlayerSide')
 
-function GetPlayerHand(){
-  return player.hand;
-}
 
+// Handle event when player clicked on a card
 function OnCardPlayed(event) {
   event.preventDefault()
 
@@ -13,6 +11,7 @@ function OnCardPlayed(event) {
   SwitchTurn();
 }
 
+// Draw a card and append it to the player's hand
 function PlayerDrawCard() {
   if (IsNPCTurn()) {
     return;

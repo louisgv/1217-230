@@ -1,13 +1,10 @@
 #Interface {
-  position: absolute;
-
+  position: fixed;
   background-color: rgba(100, 100, 100, 0.2);
-
   left: -126px;
   width: 144px;
   height: 100vh;
   z-index: 1008;
-
   transition: 0.45s;
   animation: Retract 0.9s;
 }
@@ -29,26 +26,18 @@
 }
 
 .InterfaceButton {
-
   text-transform: capitalize;
   display: flex;
-
   opacity: 1;
-
   justify-content: center;
   align-items: center;
-
   width: 100%;
-
   height: 45px;
-	text-decoration: none;
-	color: dodgerblue;
-
+  text-decoration: none;
+  color: dodgerblue;
   background: black;
-
-	font-family: monospace;
-	font-size: 1.44em;
-
+  font-family: monospace;
+  font-size: 1.44em;
   padding-right: 2em;
 }
 
@@ -61,44 +50,49 @@
 }
 
 .InterfaceButton:hover {
-	background: darkblue;
-	color: white;
-	text-decoration: none;
+  background: darkblue;
+  color: white;
+  text-decoration: none;
   padding-right: 2em;
-
 }
 
 .InterfaceButton:visited {
-	color: lightgray;
+  color: lightgray;
 }
 
 .InterfaceButton:visited:hover {
-	background: darkblue;
-	color: white;
-	text-decoration: none;
+  background: darkblue;
+  color: white;
+  text-decoration: none;
   padding-right: 2em;
 }
 
 .ActiveButton {
-	background: dodgerblue;
-	color: white;
+  background: dodgerblue;
+  color: white;
   padding-right: 2em;
 }
 
 .ActiveButton:visited {
-	color: white;
+  color: white;
 }
-
 
 @media only screen and (max-width: 630px) {
   #Interface {
     width: 126px;
   }
 
+  .InterfaceButton {
+    padding-right: 5em;
+  }
+
+  .InterfaceButton:hover {
+    padding-right: 5em;
+  }
+
   .InterfaceButton .oi {
     right: -3em;
   }
-
   .ActiveButton {
     padding-right: 5em;
   }
