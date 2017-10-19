@@ -73,6 +73,7 @@ li {
 
 footer {
 	bottom: 0;
+	z-index: 1125;
 }
 
 #Copyright {

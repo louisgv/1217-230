@@ -3,13 +3,13 @@
 
   background-color: rgba(100, 100, 100, 0.2);
 
-	left: 0;
+  left: -126px;
   width: 144px;
   height: 100vh;
   z-index: 1008;
 
-  animation: Retract 0.45s forwards;
   transition: 0.45s;
+  animation: Retract 0.9s;
 }
 
 #Interface:hover {
@@ -18,10 +18,13 @@
 
 @keyframes Retract {
   0% {
-    left: 0;
+    padding-left: 126px;
+  }
+  63% {
+    padding-left: 126px;
   }
   100% {
-    left: -126px;
+    padding-left: 0px;
   }
 }
 
@@ -45,6 +48,8 @@
 
 	font-family: monospace;
 	font-size: 1.44em;
+
+  padding-right: 2em;
 }
 
 .InterfaceButton .oi {
