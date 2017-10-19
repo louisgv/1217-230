@@ -37,3 +37,5 @@ function RestoreCopyRightState() {
 }
 
 HideCopyrightEl.addEventListener('click', ToggleCopyRight);
+
+window.addEventListener('load', RestoreCopyRightState);

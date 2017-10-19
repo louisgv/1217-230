@@ -1,6 +1,7 @@
 const CONSTANT = {
 	PLAYER_TURN: 'PLAYER_TURN', // 0 Player, 1 NPC
 	NPC_TURN: 'NPC_TURN',
+	INITIAL_CARD_COUNT: 5,
 	CARD_LIMIT: 6,
 	RANDOM_THRESHOLD: 0.80,
 	ELEMENT: {
@@ -9,6 +10,13 @@ const CONSTANT = {
 		EARTH: 'EARTH',
 		AERIAL: 'AERIAL',
 		ETHER: 'ETHER'
+	},
+	ELEMENT_COLOR: {
+		WATER: 'blue',
+		FIRE: 'red',
+		EARTH: 'brown',
+		AERIAL: 'green',
+		ETHER: 'white'
 	},
 	ELEMENTS: ['WATER', 'FIRE', 'EARTH', 'AERIAL', ' ETHER']
 }

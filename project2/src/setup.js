@@ -1,9 +1,8 @@
-const total = 5;
-
+// Setup the game and restore the state of previous game if exist
 function Setup() {
-	RestoreCopyRightState();
+	SpawnHeroSelectionCards();
 
-	for(let i = 0; i < total; i++) {
+	for(let i = 0; i < CONSTANT.INITIAL_CARD_COUNT; i++) {
 		PlayerDrawCard();
 		NPCDrawCard();
 	}

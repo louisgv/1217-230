@@ -1,0 +1,26 @@
+body {
+  background: #222;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  color: white;
+}
+
+li {
+  font-family: sans-serif;
+}
+
+#Content {
+  padding-top: 90px;
+}
+
+@media only screen and (max-width: 630px) {
+  #Content {
+    padding: 135px 1em;
+    width: 90vw;
+  }
+}

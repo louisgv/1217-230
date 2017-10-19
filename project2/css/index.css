@@ -14,13 +14,6 @@ body {
   align-items: center;
 }
 
-#Interface {
-  position: absolute;
-  background: #444;
-  width: 14.4vw;
-  height: 100vh;
-}
-
 #RightColumn {
   position: absolute;
   top: 0;

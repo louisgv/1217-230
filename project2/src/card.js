@@ -1,7 +1,14 @@
+// Base class for a card
 class Card {
-	constructor({name, image}) {
-		this.name = name;
+	constructor({element, image, point} = {
+		element: CONSTANT.ELEMENT.ETHER,
+		image: null,
+		point: 1
+	}) {
+		this.element = element;
 		this.image = image;
+		this.point = point;
+		this.background = CONSTANT.ELEMENT_COLOR[element];
 	}
 }
 
@@ -12,21 +19,17 @@ function GetRandomCard(heroElement) {
 		? heroElement
 		: GetRandomInArray(CONSTANT.ELEMENTS)
 
-	// const name =
-
 	return new Card({cardType});
 }
 
-function CreateCard(clickCallback, background) {
+function CreateCard(clickCallback, card = new Card()) {
 	const cardEl = CreateElementWithClass('div', 'Card');
 
-	const cardFaceEl = CreateElementWithClass('div', 'CardFace')
+	const cardFaceEl = CreateElementWithClass('div', 'CardFace');
 
-	cardFaceEl.style.background = background;
+	cardFaceEl.style.background = card.background;
 
 	cardEl.addEventListener('click', clickCallback);
-
-	cardFaceEl.addEventListener('click', clickCallback);
 
 	cardEl.appendChild(cardFaceEl);
 

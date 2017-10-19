@@ -6,8 +6,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, 	user-scalable=no" />
 	<link rel="shortcut icon" href="./media/favicon.png">
 	<title>eau.web</title>
+
+	<link rel="stylesheet" href="./vendors/open-iconic/font/css/open-iconic.min.css">
+
 	<link rel="stylesheet" href="./css/global.css" />
+	<link rel="stylesheet" href="./css/interface.css" />
+
 	<link rel="stylesheet" href="./css/playing-board.css">
+	<link rel="stylesheet" href="./css/hero-selection.css">
 
 	<link rel="stylesheet" href="./css/card.css">
 	<link rel="stylesheet" href="./css/index.css" />
@@ -15,8 +21,19 @@
 
 <body>
 
-	<section id="Interface">
+	<section id="HeroSelectionOverlay">
+		<h1>Choose your avatar</h1>
+	</section>
 
+	<section id="Interface">
+		<a class="InterfaceButton ActiveButton">
+			<h3>play</h3>
+			<span class="oi" data-glyph="media-stop"></span>
+		</a>
+		<a class="InterfaceButton" href="./documentation.html">
+			<h3>doc</h3>
+			<span class="oi" data-glyph="document"></span>
+		</a>
 	</section>
 
 	<section id="GameContainer">
@@ -67,9 +84,13 @@
 	<!-- Utility and local storage -->
 	<script src="./src/utils.js" charset="utf-8"></script>
 	<script src="./src/store.js" charset="utf-8"></script>
+
+	<!-- Board section controller -->
 	<script src="./src/card.js" charset="utf-8"></script>
+	<script src="./src/equip.js" charset="utf-8"></script>
 
 	<!-- Player behavior -->
+	<script src="./src/hero-selection.js" charset="utf-8"></script>
 	<script src="./src/player.js" charset="utf-8"></script>
 	<script src="./src/npc.js" charset="utf-8"></script>
 

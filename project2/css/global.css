@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Bubblegum+Sans);
+
 /* Global style */
 
 body {
@@ -11,7 +13,7 @@ hr {
 
 /* Header style */
 h1, h2, h3 {
-	font-family: monospace;
+	font-family: "Bubblegum Sans", sans-serif;
 	display: block;
 	margin: 0;
 	font-weight: lighter;
@@ -23,7 +25,6 @@ h1 {
 
 h2 {
 	font-size: 1.44em;
-	color: gray;
 }
 
 h3 {
@@ -126,106 +127,6 @@ footer {
 	opacity: 1;
 }
 
-#Top {
-	top: 45px;
-	width: 100vw;
-	display: flex;
-	justify-content: space-around;
-}
-
-#TopLeft {
-	top: 45px;
-  left: 45px;
-}
-
-#TopRight {
-	top: 45px;
-  right: 45px;
-}
-
-#Back::before {
-	content: "<";
-}
-
-#Back:hover::after {
-	content: "back";
-}
-
-.CircleButton {
-	opacity: 1;
-	border-radius: 45px;
-  width: 45px;
-  height: 45px;
-  border: 1.8px solid dodgerblue;
-	text-decoration: none;
-	color: dodgerblue;
-	font-family: monospace;
-	font-size: 1.44em;
-	transition: 0.36s;
-}
-
-.CircleButton:hover {
-	width: 180px;
-	background: dodgerblue;
-	color: white;
-	text-decoration: none;
-}
-
-.CircleButton:visited {
-	color: gray;
-	border: 1.8px solid gray;
-}
-
-.CircleButton:visited:hover {
-	width: 180px;
-	background: dodgerblue;
-	border: 1.8px solid dodgerblue;
-	color: white;
-	text-decoration: none;
-}
-
-.BubbleButton {
-	opacity: 1;
-  border-radius: 45px;
-  width: 180px;
-  height: 45px;
-  border: 1.8px solid dodgerblue;
-	text-decoration: none;
-	color: dodgerblue;
-	font-family: monospace;
-	font-size: 1.44em;
-	transition: 0.36s;
-}
-
-.BubbleButton:hover {
-	background: dodgerblue;
-	color: white;
-	text-decoration: none;
-}
-
-.BubbleButton:visited {
-	color: gray;
-	border: 1.8px solid gray;
-}
-
-.BubbleButton:visited:hover {
-	background: dodgerblue;
-	color: white;
-	text-decoration: none;
-	border: 1.8px solid dodgerblue;
-}
-
-.ActiveButton {
-	background: dodgerblue;
-	color: white;
-	border: 1.8px solid dodgerblue;
-}
-
-.ActiveButton:visited {
-	color: white;
-	border: 1.8px solid dodgerblue;
-}
-
 .Fixed {
 	position: fixed;
 }
@@ -246,18 +147,6 @@ footer {
 	animation-delay: 4s;
 }
 
-@keyframes droplet {
-  0% {
-    top: -270px;
-    border-radius: 50% 50% 50% 50%;
-  }
-  100% {
-    top: 45px;
-    height: 36px;
-    width: 36px;
-    border-radius: 50% 50% 50% 4.5%;
-  }
-}
 
 @keyframes appear {
 	0% {

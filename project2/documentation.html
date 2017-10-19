@@ -8,13 +8,28 @@
 	<link rel="shortcut icon" href="./media/favicon.png">
 	<title>documentation</title>
 
-	<link rel="stylesheet" href="./css/documentation.css" />
+	<link rel="stylesheet" href="./vendors/open-iconic/font/css/open-iconic.min.css">
+
 	<link rel="stylesheet" href="./css/global.css" />
+	<link rel="stylesheet" href="./css/interface.css" />
+
+	<link rel="stylesheet" href="./css/documentation.css" />
 </head>
 
 <body>
 
-	<section class="Absolute" id="Center">
+	<section id="Interface">
+		<a class="InterfaceButton" href="./index.html">
+			<h3>play</h3>
+			<span class="oi" data-glyph="media-play"></span>
+		</a>
+		<a class="InterfaceButton ActiveButton">
+			<h3>doc</h3>
+			<span class="oi" data-glyph="document"></span>
+		</a>
+	</section>
+
+	<section id="Content">
 		<h1>documentation</h1>
 		<article class="Notes">
 			<h2>
@@ -22,12 +37,22 @@
 			</h2>
 			<hr/>
 			<ul>
+				<li>Using localstorage browser API to remember the state of a previous game.</li>
+				<li> The logo for the favicon is my design. I created it using <a href="https://github.com/piskelapp/piskel">Piskel</a> </li>
+				<li> I produced most of the concept arts used for card images.</li>
+				<li> License notice was taken from <a href="https://louisgv.github.io/a-jekyll-blog/">my blog</a>, which is also my design. </li>
+			</ul>
+		</article>
+
+		<article class="References">
+			<h2>
+				references / attributions
+			</h2>
+			<hr/>
+			<ul>
+				<li>Open Iconic — www.useiconic.com/open</li>
 				<li>https://codepen.io/nrdobie/pen/ijxqz?limit=all&page=4&q=card</li>
 				<li>https://codepen.io/jackrugile/pen/WZGeGM</li>
-				<li> Everything in this website was built from scratch. </li>
-				<li> The logo for the favicon is my design. I created it using <a href="https://github.com/piskelapp/piskel">Piskel</a> </li>
-				<li> I produced all concept arts.</li>
-				<li> License notice was taken from <a href="https://louisgv.github.io/a-jekyll-blog/">my blog</a>, which is also my design. </li>
 			</ul>
 		</article>
 
