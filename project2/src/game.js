@@ -1,5 +1,14 @@
 const centralDeck = document.querySelector('#CentralDeck');
 
+function StartGame() {
+	for(let i = 0; i < CONSTANT.INITIAL_CARD_COUNT; i++) {
+		PlayerDrawCard();
+		NPCDrawCard();
+	}
+
+	SetData("TURN", "PLAYER_TURN");
+}
+
 // Handle event when player click on the drawing deck
 function OnCentralDeckClicked() {
   if (IsNPCTurn() ||

@@ -5,11 +5,12 @@ function OnHeroSelected() {
   HeroSelectionOverlayEl.style.display = "none";
 
   PlayerSetHero(this);
-  // TODO: Set NPC's hero card:
 
   const npcHeroCard = GetRandomCard();
 
   NPCSetHero(npcHeroCard);
+
+  StartGame();
 }
 
 // Spawn all of the hero selection cards

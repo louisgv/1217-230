@@ -8,11 +8,6 @@ class Card {
 		this.element = element;
 		this.image = image;
 		this.point = point;
-
-		console.log(element);
-
-		console.log(CONSTANT.ELEMENT_COLOR[element]);
-
 		this.background = CONSTANT.ELEMENT_COLOR[element];
 	}
 }
