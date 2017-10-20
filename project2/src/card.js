@@ -8,29 +8,37 @@ class Card {
 		this.element = element;
 		this.image = image;
 		this.point = point;
+
+		console.log(element);
+
+		console.log(CONSTANT.ELEMENT_COLOR[element]);
+
 		this.background = CONSTANT.ELEMENT_COLOR[element];
 	}
 }
 
 // Get a random card
-function GetRandomCard(heroElement) {
+function GetRandomCard(heroElement = GetRandomInArray(CONSTANT.ELEMENTS)) {
 	const prob = Math.random();
 
-	const cardType = prob < CONSTANT.RANDOM_THRESHOLD
+	const element = prob < CONSTANT.RANDOM_THRESHOLD
 		? heroElement
 		: GetRandomInArray(CONSTANT.ELEMENTS)
 
-	return new Card({cardType});
+	const point = 1;
+
+	return new Card({element, point});
 }
 
-function CreateCard(clickCallback, card = new Card()) {
+function CreateCardEl(card = new Card(), clickCallback=()=>{}) {
 	const cardEl = CreateElementWithClass('div', 'Card');
 
 	const cardFaceEl = CreateElementWithClass('div', 'CardFace');
 
 	cardFaceEl.style.background = card.background;
 
-	cardEl.addEventListener('click', clickCallback);
+	// Bind the event to the chosen card, ignore the element itself
+	cardEl.addEventListener('click', clickCallback.bind(card));
 
 	cardEl.appendChild(cardFaceEl);
 

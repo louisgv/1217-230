@@ -1,6 +1,4 @@
 .Card {
-  border: 5px solid white;
-  margin: 20px;
   height: 150px;
   max-height: 100%;
   width: 100px;
@@ -20,7 +18,7 @@
 .Card:hover .CardFace {
   width: 100px;
   height: 150px;
-  transform: translateY(-200px) rotate(0deg) scale(2.0);
+  transform: translateY(-144px) rotate(0deg) scale(1.44);
   transition-duration: 0ms;
   z-index: 5;
 }
@@ -35,6 +33,7 @@
 
 .CardFace {
   background: black;
+  border: 5px solid white;
 
   bottom: 0;
   content: '';

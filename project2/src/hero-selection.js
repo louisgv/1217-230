@@ -4,6 +4,12 @@ const HeroSelectionOverlayEl = document.querySelector('#HeroSelectionOverlay');
 function OnHeroSelected() {
   HeroSelectionOverlayEl.style.display = "none";
 
+  PlayerSetHero(this);
+  // TODO: Set NPC's hero card:
+
+  const npcHeroCard = GetRandomCard();
+
+  NPCSetHero(npcHeroCard);
 }
 
 // Spawn all of the hero selection cards
@@ -16,7 +22,7 @@ function SpawnHeroSelectionCards() {
 
     const card = new Card({ element, image : null, point: 0 });
 
-    const elmCardEl = CreateCard(OnHeroSelected, card);
+    const elmCardEl = CreateCardEl(card, OnHeroSelected);
 
     HeroCardContainerEl.appendChild(elmCardEl);
   })

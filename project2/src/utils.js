@@ -22,7 +22,18 @@ function GetPlayingSide(sideId) {
 
   const stats = side.querySelector('.Stats');
 
-  return { side, hand, equip, stats };
+  const fire = stats.querySelector('.Fire');
+  const water = stats.querySelector('.Water');
+  const earth = stats.querySelector('.Earth');
+  const wind = stats.querySelector('.Aero');
+
+  const avatar = stats.querySelector('.Avatar');
+
+  return {
+    side, hand, equip, stats,
+    fire, water, earth, wind,
+    avatar
+  };
 }
 
 // Return true if it is Player's turn

@@ -33,3 +33,7 @@
 
   flex-wrap: wrap;
 }
+
+#HeroCardContainer .Card {
+  margin: 20px;
+}

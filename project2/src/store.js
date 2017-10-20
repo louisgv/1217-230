@@ -6,28 +6,28 @@ const CONSTANT = {
 	CARD_LIMIT: 6,
 	RANDOM_THRESHOLD: 0.80,
 	ELEMENT: {
+		ETHER: 'ETHER',
 		WATER: 'WATER',
 		FIRE: 'FIRE',
 		EARTH: 'EARTH',
-		AERIAL: 'AERIAL',
-		ETHER: 'ETHER'
+		AERO: 'AERO',
 	},
 	ELEMENT_COLOR: {
+		ETHER: 'white',
 		WATER: 'blue',
 		FIRE: 'red',
 		EARTH: 'brown',
-		AERIAL: 'green',
-		ETHER: 'white'
+		AERO: 'green'
 	},
-	ELEMENTS: ['WATER', 'FIRE', 'EARTH', 'AERIAL', ' ETHER']
+	ELEMENTS: ['WATER', 'FIRE', 'EARTH', 'AERO', 'ETHER']
 }
 
 // Get data from a data source, using localStorage for now.
 function GetData(key) {
-	return localStorage.getItem(key);
+	return JSON.parse(localStorage.getItem(key));
 }
 
 // Set the data in a data source, using localStorage for now.
 function SetData(key, value) {
-	localStorage.setItem(key, value);
+	localStorage.setItem(key, JSON.stringify(value));
 }
