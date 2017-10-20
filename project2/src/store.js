@@ -13,7 +13,7 @@ const CONSTANT = {
 		AERO: 'AERO',
 	},
 	ELEMENT_COLOR: {
-		ETHER: 'black',
+		ETHER: 'gray',
 		WATER: 'blue',
 		FIRE: 'red',
 		EARTH: 'brown',

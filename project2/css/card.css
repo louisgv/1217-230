@@ -1,61 +1,77 @@
 .Card {
-  height: 150px;
-  max-height: 100%;
-  width: 100px;
-  position: relative;
+	height: 15vh;
+	width: 10.8vh;
+
+	position: relative;
+
+	z-index: 5;
+
+	display: flex;
+	justify-content: center;
+	/*animation: Float 2s ease-in-out infinite alternate;*/
+	transform-style: preserve-3d;
+
 }
 
-.Card:after {
-  content: '';
+.CardContainer {
+	position: absolute;
+	height: 15vh;
+	width: 10.8vh;
+
+	transition: 1s ease;
+}
+
+.Flipped {
+	transform: rotateY(180deg);
+}
+
+.Card:hover .CardContainer {
+	height: 27vh;
+	width: 18vh;
+
+	transform: translateY(-144px) scale(1.44);
+
+	animation: Flip 0.5s ease;
+}
+
+.CardFace,
+.CardBack{
+  position: absolute;
 
   top: 0;
-  bottom: 0;
-  width: 100px;
-  position: absolute;
-  z-index: 10
-}
+  left: 0;
+	bottom: 0;
+  right: 0;
 
-.Card:hover .CardFace {
-  width: 100px;
-  height: 150px;
-  transform: translateY(-144px) rotate(0deg) scale(1.44);
-  transition-duration: 0ms;
-  z-index: 5;
-}
+  border: 5px solid white;
 
-.Card:hover .CardFace:after {
-  animation: fade 250ms ease-out forwards;
-}
+  border-radius: 5px;
+  color: white;
 
-.Card:hover:after {
-  top: -180px;
+  backface-visibility: hidden;
+
+	content: '';
 }
 
 .CardFace {
-  background: black;
-  border: 5px solid white;
 
-  bottom: 0;
-  content: '';
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
 }
 
-.CardFace:after {
-  animation: none;
-  background: #fff;
-  bottom: 0;
-  content: '';
-  left: 0;
-  opacity: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
+.CardBack {
+	background: black;
+	transform: rotateY(180deg);
 }
 
-@keyframes fade {
+@keyframes Flip {
+	0% {
+    transform: translateY(0) rotateY(0) scale(1);
+  }
+  100% {
+		transform: translateY(-144px) rotateY(360deg) scale(1.44);
+  }
+}
+
+@keyframes Fade {
   0% {
     opacity: 0.9;
     transform: scale(1);
@@ -63,5 +79,14 @@
   100% {
     opacity: 0;
     transform: scale(1.15);
+  }
+}
+
+@keyframes Float {
+  0% {
+    transform: rotateY(0) translateY(0);
+  }
+  100% {
+       transform: translateY(0.5rem);
   }
 }

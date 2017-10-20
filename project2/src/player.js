@@ -11,13 +11,10 @@ function OnCardPlayed(event) {
     return;
   }
 
-	const chosenCard = this.card;
+	this.removeEventListener('click', OnCardPlayed);
 
-	const equipCardEl = CreateCardEl(chosenCard);
+	player.equip.appendChild(this);
 
-	player.equip.appendChild(equipCardEl);
-
-  event.target.remove();
   SwitchTurn();
 }
 

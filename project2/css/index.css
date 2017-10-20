@@ -38,6 +38,10 @@ body {
 
 }
 
+#NPCSide .Equipment {
+	pointer-events: none;
+}
+
 #NPCSide .Hand {
   transform: rotateX(180deg);
   pointer-events: none;

@@ -28,19 +28,26 @@ function GetRandomCard(
 	return new Card({element, point});
 }
 
-function CreateCardEl(card = new Card(), clickCallback=()=>{}) {
-	const cardEl = CreateElementWithClass('div', 'Card');
+function CreateCardEl(card = new Card(), clickCallback=()=>{}, classname = '') {
+	const cardEl = CreateElementWithClass('div', 'Card ' + classname);
+
+	const cardContainerEl = CreateElementWithClass('div', 'CardContainer');
 
 	const cardFaceEl = CreateElementWithClass('div', 'CardFace');
 
+	const cardBackEl = CreateElementWithClass('div', 'CardBack');
+
 	cardFaceEl.style.background = card.background;
 
-	cardEl.card = card;
+	cardContainerEl.appendChild(cardFaceEl);
+
+	cardContainerEl.appendChild(cardBackEl);
+
+	cardEl.appendChild(cardContainerEl);
 
 	// Bind the event to the chosen card, ignore the element itself
 	cardEl.addEventListener('click', clickCallback);
-
-	cardEl.appendChild(cardFaceEl);
+	cardEl.card = card;
 
 	return cardEl;
 }

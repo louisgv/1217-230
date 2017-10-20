@@ -141,6 +141,12 @@ footer {
   align-items: center;
 }
 
+.FlexSpaceAround {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
 .LastAppear {
 	opacity: 0;
 	animation: appear 0.5s ease-in forwards;
