@@ -13,10 +13,13 @@ class Card {
 }
 
 // Get a random card
-function GetRandomCard(heroElement = GetRandomInArray(CONSTANT.ELEMENTS)) {
+function GetRandomCard(
+	heroElement = GetRandomInArray(CONSTANT.ELEMENTS),
+	threshold = CONSTANT.DEFAULT_THRESHOLD
+) {
 	const prob = Math.random();
 
-	const element = prob < CONSTANT.RANDOM_THRESHOLD
+	const element = prob < threshold
 		? heroElement
 		: GetRandomInArray(CONSTANT.ELEMENTS)
 
@@ -32,8 +35,10 @@ function CreateCardEl(card = new Card(), clickCallback=()=>{}) {
 
 	cardFaceEl.style.background = card.background;
 
+	cardEl.card = card;
+
 	// Bind the event to the chosen card, ignore the element itself
-	cardEl.addEventListener('click', clickCallback.bind(card));
+	cardEl.addEventListener('click', clickCallback);
 
 	cardEl.appendChild(cardFaceEl);
 

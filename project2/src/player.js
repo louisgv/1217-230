@@ -1,5 +1,9 @@
 const player = GetPlayingSide('#PlayerSide')
 
+function PlayerCanDraw() {
+	return player.hand.children.length <= CONSTANT.CARD_LIMIT;
+}
+
 // Handle event when player clicked on a card
 function OnCardPlayed(event) {
   event.preventDefault()
@@ -7,7 +11,11 @@ function OnCardPlayed(event) {
     return;
   }
 
+	const chosenCard = this.card;
 
+	const equipCardEl = CreateCardEl(chosenCard);
+
+	player.equip.appendChild(equipCardEl);
 
   event.target.remove();
   SwitchTurn();
@@ -26,13 +34,10 @@ function PlayerSetHero(heroCard) {
 
 // Draw a card and append it to the player's hand
 function PlayerDrawCard() {
-  if (IsNPCTurn()) {
-    return;
-  }
 
-  const card = GetRandomCard();
+	const hero = GetData(STOREKEY.PLAYER_HERO);
 
-  console.log(card);
+	const card = GetRandomCard(hero.element);
 
   const cardEl = CreateCardEl(card, OnCardPlayed);
 

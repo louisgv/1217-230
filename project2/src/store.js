@@ -4,7 +4,7 @@ const CONSTANT = {
 	NPC_TURN: 'NPC_TURN',
 	INITIAL_CARD_COUNT: 5,
 	CARD_LIMIT: 6,
-	RANDOM_THRESHOLD: 0.80,
+	DEFAULT_THRESHOLD: 0.80,
 	ELEMENT: {
 		ETHER: 'ETHER',
 		WATER: 'WATER',
@@ -30,4 +30,16 @@ function GetData(key) {
 // Set the data in a data source, using localStorage for now.
 function SetData(key, value) {
 	localStorage.setItem(key, JSON.stringify(value));
+}
+
+
+/*
+LOCALSTORAGE data structure keys:
+*/
+
+const STOREKEY = {
+	TURN: 'TURN',
+	PLAYER_HERO: 'PLAYER_HERO',
+	NPC_HERO: 'NPC_HERO',
+	COPYRIGHT_STATE: 'COPYRIGHT_STATE',
 }

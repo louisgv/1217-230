@@ -18,7 +18,7 @@ function GetPlayingSide(sideId) {
 
   const hand = side.querySelector('.Hand');
 
-  const equip = side.querySelector('.Equip');
+  const equip = side.querySelector('.Equipment');
 
   const stats = side.querySelector('.Stats');
 
@@ -38,7 +38,7 @@ function GetPlayingSide(sideId) {
 
 // Return true if it is Player's turn
 function IsPlayerTurn(){
-  const currentTurn = GetData("TURN");
+  const currentTurn = GetData(STOREKEY.TURN);
 
   return currentTurn === CONSTANT.PLAYER_TURN;
 }

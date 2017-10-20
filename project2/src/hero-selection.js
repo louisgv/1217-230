@@ -4,9 +4,15 @@ const HeroSelectionOverlayEl = document.querySelector('#HeroSelectionOverlay');
 function OnHeroSelected() {
   HeroSelectionOverlayEl.style.display = "none";
 
-  PlayerSetHero(this);
+	const playerHeroCard = this.card;
+
+	SetData(STOREKEY.PLAYER_HERO, playerHeroCard);
+
+  PlayerSetHero(playerHeroCard);
 
   const npcHeroCard = GetRandomCard();
+
+	SetData(STOREKEY.NPC_HERO, npcHeroCard);
 
   NPCSetHero(npcHeroCard);
 

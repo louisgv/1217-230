@@ -1,18 +1,19 @@
 const centralDeck = document.querySelector('#CentralDeck');
 
+// Start the game
 function StartGame() {
 	for(let i = 0; i < CONSTANT.INITIAL_CARD_COUNT; i++) {
 		PlayerDrawCard();
 		NPCDrawCard();
 	}
 
-	SetData("TURN", "PLAYER_TURN");
+	SetData(STOREKEY.TURN,
+		CONSTANT.PLAYER_TURN);
 }
 
 // Handle event when player click on the drawing deck
 function OnCentralDeckClicked() {
-  if (IsNPCTurn() ||
-      playerHand.children.length >= CONSTANT.CARD_LIMIT) {
+  if (!IsPlayerTurn() || !PlayerCanDraw()) {
     return;
   }
 
@@ -20,15 +21,41 @@ function OnCentralDeckClicked() {
   SwitchTurn();
 }
 
+function NPCMakeMove() {
+
+	const willDraw = NPCCanDraw()
+		? Math.random()
+		: 0;
+
+	const willPlayCard = NPCCanPlayCard()
+		? Math.random()
+		: 0;
+
+	if (willDraw > willPlayCard) {
+		NPCDrawCard();
+	} else {
+		NPCPlayCard();
+	}
+
+	SwitchTurn();
+}
+
 // Handle switching turn and invoke NPC's logic
 function SwitchTurn() {
-  const currentTurn = GetData("TURN");
+	// Check if it is npc turn
+	const isCurrentlyNPCTurn = IsNPCTurn();
 
-  const nextTurn = currentTurn === CONSTANT.PLAYER_TURN
-    ? CONSTANT.NPC_TURN
-    : CONSTANT.PLAYER_TURN
+	// Switch turn
+  const nextTurn = isCurrentlyNPCTurn
+    ? CONSTANT.PLAYER_TURN
+    : CONSTANT.NPC_TURN
 
-  SetData("TURN", nextTurn);
+  SetData(STOREKEY.TURN, nextTurn);
+
+	// If after switch turn, it is npc turn
+	if (IsNPCTurn()) {
+		NPCMakeMove();
+	}
 }
 
 centralDeck.addEventListener('click', OnCentralDeckClicked)
