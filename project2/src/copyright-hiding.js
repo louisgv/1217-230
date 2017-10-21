@@ -1,3 +1,5 @@
+const FooterEl = document.querySelector('footer')
+
 const CopyrightEl = document.querySelector('#Copyright');
 
 const HideCopyrightEl = document.querySelector('#HideCopyright');
@@ -10,6 +12,10 @@ function ChangeCopyright(isShow, newState, background, color) {
 	CopyrightEl.style.pointerEvents = isShow
 	 	? "all"
 		: "none";
+
+	FooterEl.style.zIndex = isShow
+		? 999
+		: 0;
 
 	HideCopyrightEl.innerHTML = newState;
 	HideCopyrightEl.style.background = background;

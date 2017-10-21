@@ -29,18 +29,26 @@
   height: 30%;
 
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .Avatar {
   background: white;
   height: 100%;
   width: 20%;
-
 }
 
 .Avatar .Card {
   max-width: 100%;
+	animation: Float 2s ease-in-out infinite alternate;
+}
+
+.Equipment .Card {
+	margin: 0 1vw;
+}
+
+.Hand .Card {
+	margin: 0 1vw;
 }
 
 .Point {

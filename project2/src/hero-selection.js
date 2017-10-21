@@ -27,7 +27,7 @@ function SpawnHeroSelectionCards() {
   CONSTANT.ELEMENTS.map((element) => {
     const background = CONSTANT.ELEMENT_COLOR[element];
 
-    const card = new Card({ element, image : null, point: 0 });
+    const card = new Card({ element, image : null });
 
     const elmCardEl = CreateCardEl(card, OnHeroSelected);
 

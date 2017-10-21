@@ -172,6 +172,15 @@ footer {
 	}
 }
 
+@keyframes Float {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+   	transform: translateY(-9px);
+  }
+}
+
 @media only screen and (max-width: 630px){
 	#Top {
 			height: 180px;

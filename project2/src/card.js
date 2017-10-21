@@ -3,7 +3,7 @@ class Card {
 	constructor({element, image, point} = {
 		element: CONSTANT.ELEMENT.ETHER,
 		image: null,
-		point: 1
+		point: 0
 	}) {
 		this.element = element;
 		this.image = image;
@@ -15,6 +15,7 @@ class Card {
 // Get a random card
 function GetRandomCard(
 	heroElement = GetRandomInArray(CONSTANT.ELEMENTS),
+	point = 0,
 	threshold = CONSTANT.DEFAULT_THRESHOLD
 ) {
 	const prob = Math.random();
@@ -23,9 +24,11 @@ function GetRandomCard(
 		? heroElement
 		: GetRandomInArray(CONSTANT.ELEMENTS)
 
-	const point = 1;
+	const image = point > 0 && point <= CONSTANT.POINT_LIMIT
+		?	GIPHY_TABLE[element][point - 1]
+		: null;
 
-	return new Card({element, point});
+	return new Card({element, point, image});
 }
 
 function CreateCardEl(card = new Card(), clickCallback=()=>{}, classname = '') {
@@ -36,6 +39,22 @@ function CreateCardEl(card = new Card(), clickCallback=()=>{}, classname = '') {
 	const cardFaceEl = CreateElementWithClass('div', 'CardFace');
 
 	const cardBackEl = CreateElementWithClass('div', 'CardBack');
+
+	if (card.point > 0) {
+		const cardPointEl = CreateElementWithClass('div', 'CardPoint');
+
+		cardPointEl.innerHTML = card.point;
+
+		cardFaceEl.appendChild(cardPointEl);
+	}
+
+	if (card.image) {
+		const cardImageEl = CreateElementWithClass('img', 'CardImage');
+
+		cardImageEl.src = card.image;
+
+		cardFaceEl.appendChild(cardImageEl);
+	}
 
 	cardFaceEl.style.background = card.background;
 

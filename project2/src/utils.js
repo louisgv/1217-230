@@ -48,7 +48,21 @@ function IsNPCTurn() {
   return !IsPlayerTurn();
 }
 
+// Get an integer between 0 and max-1
+function GetRandomInt(max) {
+	return Math.floor(Math.random() * max);
+}
+
 // Get a random element in an array
 function GetRandomInArray(array) {
-  return array[Math.floor(Math.random() * array.length)]
+  return array[GetRandomInt(array.length)]
+}
+
+// Return a giphy url to search the query with the limit
+function GetGiphyURL(query, limit) {
+	const {URL, API_KEY} = CONSTANT.GIPHY;
+	return URL +
+	 "api_key=" + API_KEY +
+	 "&q=" + query +
+	 "&limit=" + limit;
 }

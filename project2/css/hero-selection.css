@@ -36,4 +36,5 @@
 
 #HeroCardContainer .Card {
   margin: 20px;
+	animation: Float 2s ease-in-out infinite alternate;
 }

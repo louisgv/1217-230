@@ -30,11 +30,11 @@ body {
   height: 135px;
 }
 
-#NPCSide {
+#PlayerSide {
 
 }
 
-#PlayerSide {
+#NPCSide {
 
 }
 
@@ -45,4 +45,12 @@ body {
 #NPCSide .Hand {
   transform: rotateX(180deg);
   pointer-events: none;
+}
+
+#NPCSide .Hand .Card {
+	transform: rotateY(180deg);
+}
+
+#NPCSide .Equipment .Card {
+	transform: rotateY(180deg);
 }

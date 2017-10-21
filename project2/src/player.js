@@ -34,7 +34,9 @@ function PlayerDrawCard() {
 
 	const hero = GetData(STOREKEY.PLAYER_HERO);
 
-	const card = GetRandomCard(hero.element);
+	const point = GetRandomInt(CONSTANT.POINT_LIMIT) + 1;
+
+	const card = GetRandomCard(hero.element, point);
 
   const cardEl = CreateCardEl(card, OnCardPlayed);
 

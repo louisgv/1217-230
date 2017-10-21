@@ -8,7 +8,9 @@ function NPCCanDraw(){
 function NPCDrawCard() {
 	const hero = GetData(STOREKEY.NPC_HERO);
 
-  const card = GetRandomCard(hero.element);
+	const point = GetRandomInt(CONSTANT.POINT_LIMIT) + 1;
+
+	const card = GetRandomCard(hero.element, point);
 
   const cardEl = CreateCardEl(card);
 
@@ -30,11 +32,5 @@ function NPCCanPlayCard() {
 function NPCPlayCard() {
 	const cardEl = GetRandomInArray(npc.hand.children);
 
-	// const chosenCard = cardEl.card;
-	//
-	// const equipCardEl = CreateCardEl(chosenCard);
-
 	npc.equip.appendChild(cardEl);
-
-	// cardEl.remove();
 }
