@@ -16,23 +16,23 @@ const CONSTANT = {
 		WATER: 'WATER',
 		FIRE: 'FIRE',
 		EARTH: 'EARTH',
-		WIND: 'WIND',
+		AERO: 'AERO',
 	},
 	ELEMENT_COLOR: {
 		ETHER: 'gray',
 		WATER: 'blue',
 		FIRE: 'red',
 		EARTH: 'brown',
-		WIND: 'green'
+		AERO: 'green'
 	},
 	ELEMENT_KEYWORD: {
 		ETHER: 'CRYSTAL',
 		WATER: 'WATER',
 		FIRE: 'FIRE',
 		EARTH: 'DIRT',
-		WIND: 'WIND_BLOW'
+		AERO: 'WIND_BLOW'
 	},
-	ELEMENTS: ['WATER', 'FIRE', 'EARTH', 'WIND', 'ETHER']
+	ELEMENTS: ['WATER', 'FIRE', 'EARTH', 'AERO', 'ETHER']
 }
 
 // Get data from a data source, using localStorage for now.
@@ -50,7 +50,7 @@ const GIPHY_TABLE = {
 	WATER: [],
 	FIRE: [],
 	EARTH: [],
-	WIND: [],
+	AERO: [],
 }
 
 /*

@@ -4,6 +4,7 @@ async function RenewGiphyTable() {
 	// Fetch all the giphy related to each element
 	const results = await Promise.all(CONSTANT.ELEMENTS.map((element) => {
 		const query = CONSTANT.ELEMENT_KEYWORD[element];
+
 		const url = GetGiphyURL(query, CONSTANT.POINT_LIMIT)
 		return fetch(url);
 	}))
@@ -24,18 +25,23 @@ async function RenewGiphyTable() {
 }
 
 async function WarmUpGiphyTable() {
-	const giphyTimestamp = new Date(GetData(STOREKEY.GIPHY_TIMESTAMP));
+	const giphyTimeString = GetData(STOREKEY.GIPHY_TIMESTAMP);
 
-	if (giphyTimestamp && Date.now() - giphyTimestamp.getTime() < CONSTANT.GIPHY.TIMEOUT )
+	const giphyTimestamp = giphyTimeString
+		? new Date(giphyTimeString).getTime()
+		: 0;
+
+	// If giphy cached data seems outdated
+	if (Date.now() - giphyTimestamp > CONSTANT.GIPHY.TIMEOUT)
+		// Return after fetching a new giphy table
 		return await RenewGiphyTable();
 
+	// else revive the cached table
 	const giphyTable = GetData(STOREKEY.GIPHY_TABLE);
 
-	// Caching it for faster grabbing
 	CONSTANT.ELEMENTS.map((element) => {
 		GIPHY_TABLE[element] = giphyTable[element]
 	})
-	console.log(giphyTable);
 }
 
 // Setup the game and restore the state of previous game if exist
