@@ -2,6 +2,13 @@ const centralDeck = document.querySelector('#CentralDeck');
 
 // Start the game
 function StartGame() {
+
+	// SetData(STOREKEY.PHASE, 0);
+
+	// CheckAndIncrement(STOREKEY.PHASE);
+
+	// CheckAndIncrement(STOREKEY.PHASE);
+
 	for(let i = 0; i < CONSTANT.INITIAL_CARD_COUNT; i++) {
 		PlayerDrawCard();
 		NPCDrawCard();
@@ -9,6 +16,17 @@ function StartGame() {
 
 	SetData(STOREKEY.TURN,
 		CONSTANT.PLAYER_TURN);
+}
+
+// Check and increment round number accordingly
+function CheckAndIncrement(key){
+	const current = GetData(key);
+
+	const next = current !== null
+		? (current + 1)
+		: 0;
+
+	return SetData(key, next);
 }
 
 // Handle event when player click on the drawing deck
@@ -44,16 +62,23 @@ function NPCMakeMove() {
 	SwitchTurn();
 }
 
+// Check if the phase should end
 function PhaseShouldEnd () {
 	return
 		PlayerReachedEquipLimit() ||
 		NPCReachedEquipLimit();
 }
 
+function SwitchPhase(){
+
+}
+
 // Handle switching turn and invoke NPC's logic
 function SwitchTurn() {
 
-
+	if (PhaseShouldEnd()) {
+		SwitchPhase();
+	}
 
 	// Check if it is npc turn
 	const isCurrentlyNPCTurn = IsNPCTurn();
