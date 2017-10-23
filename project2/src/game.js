@@ -3,23 +3,31 @@ const centralDeck = document.querySelector('#CentralDeck');
 // Start the game
 function StartGame() {
 
-	// SetData(STOREKEY.PHASE, 0);
+	const currentRound = CheckAndIncrement(STOREKEY.ROUND);
 
-	// CheckAndIncrement(STOREKEY.PHASE);
+	if (currentRound >= CONSTANT.ROUND_LIMIT) {
 
-	// CheckAndIncrement(STOREKEY.PHASE);
+		console.log("GAMEOVER");
+
+		return;
+	}
 
 	for(let i = 0; i < CONSTANT.INITIAL_CARD_COUNT; i++) {
 		PlayerDrawCard();
 		NPCDrawCard();
 	}
 
+	SetData(STOREKEY.PHASE,
+		CONSTANT.PHASE.PREPARE);
+
+	// TODO: Adding a RPS phase for choosing
+	// MAYBE the RPS is based on the element as well
 	SetData(STOREKEY.TURN,
-		CONSTANT.PLAYER_TURN);
+		CONSTANT.TURN.PLAYER);
 }
 
 // Check and increment round number accordingly
-function CheckAndIncrement(key){
+function CheckAndIncrement(key) {
 	const current = GetData(key);
 
 	const next = current !== null
@@ -62,22 +70,25 @@ function NPCMakeMove() {
 	SwitchTurn();
 }
 
-// Check if the phase should end
-function PhaseShouldEnd () {
+// Check if the combat phase should commence
+function ShouldCombat () {
 	return
 		PlayerReachedEquipLimit() ||
 		NPCReachedEquipLimit();
 }
 
-function SwitchPhase(){
+// The combat phase with all the math and calculation behind the scene
+async function Combat() {
+		SetData(STOREKEY.PHASE, CONSTANT.PHASE.COMBAT);
 
 }
 
 // Handle switching turn and invoke NPC's logic
 function SwitchTurn() {
 
-	if (PhaseShouldEnd()) {
-		SwitchPhase();
+	if (ShouldCombat()) {
+		Combat();
+		return;
 	}
 
 	// Check if it is npc turn
@@ -85,8 +96,8 @@ function SwitchTurn() {
 
 	// Switch turn
   const nextTurn = isCurrentlyNPCTurn
-    ? CONSTANT.PLAYER_TURN
-    : CONSTANT.NPC_TURN
+    ? CONSTANT.TURN.PLAYER
+    : CONSTANT.TURN.NPC
 
   SetData(STOREKEY.TURN, nextTurn);
 

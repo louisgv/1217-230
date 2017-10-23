@@ -48,6 +48,10 @@ async function WarmUpGiphyTable() {
 // Setup the game and restore the state of previous game if exist
 async function Setup() {
 	await WarmUpGiphyTable();
+
+	// TODO: Might need to rethink this:
+	SetData(STOREKEY.ROUND, 0);
+
 	SpawnHeroSelectionCards();
 }
 

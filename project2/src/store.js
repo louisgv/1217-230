@@ -5,12 +5,21 @@ const CONSTANT = {
 		API_KEY: 'kD7ApWahPcBwM4UuSGk1Y99Hot9F7Dsv',
 		TIMEOUT: 60 * 60 * 1000 // Re-fetch every hour
 	},
-	PLAYER_TURN: 'PLAYER_TURN', // 0 Player, 1 NPC
-	NPC_TURN: 'NPC_TURN',
-	INITIAL_CARD_COUNT: 5,
+	PHASE: {
+		PREPARE: 	'PREPARE',
+		COMBAT: 	'COMBAT'
+	},
+	TURN : {
+		PLAYER: 'PLAYER_TURN',
+		NPC: 		'NPC_TURN',
+	},
+
 	CARD_LIMIT: 6,
 	EQUIP_LIMIT: 3,
 	POINT_LIMIT: 10,
+	ROUND_LIMIT: 3,
+
+	INITIAL_CARD_COUNT: 5,
 	DEFAULT_THRESHOLD: 0.72,
 	ELEMENT: {
 		ETHER: 'ETHER',
@@ -30,20 +39,36 @@ const CONSTANT = {
 		ETHER: 'CRYSTAL',
 		WATER: 'WATER',
 		FIRE: 'FIRE',
-		EARTH: 'DIRT',
+		EARTH: 'ROCK',
 		AERO: 'WIND_BLOW'
 	},
-	ELEMENTS: ['WATER', 'FIRE', 'EARTH', 'AERO', 'ETHER']
+	ELEMENT_OPPOSITE: {
+		ETHER: 'ETHER',
+		WATER: 'FIRE',
+		FIRE: 'AERO',
+
+	},
+	ELEMENTS: [
+		'WATER', 'FIRE', 'EARTH', 'AERO', 'ETHER'
+	]
 }
 
 // Get data from a data source, using localStorage for now.
 function GetData(key) {
-	return JSON.parse(localStorage.getItem(key));
+	const namespacedKey = STORENAMESPACE + key;
+
+	return JSON.parse(localStorage.getItem(namespacedKey));
 }
 
 // Set the data in a data source, using localStorage for now.
 function SetData(key, value) {
-	localStorage.setItem(key, JSON.stringify(value));
+	const namespacedKey = STORENAMESPACE + key;
+
+	const result = JSON.stringify(value);
+
+	localStorage.setItem(namespacedKey, result);
+
+	return result;
 }
 
 const GIPHY_TABLE = {
@@ -57,6 +82,8 @@ const GIPHY_TABLE = {
 /*
 LOCALSTORAGE data structure keys:
 */
+
+const STORENAMESPACE = 'LEAU.WEB.';
 
 const STOREKEY = {
 	TURN: 'TURN',

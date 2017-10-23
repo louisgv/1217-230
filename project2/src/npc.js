@@ -7,7 +7,7 @@ function NPCReachedEquipLimit() {
 
 // Check if NPC Hand is below limit
 function NPCCanDraw(){
-	return npc.hand.children.length <= CONSTANT.CARD_LIMIT;
+	return npc.hand.children.length < CONSTANT.CARD_LIMIT;
 }
 
 // Check if NPC has card on hand

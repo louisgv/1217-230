@@ -7,7 +7,7 @@ function PlayerReachedEquipLimit() {
 
 // Check if player hand is less than limit
 function PlayerCanDraw() {
-	return player.hand.children.length <= CONSTANT.CARD_LIMIT;
+	return player.hand.children.length < CONSTANT.CARD_LIMIT;
 }
 
 // Handle event when player clicked on a card

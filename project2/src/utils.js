@@ -40,7 +40,7 @@ function GetPlayingSide(sideId) {
 function IsPlayerTurn(){
   const currentTurn = GetData(STOREKEY.TURN);
 
-  return currentTurn === CONSTANT.PLAYER_TURN;
+  return currentTurn === CONSTANT.TURN.PLAYER;
 }
 
 // Return true if it is NPC's turn
