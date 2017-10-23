@@ -1,7 +1,18 @@
 const npc = GetPlayingSide('#NPCSide')
 
+// Check if NPC Equip exceed limit
+function NPCReachedEquipLimit() {
+	return player.equip.children >= CONSTANT.EQUIP_LIMIT;
+}
+
+// Check if NPC Hand is below limit
 function NPCCanDraw(){
 	return npc.hand.children.length <= CONSTANT.CARD_LIMIT;
+}
+
+// Check if NPC has card on hand
+function NPCCanPlayCard() {
+	return npc.hand.children.length > 0;
 }
 
 // Draw a card into the NPC's hand
@@ -22,10 +33,6 @@ function NPCSetHero(heroCard) {
   const heroCardEl = CreateCardEl(heroCard);
 
   npc.avatar.appendChild(heroCardEl);
-}
-
-function NPCCanPlayCard() {
-	return npc.hand.children.length > 0;
 }
 
 // Play a card from the NPC's hand

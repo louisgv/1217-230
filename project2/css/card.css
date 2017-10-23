@@ -54,9 +54,9 @@
 	height: 27vh;
 	width: 18vh;
 
-	transform: translateY(-144px) scale(1.44);
-
 	animation: Flip 0.5s ease;
+
+	transform: translateY(-144px) scale(1.44);
 }
 
 .CardFace,

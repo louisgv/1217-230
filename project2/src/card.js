@@ -4,11 +4,12 @@ class Card {
 		element: CONSTANT.ELEMENT.ETHER,
 		image: null,
 		point: 0
-	}) {
+	}, data = {}) {
 		this.element = element;
 		this.image = image;
 		this.point = point;
 		this.background = CONSTANT.ELEMENT_COLOR[element];
+		this.data = data;
 	}
 }
 

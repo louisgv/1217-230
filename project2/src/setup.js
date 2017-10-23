@@ -24,6 +24,7 @@ async function RenewGiphyTable() {
 	SetData(STOREKEY.GIPHY_TIMESTAMP, new Date());
 }
 
+// Pre-populate the giphy table for ease of access later
 async function WarmUpGiphyTable() {
 	const giphyTimeString = GetData(STOREKEY.GIPHY_TIMESTAMP);
 

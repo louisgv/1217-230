@@ -1,5 +1,11 @@
 const player = GetPlayingSide('#PlayerSide')
 
+// Check if player equip exceeds limit
+function PlayerReachedEquipLimit() {
+	return player.equip.children >= CONSTANT.EQUIP_LIMIT;
+}
+
+// Check if player hand is less than limit
 function PlayerCanDraw() {
 	return player.hand.children.length <= CONSTANT.CARD_LIMIT;
 }

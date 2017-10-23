@@ -21,16 +21,20 @@ function OnCentralDeckClicked() {
   SwitchTurn();
 }
 
+// NPC behavior lies here
 function NPCMakeMove() {
 
+	// If it can draw, assigns a random to it drawing chance
 	const willDraw = NPCCanDraw()
 		? Math.random()
 		: 0;
 
+	// If it can play card, assigns a random to its playing chance
 	const willPlayCard = NPCCanPlayCard()
 		? Math.random()
 		: 0;
 
+	// Based on the decision, it either draw or play
 	if (willDraw > willPlayCard) {
 		NPCDrawCard();
 	} else {
@@ -40,8 +44,17 @@ function NPCMakeMove() {
 	SwitchTurn();
 }
 
+function PhaseShouldEnd () {
+	return
+		PlayerReachedEquipLimit() ||
+		NPCReachedEquipLimit();
+}
+
 // Handle switching turn and invoke NPC's logic
 function SwitchTurn() {
+
+
+
 	// Check if it is npc turn
 	const isCurrentlyNPCTurn = IsNPCTurn();
 
