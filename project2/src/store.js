@@ -16,7 +16,7 @@ const CONSTANT = {
 	},
 
 	CARD_LIMIT: 6,
-	EQUIP_LIMIT: 5,
+	EQUIP_LIMIT: 3,
 	POINT_LIMIT: 10,
 	ROUND_LIMIT: 3,
 
@@ -117,6 +117,7 @@ LOCALSTORAGE data structure keys:
 const STORENAMESPACE = 'LEAU.WEB.';
 
 const STOREKEY = {
+	SAVE_DATA: 'SAVE_DATA',
 	TURN: 'TURN',
 	PHASE: 'PHASE',
 	ROUND: 'ROUND',

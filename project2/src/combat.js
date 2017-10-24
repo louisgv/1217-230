@@ -5,17 +5,22 @@ async function Combat() {
 
 	NPCRevealEquipment();
 
+	const playerStatus = GetScore(player);
+	const npcStatus = GetScore(npc);
 
+	EtherCancellation(playerStatus.score, npcStatus.score);
 
+	EtherNullification(playerStatus, npcStatus);
 
-	setTimeout(function () {
+	ElementNullification(playerStatus, npcStatus);
 
-		CleanUpEquip();
-
-		NPCHideEquipment();
-
-		NewRound(CONSTANT.TURN.PLAYER);
-	}, 9000);
+	// setTimeout(function () {
+	// 	CleanUpEquip();
+  //
+	// 	NPCHideEquipment();
+  //
+	// 	NewRound(CONSTANT.TURN.PLAYER);
+	// }, 9000);
 }
 
 // Cleanup equipment card
@@ -25,26 +30,52 @@ function CleanUpEquip() {
 }
 
 // Return the score of a playing side
-function GetScore(playingSide) {
-	const score = Object.assigns(CONSTANT.ELEMENT_SCORE)
+function GetStatus(playingSide) {
+	const score = Object.assign({}, CONSTANT.ELEMENT_SCORE)
 
-	playingSide.equip.children.map(child => {
+	let maxElement = 0;
+
+	Array.from(playingSide.equip.children).map(child => {
 		const {element, point} = child.card;
 
 		score[element] += point;
+
+		if (element !== CONSTANT.ELEMENT.ETHER && score[element] > maxScore) {
+			maxElement = element;
+		}
 	})
 
-	return score
+	return {
+		score, maxElement
+	}
 }
 
-function EtherNullification() {
-
+// Cancel ether point
+async function EtherCancellation(playerScore, npcScore) {
+	const minEther = Math.min(playerScore.ETHER, npcScore.ETHER);
+	playerScore.ETHER -= minEther;
+	npcScore.ETHER -= minEther;
 }
 
-function EtherCancellation() {
+// Subtract ether from max of opposing
+function EtherNullification(playerStatus, npcStatus) {
+	playerStatus.score[playerStatus.maxElement] -= npcStatus.score.ETHER;
 
+	npcStatus.score[npcStatus.maxElement] -= playerStatus.score.ETHER;
 }
 
-function ElementCancellation() {
 
+// Cancel Elemental point
+async function ElementNullification(playerStatus, npcStatus) {
+
+	const playerOriginalStatus = Object.assign({}, playerStatus);
+	const npcOriginalStatus = Object.assign({}, npcStatus);
+
+	CONSTANT.ELEMENTS.map(element => {
+		const nullifyElement = CONSTANT.ELEMENT_NULLIFICATION[element];
+
+		playerStatus.score[nullifyElement] -= npcOriginalStatus.score[element];
+
+		npcStatus.score[nullifyElement] -= playerOriginalStatus.score[element];
+	})
 }
