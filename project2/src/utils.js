@@ -36,6 +36,14 @@ function GetPlayingSide(sideId) {
   };
 }
 
+function IsPreparePhase() {
+	return GetData(STOREKEY.PHASE) === CONSTANT.PHASE.PREPARE;	
+}
+
+function IsCombatPhase() {
+	return GetData(STOREKEY.PHASE) === CONSTANT.PHASE.COMBAT;
+}
+
 // Return true if it is Player's turn
 function IsPlayerTurn(){
   const currentTurn = GetData(STOREKEY.TURN);

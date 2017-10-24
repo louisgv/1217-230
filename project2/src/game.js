@@ -77,12 +77,6 @@ function ShouldCombat () {
 		NPCReachedEquipLimit();
 }
 
-// The combat phase with all the math and calculation behind the scene
-async function Combat() {
-		SetData(STOREKEY.PHASE, CONSTANT.PHASE.COMBAT);
-
-}
-
 // Handle switching turn and invoke NPC's logic
 function SwitchTurn() {
 

@@ -49,7 +49,7 @@ async function WarmUpGiphyTable() {
 async function Setup() {
 	await WarmUpGiphyTable();
 
-	// TODO: Might need to rethink this:
+	// TODO: Improve this:
 	SetData(STOREKEY.ROUND, 0);
 
 	SpawnHeroSelectionCards();
