@@ -1,0 +1,58 @@
+#CentralDeck {
+  /*background: #444;*/
+  width: 100%;
+  max-width: 90px;
+  /*height: 135px;*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.CentralDeckCard h2 {
+  text-align: center;
+  color: white;
+  padding: 0.2em;
+  z-index: 1;
+}
+
+.CentralDeckCard {
+  position: absolute;
+  border-radius: 5px;
+  height: 15vh;
+  width: 10.8vh;
+  border: 5px solid white;
+  background: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s;
+  margin: 1em;
+}
+
+.CentralDeckCard:before {
+  transition: 0.2s ease;
+  box-shadow: 0 0 0 1px #fff;
+  position: absolute;
+  content: '';
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  border-radius: 5px;
+}
+
+.CentralDeckCard:hover {
+  transform: scale(0.9);
+}
+
+.CentralDeckCard:hover:before {
+  transform: scale(1.35);
+  box-shadow: 0 0 0 3.5px #fff;
+  opacity: .5;
+}
+
+.CentralDeckCard:active {
+	transform: scale(1.35);
+}

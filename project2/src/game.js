@@ -3,6 +3,16 @@ const centralDeck = document.querySelector('#CentralDeck');
 // Start the game
 function StartGame() {
 
+	for(let i = 0; i < CONSTANT.INITIAL_CARD_COUNT; i++) {
+		PlayerDrawCard();
+		NPCDrawCard();
+	}
+
+	NewRound(GetFirstTurnPlayer());
+}
+
+// Start a new round
+function NewRound(firstPlayer) {
 	const currentRound = CheckAndIncrement(STOREKEY.ROUND);
 
 	if (currentRound >= CONSTANT.ROUND_LIMIT) {
@@ -12,18 +22,24 @@ function StartGame() {
 		return;
 	}
 
-	for(let i = 0; i < CONSTANT.INITIAL_CARD_COUNT; i++) {
-		PlayerDrawCard();
-		NPCDrawCard();
-	}
+	SetTurn(firstPlayer);
 
-	SetData(STOREKEY.PHASE,
-		CONSTANT.PHASE.PREPARE);
+	SetData(STOREKEY.PHASE, CONSTANT.PHASE.PREPARE);
+}
 
-	// TODO: Adding a RPS phase for choosing
-	// MAYBE the RPS is based on the element as well
-	SetData(STOREKEY.TURN,
-		CONSTANT.TURN.PLAYER);
+// Implementing a 5-way rock paper scisor game to determine the first
+// to make a move
+function GetFirstTurnPlayer() {
+
+	const playerHero = GetData(STOREKEY.PLAYER_HERO);
+
+	const npcHero = GetData(STOREKEY.NPC_HERO);
+
+	// If the NPC element hiearchy has the player's element, this means NPC's element
+	// beats player's element
+	return (CONSTANT.ELEMENT_HIERARCHY[npcHero.element].includes(playerHero.element))
+		? CONSTANT.TURN.NPC
+		: CONSTANT.TURN.PLAYER;
 }
 
 // Check and increment round number accordingly
@@ -39,7 +55,8 @@ function CheckAndIncrement(key) {
 
 // Handle event when player click on the drawing deck
 function OnCentralDeckClicked() {
-  if (!IsPlayerTurn() || !PlayerCanDraw()) {
+  if (!IsPlayerTurn() || !PlayerCanDraw() || IsCombatPhase()) {
+		// Show overlay saying max card
     return;
   }
 
@@ -49,6 +66,9 @@ function OnCentralDeckClicked() {
 
 // NPC behavior lies here
 function NPCMakeMove() {
+	if (IsCombatPhase()) {
+		return;
+	}
 
 	// If it can draw, assigns a random to it drawing chance
 	const willDraw = NPCCanDraw()
@@ -72,16 +92,16 @@ function NPCMakeMove() {
 
 // Check if the combat phase should commence
 function ShouldCombat () {
-	return
-		PlayerReachedEquipLimit() ||
-		NPCReachedEquipLimit();
+	return PlayerReachedEquipLimit() || NPCReachedEquipLimit();
 }
 
 // Handle switching turn and invoke NPC's logic
 function SwitchTurn() {
-
 	if (ShouldCombat()) {
 		Combat();
+	}
+
+	if (IsCombatPhase()) {
 		return;
 	}
 
@@ -93,9 +113,13 @@ function SwitchTurn() {
     ? CONSTANT.TURN.PLAYER
     : CONSTANT.TURN.NPC
 
-  SetData(STOREKEY.TURN, nextTurn);
+	SetTurn(nextTurn);
+}
 
-	// If after switch turn, it is npc turn
+function SetTurn(turn) {
+	SetData(STOREKEY.TURN, turn);
+
+	// If after set turn, it is npc turn
 	if (IsNPCTurn()) {
 		NPCMakeMove();
 	}

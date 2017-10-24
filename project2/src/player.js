@@ -2,7 +2,7 @@ const player = GetPlayingSide('#PlayerSide')
 
 // Check if player equip exceeds limit
 function PlayerReachedEquipLimit() {
-	return player.equip.children >= CONSTANT.EQUIP_LIMIT;
+	return player.equip.children.length >= CONSTANT.EQUIP_LIMIT;
 }
 
 // Check if player hand is less than limit
@@ -13,7 +13,7 @@ function PlayerCanDraw() {
 // Handle event when player clicked on a card
 function OnCardPlayed(event) {
   event.preventDefault()
-  if (IsNPCTurn()) {
+  if (IsNPCTurn() || IsCombatPhase()) {
     return;
   }
 

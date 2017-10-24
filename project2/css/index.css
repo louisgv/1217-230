@@ -23,13 +23,6 @@ body {
   background: #111;
 }
 
-#CentralDeck {
-  background: #444;
-  width: 90%;
-  max-width: 90px;
-  height: 135px;
-}
-
 #PlayerSide {
 
 }
@@ -52,5 +45,14 @@ body {
 }
 
 #NPCSide .Equipment .Card {
+	transition: 1s;
 	transform: rotateY(180deg);
+}
+
+#NPCSide .Equipment.Flip {
+		pointer-events: all;
+}
+
+#NPCSide .Equipment.Flip .Card {
+	transform: rotateY(0);
 }

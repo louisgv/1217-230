@@ -12,6 +12,8 @@ function OnHeroSelected() {
 
   const npcHeroCard = GetRandomCard();
 
+	npcHeroCard.image = CONSTANT.ELEMENT_HERO_IMAGE[npcHeroCard.element]
+
 	SetData(STOREKEY.NPC_HERO, npcHeroCard);
 
   NPCSetHero(npcHeroCard);
@@ -27,7 +29,11 @@ function SpawnHeroSelectionCards() {
   CONSTANT.ELEMENTS.map((element) => {
     const background = CONSTANT.ELEMENT_COLOR[element];
 
-    const card = new Card({ element, image : null });
+    const card = new Card({ element, image : CONSTANT.ELEMENT_HERO_IMAGE[element] },
+			{ info: [
+				`Higher chance of drawing ${element} card`,
+				`Beats ${CONSTANT.ELEMENT_HIERARCHY[element].join(' and ')}`
+			] });
 
     const elmCardEl = CreateCardEl(card, OnHeroSelected);
 

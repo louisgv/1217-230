@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="./css/playing-board.css">
 	<link rel="stylesheet" href="./css/hero-selection.css">
 
+	<link rel="stylesheet" href="./css/central-deck.css">
 	<link rel="stylesheet" href="./css/card.css">
 	<link rel="stylesheet" href="./css/index.css" />
 </head>
@@ -70,7 +71,11 @@
 
 	<section id="RightColumn" class="FlexCenter">
 		<div id="NPCWins"></div>
-		<div id="CentralDeck"></div>
+		<div id="CentralDeck">
+			<div class="CentralDeckCard">
+				<h2>Draw card</h2>
+			</div>
+		</div>
 		<div id="PlayerWins"></div>
 	</section>
 
@@ -89,6 +94,7 @@
 	<!-- Utility and local storage -->
 	<script src="./src/utils.js" charset="utf-8"></script>
 	<script src="./src/store.js" charset="utf-8"></script>
+	<script src="./src/giphy-table.js" charset="utf-8"></script>
 
 	<!-- Board section controller -->
 	<script src="./src/card.js" charset="utf-8"></script>
@@ -97,7 +103,6 @@
 	<script src="./src/hero-selection.js" charset="utf-8"></script>
 	<script src="./src/player.js" charset="utf-8"></script>
 	<script src="./src/npc.js" charset="utf-8"></script>
-
 
 	<!-- Setup script -->
 	<script src="./src/setup.js" charset="utf-8"></script>

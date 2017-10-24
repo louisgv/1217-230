@@ -1,8 +1,18 @@
 const npc = GetPlayingSide('#NPCSide')
 
+// Hide equipment cards
+function NPCHideEquipment() {
+	npc.equip.classList.remove("Flip")
+}
+
+// Reveal npc's equip card
+function NPCRevealEquipment() {
+	npc.equip.classList.add("Flip")
+}
+
 // Check if NPC Equip exceed limit
 function NPCReachedEquipLimit() {
-	return player.equip.children >= CONSTANT.EQUIP_LIMIT;
+	return npc.equip.children.length >= CONSTANT.EQUIP_LIMIT;
 }
 
 // Check if NPC Hand is below limit

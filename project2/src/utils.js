@@ -37,7 +37,7 @@ function GetPlayingSide(sideId) {
 }
 
 function IsPreparePhase() {
-	return GetData(STOREKEY.PHASE) === CONSTANT.PHASE.PREPARE;	
+	return GetData(STOREKEY.PHASE) === CONSTANT.PHASE.PREPARE;
 }
 
 function IsCombatPhase() {
@@ -64,6 +64,13 @@ function GetRandomInt(max) {
 // Get a random element in an array
 function GetRandomInArray(array) {
   return array[GetRandomInt(array.length)]
+}
+
+// Remove all child of an element
+function RemoveAllChild(el) {
+	while (el.firstChild) {
+    el.removeChild(el.firstChild);
+	}
 }
 
 // Return a giphy url to search the query with the limit

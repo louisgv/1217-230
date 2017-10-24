@@ -29,7 +29,8 @@ function GetRandomCard(
 		?	GIPHY_TABLE[element][point - 1]
 		: null;
 
-	return new Card({element, point, image});
+	return new Card({element, point, image},
+		{ info : [`Nullifies ${CONSTANT.ELEMENT_NULLIFICATION[element]}`]});
 }
 
 function CreateCardEl(card = new Card(), clickCallback=()=>{}, classname = '') {
@@ -65,9 +66,22 @@ function CreateCardEl(card = new Card(), clickCallback=()=>{}, classname = '') {
 
 	cardEl.appendChild(cardContainerEl);
 
-	// Bind the event to the chosen card, ignore the element itself
 	cardEl.addEventListener('click', clickCallback);
 	cardEl.card = card;
+
+	const tooltipEl = CreateElementWithClass('div', 'CardTooltip')
+
+	tooltipEl.innerHTML = `<p><b>Element</b>: ${card.element}</p>`;
+
+	tooltipEl.innerHTML += card.point
+		? ` <p> <b>Point</b>: ${card.point} </p>`
+		: ''
+
+	tooltipEl.innerHTML += card.data.info
+		? card.data.info.map(inf => `<p>${inf}</p>`).join('')
+		: ''
+
+	cardEl.appendChild(tooltipEl);
 
 	return cardEl;
 }

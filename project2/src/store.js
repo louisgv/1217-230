@@ -16,12 +16,13 @@ const CONSTANT = {
 	},
 
 	CARD_LIMIT: 6,
-	EQUIP_LIMIT: 3,
+	EQUIP_LIMIT: 5,
 	POINT_LIMIT: 10,
 	ROUND_LIMIT: 3,
 
 	INITIAL_CARD_COUNT: 5,
 	DEFAULT_THRESHOLD: 0.72,
+
 	ELEMENT: {
 		ETHER: 'ETHER',
 		WATER: 'WATER',
@@ -29,21 +30,32 @@ const CONSTANT = {
 		EARTH: 'EARTH',
 		AERO: 'AERO',
 	},
+
 	ELEMENT_COLOR: {
-		ETHER: 'gray',
-		WATER: 'blue',
-		FIRE: 'red',
-		EARTH: 'brown',
-		AERO: 'green'
+		ETHER: 'linear-gradient(to right, #232526, #414345)',
+		WATER: 'linear-gradient(to right, #000046, #1cb5e0)',
+		FIRE: 'linear-gradient(to right, #e52d27, #b31217)',
+		EARTH: 'linear-gradient(to right, #f7971e, #ffd200)',
+		AERO: 'linear-gradient(to top, #fdfc47, #24fe41)'
 	},
+
 	ELEMENT_KEYWORD: {
 		ETHER: 'CRYSTAL',
 		WATER: 'WATER',
 		FIRE: 'FIRE',
 		EARTH: 'ROCK',
-		AERO: 'WIND_BLOW'
+		AERO: 'BIRD	'
 	},
-	ELEMENT_OPPOSITE: {
+
+	ELEMENT_HIERARCHY: {
+		ETHER:	['WATER', 	'FIRE'],
+		WATER: 	['FIRE', 		'AERO'],
+		FIRE: 	['AERO', 		'EARTH'],
+		AERO: 	['EARTH', 	'ETHER'],
+		EARTH: 	['ETHER', 	'WATER']
+	},
+
+	ELEMENT_NULLIFICATION: {
 		ETHER: 'ETHER',
 		WATER: 'FIRE',
 		FIRE: 'AERO',
@@ -57,6 +69,14 @@ const CONSTANT = {
 		FIRE: 0,
 		EARTH: 0,
 		AERO: 0
+	},
+
+	ELEMENT_HERO_IMAGE: {
+		ETHER: './media/ether.png',
+		WATER: './media/water.png',
+		FIRE: './media/fire.png',
+		EARTH: './media/earth.png',
+		AERO: './media/aero.png'
 	},
 
 	ELEMENTS: [
