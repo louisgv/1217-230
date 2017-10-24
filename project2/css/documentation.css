@@ -10,6 +10,11 @@ body {
   color: white;
 }
 
+p {
+  font-family: sans-serif;
+	line-height: 2em;	
+}
+
 li {
   font-family: sans-serif;
 }

@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" />
 
 	<link rel="shortcut icon" href="./media/favicon.png">
-	<title>documentation</title>
+	<title>rule</title>
 
 	<link rel="stylesheet" href="./vendors/open-iconic/font/css/open-iconic.min.css">
 
@@ -23,88 +23,74 @@
 			<h3>play</h3>
 			<span class="oi" data-glyph="media-play"></span>
 		</a>
-		<a class="InterfaceButton" href="./rule.html">
+		<a class="InterfaceButton ActiveButton">
 			<h3>rule</h3>
 			<span class="oi" data-glyph="book"></span>
 		</a>
-		<a class="InterfaceButton ActiveButton">
+		<a class="InterfaceButton" href="./documentation.html">
 			<h3>doc</h3>
 			<span class="oi" data-glyph="document"></span>
 		</a>
 	</section>
 
 	<section id="Content">
-		<h1>Documentation</h1>
-		<article class="Notes">
+		<h1>Rule</h1>
+
+		<article>
 			<h2>
-				Notes
+				Choosing an avatar
+			</h2>
+			<hr/>
+			<p>
+				Player initially choose an avatar in a set of 5 unique avatars. Each avatar represents an alchemy element (Ether, Water, Fire, Aero, Earth). By choosing an avatar, the player is applying a higher probability of drawing a card of the same alchemy element to the avatar.
+			</p>
+
+			<p>
+				The card player chose will also determine whether if they would be the first to make a move or not. In short, it is a 5-ways rock-paper-scisor with the NPC's randomly chosen avatar. The player won if the element chosen beats the NPC's element according to the chart below, or if it is a draw.
+			</p>
+			<ul>
+				<li>
+					ETHER beats WATER and FIRE
+				</li>
+				<li>
+					WATER beats FIRE and AERO
+				</li>
+				<li>
+					FIRE beats AERO and EARTH
+				</li>
+				<li>
+					AERO beats EARTH and ETHER
+				</li>
+				<li>
+					EARTH beats ETHER and WATER
+				</li>
+			</ul>
+
+			<p>
+
+			</p>
+		</article>
+
+		<article>
+			<h2>
+
 			</h2>
 			<hr/>
 			<ul>
-				<li>
-					The game uses the async/await syntax, thus will only works on browser in this <a href="https://caniuse.com/#feat=fetch">chart</a>
-				</li>
-				<li>
-					The game uses the Promise API, thus will only works on browser in this <a href="https://caniuse.com/promises/embed/agents=desktop">chart</a>
-				</li>
-				<li>
-					The game uses the fetch API, thus will only works on browser in this <a href="https://caniuse.com/promises/embed/agents=desktop">chart</a>
-				</li>
-				<li>
-					The game uses localstorage browser API to cache the state of the game as well as a giphy database.
-				</li>
-				<li>
-					The logo for the favicon is my design. I created it using <a href="https://github.com/piskelapp/piskel">Piskel</a>
-				</li>
-				<li>
-					The card images were fetch from Giphy.com, using keywords associated with each element.
-				</li>
-				<li> License notice was taken from <a href="https://louisgv.github.io/a-jekyll-blog/">my blog</a>, which is also my design. </li>
+
+
 			</ul>
 		</article>
 
-		<article class="References">
+		<article>
 			<h2>
-				References / attributions
+				changelog
 			</h2>
 			<hr/>
 			<ul>
-				<li>
-					Open Iconic — <a href="https://www.useiconic.com/open">website</a>
-				</li>
-				<li>
-					Giphy  — <a href="https://giphy.com/">website</a>
-				</li>
-
-			</ul>
-		</article>
-
-		<article class="ChangeLog">
-			<h2>
-				Changelog
-			</h2>
-			<hr/>
-			<ul>
-				<li>
-					10/24/2017: Adding rules page
-				</li>
 				<li>
 					10/23/2017:
 					Refactor code and add Giphy API
-				</li>
-				<li>
-					10/20/2017:
-					Adding NPC playing behavior
-				</li>
-				<li>
-					10/19/2017: Init hero choosing modal and nav interface
-				</li>
-				<li>
-					10/16/2017:
-					Initialize card drawing, hand limitting, and playing card
-				</li>
-				<li>
-					10/11/2017: 	Initialize the project
 				</li>
 			</ul>
 		</article>
