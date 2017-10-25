@@ -5,8 +5,8 @@ async function Combat() {
 
 	NPCRevealEquipment();
 
-	const playerStatus = GetScore(player);
-	const npcStatus = GetScore(npc);
+	const playerStatus = GetStatus(player);
+	const npcStatus = GetStatus(npc);
 
 	EtherCancellation(playerStatus.score, npcStatus.score);
 
@@ -33,6 +33,7 @@ function CleanUpEquip() {
 function GetStatus(playingSide) {
 	const score = Object.assign({}, CONSTANT.ELEMENT_SCORE)
 
+	let maxScore = 0;
 	let maxElement = 0;
 
 	Array.from(playingSide.equip.children).map(child => {
@@ -42,6 +43,7 @@ function GetStatus(playingSide) {
 
 		if (element !== CONSTANT.ELEMENT.ETHER && score[element] > maxScore) {
 			maxElement = element;
+			maxScore = score[element];
 		}
 	})
 
