@@ -126,7 +126,7 @@ async function SetTurn(turn) {
 	// If after set turn, it is npc turn
 	if (IsNPCTurn()) {
 		document.body.style.cursor = "progress";
-		await Wait(2000);
+		await Wait(3600);
 		NPCMakeMove();
 		document.body.style.cursor = "default";
 	}
