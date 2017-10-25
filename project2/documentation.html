@@ -10,6 +10,7 @@
 
 	<link rel="stylesheet" href="./vendors/open-iconic/font/css/open-iconic.min.css">
 
+	<link rel="stylesheet" href="./css/animation.css" />
 	<link rel="stylesheet" href="./css/global.css" />
 	<link rel="stylesheet" href="./css/interface.css" />
 
@@ -41,6 +42,9 @@
 			</h2>
 			<hr/>
 			<ul>
+				<li>
+					The CSS uses the <i>pointer-events</i> attribute which is not supported by the W3 validator, but it works on most modern browser according to <a href="https://caniuse.com/#feat=pointer-events">caniuse</a>
+				</li>
 				<li>
 					The game uses the async/await syntax, thus will only works on browser in this <a target="_blank" href="https://caniuse.com/#feat=fetch">chart</a>
 				</li>

@@ -153,34 +153,6 @@ footer {
 	animation-delay: 4s;
 }
 
-
-@keyframes appear {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
-}
-
-@keyframes appear03 {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 0.3;
-	}
-}
-
-@keyframes Float {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-   	transform: translateY(-9px);
-  }
-}
-
 @media only screen and (max-width: 630px){
 	#Top {
 			height: 180px;

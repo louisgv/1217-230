@@ -9,21 +9,31 @@
 
 	<link rel="stylesheet" href="./vendors/open-iconic/font/css/open-iconic.min.css">
 
+	<link rel="stylesheet" href="./css/animation.css" />
 	<link rel="stylesheet" href="./css/global.css" />
 	<link rel="stylesheet" href="./css/interface.css" />
+	<link rel="stylesheet" href="./css/info-popup.css" />
 
-	<link rel="stylesheet" href="./css/playing-board.css">
-	<link rel="stylesheet" href="./css/hero-selection.css">
+	<link rel="stylesheet" href="./css/playing-board.css" />
+	<link rel="stylesheet" href="./css/hero-selection.css" />
 
-	<link rel="stylesheet" href="./css/central-deck.css">
-	<link rel="stylesheet" href="./css/card.css">
+	<link rel="stylesheet" href="./css/central-deck.css" />
+	<link rel="stylesheet" href="./css/card.css" />
 	<link rel="stylesheet" href="./css/index.css" />
+
 </head>
 
 <body>
 
 	<section id="HeroSelectionOverlay">
 		<h1>Choose your avatar</h1>
+	</section>
+
+	<section id="InfoPopup">
+		<a class="InterfaceButton">
+			<span class="oi" data-glyph="flag"></span>
+			<h3 id="InfoText">your turn</h3>
+		</a>
 	</section>
 
 	<section id="Interface">
@@ -95,6 +105,7 @@
 	<script src="./src/utils.js" charset="utf-8"></script>
 	<script src="./src/store.js" charset="utf-8"></script>
 	<script src="./src/giphy-table.js" charset="utf-8"></script>
+	<script src="./src/info-popup.js" charset="utf-8"></script>
 
 	<!-- Board section controller -->
 	<script src="./src/card.js" charset="utf-8"></script>

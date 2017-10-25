@@ -1,28 +1,17 @@
 #Interface {
   position: fixed;
+	color: white;
   background-color: rgba(100, 100, 100, 0.2);
   left: -126px;
   width: 144px;
   height: 100vh;
   z-index: 1008;
   transition: 0.45s;
-  animation: Retract 0.9s;
+  animation: RetractLeft 0.9s;
 }
 
 #Interface:hover {
   padding-left: 126px;
-}
-
-@keyframes Retract {
-  0% {
-    padding-left: 126px;
-  }
-  63% {
-    padding-left: 126px;
-  }
-  100% {
-    padding-left: 0px;
-  }
 }
 
 .InterfaceButton {
@@ -93,6 +82,7 @@
   .InterfaceButton .oi {
     right: -3em;
   }
+	
   .ActiveButton {
     padding-right: 5em;
   }

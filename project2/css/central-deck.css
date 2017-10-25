@@ -11,6 +11,7 @@
 
 .CentralDeckCard h2 {
   text-align: center;
+	background: black;
   color: white;
   padding: 0.2em;
   z-index: 1;
@@ -23,6 +24,7 @@
   width: 10.8vh;
   border: 5px solid white;
   background: black;
+	color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -44,6 +46,7 @@
 }
 
 .CentralDeckCard:hover {
+	cursor: pointer;
   transform: scale(0.9);
 }
 

@@ -5,6 +5,8 @@ async function Setup() {
 	// TODO: Improve this:
 	SetData(STOREKEY.ROUND, 0);
 
+	Info("PICK HERO");
+
 	SpawnHeroSelectionCards();
 }
 

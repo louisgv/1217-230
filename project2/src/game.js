@@ -116,12 +116,19 @@ function SwitchTurn() {
 	SetTurn(nextTurn);
 }
 
-function SetTurn(turn) {
+async function SetTurn(turn) {
 	SetData(STOREKEY.TURN, turn);
+
+	Info(IsNPCTurn()
+	? "NPC TURN"
+	: "YOUR TURN", 1800)
 
 	// If after set turn, it is npc turn
 	if (IsNPCTurn()) {
+		document.body.style.cursor = "progress";
+		await Wait(2000);
 		NPCMakeMove();
+		document.body.style.cursor = "default";
 	}
 }
 

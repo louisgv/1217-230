@@ -81,3 +81,12 @@ function GetGiphyURL(query, limit) {
 	 "&q=" + query +
 	 "&limit=" + limit;
 }
+
+// Return a promise as to how long one should wait
+function Wait(duration) {
+	return new Promise(function(resolve) {
+		setTimeout(function () {
+			resolve();
+		}, duration);
+	});
+}
