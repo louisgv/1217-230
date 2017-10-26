@@ -7,7 +7,11 @@ async function Setup() {
 
 	Info("PICK HERO");
 
-	SpawnHeroSelectionCards();
+	await	SpawnHeroSelectionCards();
+
+	await Tutorial();
+
+	StartGame();
 }
 
 window.addEventListener('load', Setup);

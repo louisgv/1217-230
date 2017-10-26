@@ -12,6 +12,13 @@ function CreateElementWithId(type, id) {
   return el;
 }
 
+// Utility to set the equipment limit label
+function SetEquipLimit(playingSide, limit) {
+	const equipmentLabelEl = playingSide.side.querySelector('.EquipmentLabel h2');
+
+	equipmentLabelEl.innerHTML += limit;
+}
+
 // Utility method to get the playing side elements from the DOM
 function GetPlayingSide(sideId) {
   const side = document.querySelector(sideId);

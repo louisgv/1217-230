@@ -81,6 +81,10 @@ const CONSTANT = {
 
 	ELEMENTS: [
 		'WATER', 'FIRE', 'EARTH', 'AERO', 'ETHER'
+	],
+
+	TUTORIAL: [
+		
 	]
 }
 

@@ -31,7 +31,7 @@ function PlayerSetHero(heroCard) {
 
   player.avatar.appendChild(heroCardEl);
 
-  // player.avatar.style.background = heroCard.background;
+	SetEquipLimit(player, CONSTANT.EQUIP_LIMIT);
 }
 
 

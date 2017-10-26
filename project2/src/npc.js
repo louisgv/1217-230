@@ -43,6 +43,8 @@ function NPCSetHero(heroCard) {
   const heroCardEl = CreateCardEl(heroCard);
 
   npc.avatar.appendChild(heroCardEl);
+
+	SetEquipLimit(npc, CONSTANT.EQUIP_LIMIT);
 }
 
 // Play a card from the NPC's hand
