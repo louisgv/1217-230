@@ -1,8 +1,14 @@
-/* Index/Home style */
+/*
+	Index style
+
+	Mainly style for main id component related to the main game
+*/
 
 body {
   overflow: hidden;
-  background: #222;
+	background: #FF512F;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #DD2476, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #DD2476, #FF512F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 #GameContainer {
@@ -20,19 +26,15 @@ body {
   right: 0;
   width: 14.4vw;
   height: 100vh;
-  background: #111;
+  /*background: #111;*/
 }
 
-#PlayerSide {
+#PlayerSide {}
 
-}
-
-#NPCSide {
-
-}
+#NPCSide {}
 
 #NPCSide .Equipment {
-	pointer-events: none;
+  pointer-events: none;
 }
 
 #NPCSide .Hand {
@@ -41,26 +43,29 @@ body {
 }
 
 #NPCSide .Hand .Card {
-	transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 #NPCSide .Equipment .Card {
-	transition: 1s;
-	transform: rotateY(180deg);
-}
-
-#NPCSide .Equipment .Point {
-    pointer-events: all;
+  transition: 1s;
+  transform: rotateY(180deg);
 }
 
 #NPCSide .Equipment.Flip .Card {
-	transform: rotateY(0);
+  transform: rotateY(0);
 }
 
-#NPCSide .Equipment.Flip {  
-    pointer-events: all;  
+#NPCSide .Equipment.Flip {
+  pointer-events: all;
 }
 
-#NPCSide .Status.Flip .Point {
-    transform: rotateY(0);
+#NPCSide .Stats .Point {
+	color: black;
+	background: black;
+	transition: 1s;
+}
+
+#NPCSide .Stats.Flip .Point {
+	transform: rotateY(360deg);
+  background: white;
 }

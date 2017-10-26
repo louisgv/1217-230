@@ -3,7 +3,13 @@
 async function Combat() {
 	SetData(STOREKEY.PHASE, CONSTANT.PHASE.COMBAT);
 
+	Info('COMBAT!', 3000)
+
 	NPCRevealEquipment();
+
+	await Wait(1800);
+
+	NPCRevealStats();
 
 	const playerStatus = GetStatus(player);
 	const npcStatus = GetStatus(npc);
@@ -14,13 +20,17 @@ async function Combat() {
 
 	ElementNullification(playerStatus, npcStatus);
 
-	// setTimeout(function () {
-	// 	CleanUpEquip();
+	console.log(playerStatus);
+
+	console.log(npcStatus);
+
+	// await Wait(1800);
+	// CleanUpEquip();
   //
-	// 	NPCHideEquipment();
+	// NPCHideEquipment();
+	// NPCHideStats();
   //
-	// 	NewRound(CONSTANT.TURN.PLAYER);
-	// }, 9000);
+	// NewRound(CONSTANT.TURN.PLAYER);
 }
 
 // Cleanup equipment card
@@ -33,8 +43,8 @@ function CleanUpEquip() {
 function GetStatus(playingSide) {
 	const score = Object.assign({}, CONSTANT.ELEMENT_SCORE)
 
-	let maxScore = 0;
-	let maxElement = 0;
+	let maxScore = -1;
+	let maxElement = null;
 
 	Array.from(playingSide.equip.children).map(child => {
 		const {element, point} = child.card;

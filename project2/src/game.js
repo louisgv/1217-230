@@ -82,12 +82,12 @@ function NPCMakeMove() {
 
 	// Based on the decision, it either draw or play
 	if (willDraw > willPlayCard) {
+		Info("DRAW CARD", 1800);
 		NPCDrawCard();
 	} else {
+		Info("PLAY CARD", 1800);
 		NPCPlayCard();
 	}
-
-	SwitchTurn();
 }
 
 // Check if the combat phase should commence
@@ -120,14 +120,24 @@ async function SetTurn(turn) {
 	SetData(STOREKEY.TURN, turn);
 
 	Info(IsNPCTurn()
-	? "NPC TURN"
+	? "MY TURN"
 	: "YOUR TURN", 1800)
 
 	// If after set turn, it is npc turn
 	if (IsNPCTurn()) {
 		document.body.style.cursor = "progress";
-		await Wait(3600);
+		await Wait(2000);
+
+		Info("THINKING", 1800);
+
+		await Wait(2000);
+
 		NPCMakeMove();
+
+		await Wait(2000);
+
+		SwitchTurn();
+
 		document.body.style.cursor = "default";
 	}
 }

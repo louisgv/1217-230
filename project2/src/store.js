@@ -6,13 +6,13 @@ const CONSTANT = {
 		TIMEOUT: 60 * 60 * 1000 // Re-fetch every hour
 	},
 	PHASE: {
-		PREPARE: 	'PREPARE',
-		COMBAT: 	'COMBAT'
+		PREPARE: 'PREPARE',
+		COMBAT: 'COMBAT'
 	},
 
-	TURN : {
+	TURN: {
 		PLAYER: 'PLAYER_TURN',
-		NPC: 		'NPC_TURN',
+		NPC: 'NPC_TURN',
 	},
 
 	CARD_LIMIT: 6,
@@ -48,11 +48,11 @@ const CONSTANT = {
 	},
 
 	ELEMENT_HIERARCHY: {
-		ETHER:	['WATER', 	'FIRE'],
-		WATER: 	['FIRE', 		'AERO'],
-		FIRE: 	['AERO', 		'EARTH'],
-		AERO: 	['EARTH', 	'ETHER'],
-		EARTH: 	['ETHER', 	'WATER']
+		ETHER: ['WATER', 'FIRE'],
+		WATER: ['FIRE', 'AERO'],
+		FIRE: ['AERO', 'EARTH'],
+		AERO: ['EARTH', 'ETHER'],
+		EARTH: ['ETHER', 'WATER']
 	},
 
 	ELEMENT_NULLIFICATION: {
@@ -61,6 +61,13 @@ const CONSTANT = {
 		FIRE: 'AERO',
 		AERO: 'EARTH',
 		EARTH: 'WATER'
+	},
+
+	ELEMENT_POINT_QUERY: {
+		FIRE: '.Fire .Number',
+		WATER: '.Water .Number',
+		EARTH: '.Earth .Number',
+		AERO: '.Aero .Number'
 	},
 
 	ELEMENT_SCORE: {
@@ -84,7 +91,7 @@ const CONSTANT = {
 	],
 
 	TUTORIAL: [
-		
+
 	]
 }
 

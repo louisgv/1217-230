@@ -1,5 +1,8 @@
+/*
+	Style related to each half of the playing board
+*/
 .HalfPlayingBoard {
-  background: #444;
+  /*background: #444;*/
 	color: white;
   width: 63vw;
   height: 47.7vh;
@@ -10,8 +13,7 @@
 }
 
 .Stats {
-	color: white;
-  background: #111;
+  /*background: white;*/
   width: 100%;
   height: 30%;
   display: flex;
@@ -21,14 +23,14 @@
 
 .Equipment {
 	color: white;
-  background: #555;
+  /*background: #555;*/
   width: 100%;
   height: 40%;
 }
 
 .Hand {
 	color: black;
-  background: #999;
+  /*background: #999;*/
   width: 100%;
   height: 30%;
   display: flex;
@@ -37,7 +39,7 @@
 
 .Avatar {
 	color: black;
-  background: white;
+  /*background: white;*/
   height: 100%;
   width: 20%;
 }
@@ -69,8 +71,9 @@
 }
 
 .Point {
+	border-radius: 5px;
 	color: white;
-  background: gray;
+  background: black;
   height: 100%;
-  width: 15%;
+  width: 19%;
 }

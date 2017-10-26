@@ -12,38 +12,40 @@ function PlayerCanDraw() {
 
 // Handle event when player clicked on a card
 function OnCardPlayed(event) {
-  event.preventDefault()
-  if (IsNPCTurn() || IsCombatPhase()) {
-    return;
-  }
+	event.preventDefault()
+	if(IsNPCTurn() || IsCombatPhase()) {
+		return;
+	}
 
 	this.removeEventListener('click', OnCardPlayed);
 
 	player.equip.appendChild(this);
 
-  SwitchTurn();
+	PlayerSetScore(this.card);
+
+	SwitchTurn();
 }
 
 // Set the hero card for the player
 function PlayerSetHero(heroCard) {
 
-  const heroCardEl = CreateCardEl(heroCard);
+	const heroCardEl = CreateCardEl(heroCard);
 
-  player.avatar.appendChild(heroCardEl);
+	player.avatar.appendChild(heroCardEl);
 
 	SetEquipLimit(player, CONSTANT.EQUIP_LIMIT);
 }
 
-function PlayerSetScore({ element, point }){
-    
+function PlayerSetScore({
+	element,
+	point
+}) {
+	if (element === CONSTANT.ELEMENT.ETHER) {
+		return;
+	}
 
-    player[element].appendChild( pointCard );
-
-    // actually set them instead in innerhtml, probly better.
-    //
-    // get referenc3 to them
-    //
-    // making it easier to style
+	const currentPoint = parseInt(player.point[element].innerHTML);
+	player.point[element].innerHTML = currentPoint + point;
 }
 
 // Draw a card and append it to the player's hand
@@ -55,7 +57,7 @@ function PlayerDrawCard() {
 
 	const card = GetRandomCard(hero.element, point);
 
-  const cardEl = CreateCardEl(card, OnCardPlayed);
+	const cardEl = CreateCardEl(card, OnCardPlayed);
 
-  player.hand.appendChild(cardEl);
+	player.hand.appendChild(cardEl);
 }

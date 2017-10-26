@@ -8,6 +8,8 @@ function OnHeroSelected(playerHeroCard) {
 
   PlayerSetHero(playerHeroCard);
 
+	// document.body.style.background = CONSTANT.ELEMENT_COLOR[playerHeroCard.element]
+
   const npcHeroCard = GetRandomCard();
 
 	npcHeroCard.image = CONSTANT.ELEMENT_HERO_IMAGE[npcHeroCard.element]

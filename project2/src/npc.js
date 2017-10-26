@@ -1,5 +1,13 @@
 const npc = GetPlayingSide('#NPCSide')
 
+function NPCHideStats() {
+	npc.stats.classList.remove("Flip")
+}
+
+function NPCRevealStats() {
+	npc.stats.classList.add("Flip")
+}
+
 // Hide equipment cards
 function NPCHideEquipment() {
 	npc.equip.classList.remove("Flip")
@@ -52,4 +60,18 @@ function NPCPlayCard() {
 	const cardEl = GetRandomInArray(npc.hand.children);
 
 	npc.equip.appendChild(cardEl);
+
+	NPCSetScore(cardEl.card);
+}
+
+function NPCSetScore({
+	element,
+	point
+}) {
+	if (element === CONSTANT.ELEMENT.ETHER) {
+		return;
+	}
+
+	const currentPoint = parseInt(npc.point[element].innerHTML);
+	npc.point[element].innerHTML = currentPoint + point;
 }

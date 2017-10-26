@@ -43,6 +43,12 @@
 			<hr/>
 			<ul>
 				<li>
+					The NPC has a fake "thinking time" untill it make a move. During this time, the cursor will turn into its progressing state.
+				</li>
+				<li>
+					The gifs are cached into a GIPHY_TABLE variable in localstorage, and has an expire cycle of 1 hour. This limits the amount of call necessary to Giphy while also provide optimal reloading experience.
+				</li>
+				<li>
 					The CSS uses the <i>pointer-events</i> attribute which is not supported by the W3 validator, but it works on most modern browser according to <a href="https://caniuse.com/#feat=pointer-events">caniuse</a>
 				</li>
 				<li>
@@ -64,7 +70,10 @@
 					The logo for the favicon is my design. I created it using <a href="https://github.com/piskelapp/piskel">Piskel</a>
 				</li>
 				<li>
-					The card images were fetch from Giphy.com, using keywords associated with each element.
+					The hero cards are my drawings.
+				</li>
+				<li>
+					The card gif images were fetch from Giphy.com, using keywords associated with each element.
 				</li>
 				<li> License notice was taken from <a target="_blank" href="https://louisgv.github.io/a-jekyll-blog/">my blog</a>, which is also my design. </li>
 			</ul>
