@@ -34,6 +34,17 @@ function PlayerSetHero(heroCard) {
   // player.avatar.style.background = heroCard.background;
 }
 
+function PlayerSetScore({ element, point }){
+    
+
+    player[element].appendChild( pointCard );
+
+    // actually set them instead in innerhtml, probly better.
+    //
+    // get referenc3 to them
+    //
+    // making it easier to style
+}
 
 // Draw a card and append it to the player's hand
 function PlayerDrawCard() {

@@ -22,17 +22,18 @@ function GetPlayingSide(sideId) {
 
   const stats = side.querySelector('.Stats');
 
-  const fire = stats.querySelector('.Fire');
-  const water = stats.querySelector('.Water');
-  const earth = stats.querySelector('.Earth');
-  const wind = stats.querySelector('.Aero');
+    const point = {
+        FIRE    : stats.querySelector('.Fire'),
+        WATER   : stats.querySelector('.Water'),
+        EARTH   : stats.querySelector('.Earth'),
+        AERO    : stats.querySelector('.Aero'),
+    }
 
   const avatar = stats.querySelector('.Avatar');
 
   return {
     side, hand, equip, stats,
-    fire, water, earth, wind,
-    avatar
+    point, avatar
   };
 }
 

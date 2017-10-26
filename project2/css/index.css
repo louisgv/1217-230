@@ -49,10 +49,18 @@ body {
 	transform: rotateY(180deg);
 }
 
-#NPCSide .Equipment.Flip {
-		pointer-events: all;
+#NPCSide .Equipment .Point {
+    pointer-events: all;
 }
 
 #NPCSide .Equipment.Flip .Card {
 	transform: rotateY(0);
+}
+
+#NPCSide .Equipment.Flip {  
+    pointer-events: all;  
+}
+
+#NPCSide .Status.Flip .Point {
+    transform: rotateY(0);
 }
