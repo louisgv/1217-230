@@ -112,6 +112,18 @@ function Wait(duration) {
 	});
 }
 
+// Check and increment a number in localStorage accordingly
+function CheckAndIncrement(key) {
+	const current = GetData(key);
+
+	const next = current !== null
+		? (current + 1)
+		: 0;
+
+	return SetData(key, next);
+}
+
+// Return the default structure of stats group element
 function DefaultStatsStructure() {
 	return `
 		<div class="Fire Point">

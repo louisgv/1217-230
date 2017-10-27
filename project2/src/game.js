@@ -11,14 +11,40 @@ function StartGame() {
 	NewRound(GetFirstTurnPlayer());
 }
 
+async function IsGameOver() {
+
+	const playerRoundCount = GetData(STOREKEY.PLAYER_ROUND);
+	const npcRoundCount = GetData(STOREKEY.NPC_ROUND);
+
+	if (!playerRoundCount || !npcRoundCount) {
+		SetData(STOREKEY.PLAYER_ROUND, 0);
+		SetData(STOREKEY.NPC_ROUND, 0);
+		return false;
+	}
+
+	if (playerRoundCount + npcRoundCount >= CONSTANT.ROUND_LIMIT) {
+
+		if (playerRoundCount > npcRoundCount) {
+			Anounce("GAMEOVER, You Won!");
+		} else {
+			Anounce("GAMEOVER, I Won!");
+		}
+
+		SetData(STOREKEY.PLAYER_ROUND, 0);
+		SetData(STOREKEY.NPC_ROUND, 0);
+		return true;
+	}
+
+	return false;
+}
+
 // Start a new round
 async function NewRound(firstPlayer) {
 	const currentRound = CheckAndIncrement(STOREKEY.ROUND);
 
-	if (currentRound >= CONSTANT.ROUND_LIMIT) {
+	const isGameOver = await IsGameOver();
 
-		Info("GAMEOVER");
-
+	if (isGameOver) {
 		return;
 	}
 
@@ -44,17 +70,6 @@ function GetFirstTurnPlayer() {
 	return (CONSTANT.ELEMENT_HIERARCHY[npcHero.element].includes(playerHero.element))
 		? CONSTANT.TURN.NPC
 		: CONSTANT.TURN.PLAYER;
-}
-
-// Check and increment round number accordingly
-function CheckAndIncrement(key) {
-	const current = GetData(key);
-
-	const next = current !== null
-		? (current + 1)
-		: 0;
-
-	return SetData(key, next);
 }
 
 // Handle event when player click on the drawing deck

@@ -3,36 +3,73 @@
 async function Combat() {
 	SetData(STOREKEY.PHASE, CONSTANT.PHASE.COMBAT);
 
-	Info('COMBAT!', 3000)
+	Info('COMBAT!', 1800)
 
 	NPCRevealEquipment();
 
-	await Wait(1800);
+	await Wait(2000);
 
 	NPCRevealStats();
+
+	await Wait(2000);
 
 	const playerStatus = GetStatus(player);
 	const npcStatus = GetStatus(npc);
 
-	EtherCancellation(playerStatus.score, npcStatus.score);
+	// console.log(JSON.stringify(playerStatus));
+	// console.log(JSON.stringify(npcStatus));
 
-	EtherNullification(playerStatus, npcStatus);
+	await EtherCancellation(playerStatus.score, npcStatus.score);
 
-	ElementNullification(playerStatus, npcStatus);
+	await EtherNullification(playerStatus, npcStatus);
 
-	console.log(playerStatus);
+	await ElementNullification(playerStatus, npcStatus);
 
-	console.log(npcStatus);
+	// console.log(playerStatus);
+	// console.log(npcStatus);
 
+	const playerFinalScore = GetTotalPoint(player);
+	const npcFinalScore = GetTotalPoint(npc);
 
+	// console.log(playerFinalScore);
+	// console.log(npcFinalScore);
 
-	// await Wait(1800);
-	// CleanUpEquip();
-  //
-	// NPCHideEquipment();
-	// NPCHideStats();
-  //
-	// NewRound(CONSTANT.TURN.PLAYER);
+	let nextTurn;
+
+	if (playerFinalScore === npcFinalScore) {
+		nextTurn = CONSTANT.TURN.PLAYER;
+		Info('DRAW!', 1800)
+	}
+	else if (playerFinalScore > npcFinalScore) {
+		nextTurn = CONSTANT.TURN.PLAYER;
+		Info('YOU WON!', 1800)
+		CheckAndIncrement(STOREKEY.PLAYER_ROUND);
+	}
+	else {
+		nextTurn = CONSTANT.TURN.NPC;
+		Info('I WON!', 1800)
+		CheckAndIncrement(STOREKEY.NPC_ROUND);
+	}
+
+	await Wait(9000);
+	CleanUpEquip();
+
+	NPCHideEquipment();
+	NPCHideStats();
+
+	NewRound(nextTurn);
+}
+
+function GetTotalPoint(playingSide) {
+	const pointEl = playingSide.point;
+
+	return CONSTANT.ELEMENTS.reduce((p, element) => {
+		if (element === CONSTANT.ELEMENT.ETHER) {
+			return p;
+		} else {
+			return p + parseInt(pointEl[element].innerHTML);
+		}
+	}, 0)
 }
 
 // Deduct point from an element
@@ -47,7 +84,7 @@ async function DeductPoint(playingSide, element, point){
 
 	const targetPoint = currentPoint - point;
 
-	while (currentPoint !== targetPoint) {
+	while (currentPoint > targetPoint) {
 		pointEl.innerHTML = --currentPoint;
 		await Wait(100);
 	}
@@ -95,7 +132,7 @@ async function EtherCancellation(playerScore, npcScore) {
 async function EtherNullification(playerStatus, npcStatus) {
 	if (playerStatus.maxElement) {
 		playerStatus.score[playerStatus.maxElement] -= npcStatus.score.ETHER;
-		DeductPoint(player, playerStatus.maxElement, npcStatus.score.ETHER)
+		await DeductPoint(player, playerStatus.maxElement, npcStatus.score.ETHER)
 	}
 
 	if (npcStatus.maxElement) {
@@ -111,7 +148,7 @@ async function ElementNullification(playerStatus, npcStatus) {
 	const playerOriginalStatus = Object.assign({}, playerStatus);
 	const npcOriginalStatus = Object.assign({}, npcStatus);
 
-	CONSTANT.ELEMENTS.map(async (element) => {
+	await Promise.all(CONSTANT.ELEMENTS.map(async (element) => {
 		if (element === CONSTANT.ELEMENT.ETHER) {
 			return;
 		}
@@ -123,14 +160,18 @@ async function ElementNullification(playerStatus, npcStatus) {
 
 		playerStatus.score[nullifyElement] -= playerDeduction;
 
-		DeductPoint(player, nullifyElement, playerDeduction);
+		if (playerDeduction) {
+			await DeductPoint(player, nullifyElement, playerDeduction);
+		}
 
 		const npcDeduction = npcStatus.score[nullifyElement] > playerOriginalStatus.score[element]
 			? playerOriginalStatus.score[element]
 			: npcStatus.score[nullifyElement];
 
-
 		npcStatus.score[nullifyElement] -= npcDeduction;
-		await DeductPoint(npc, nullifyElement, npcDeduction);
-	})
+
+		if (npcDeduction) {
+			await DeductPoint(npc, nullifyElement, npcDeduction);
+		}
+	}))
 }
