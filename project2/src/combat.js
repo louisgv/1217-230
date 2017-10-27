@@ -24,6 +24,8 @@ async function Combat() {
 
 	console.log(npcStatus);
 
+
+
 	// await Wait(1800);
 	// CleanUpEquip();
   //
@@ -31,6 +33,26 @@ async function Combat() {
 	// NPCHideStats();
   //
 	// NewRound(CONSTANT.TURN.PLAYER);
+}
+
+// Deduct point from an element
+async function DeductPoint(playingSide, element, point){
+	const pointEl = playingSide.point[element];
+
+	let currentPoint = parseInt(pointEl.innerHTML);
+
+	const originalColor = pointEl.style.color;
+
+	pointEl.style.color = 'red';
+
+	const targetPoint = currentPoint - point;
+
+	while (currentPoint !== targetPoint) {
+		pointEl.innerHTML = --currentPoint;
+		await Wait(100);
+	}
+
+	pointEl.style.color = originalColor;
 }
 
 // Cleanup equipment card
@@ -70,10 +92,16 @@ async function EtherCancellation(playerScore, npcScore) {
 }
 
 // Subtract ether from max of opposing
-function EtherNullification(playerStatus, npcStatus) {
-	playerStatus.score[playerStatus.maxElement] -= npcStatus.score.ETHER;
+async function EtherNullification(playerStatus, npcStatus) {
+	if (playerStatus.maxElement) {
+		playerStatus.score[playerStatus.maxElement] -= npcStatus.score.ETHER;
+		DeductPoint(player, playerStatus.maxElement, npcStatus.score.ETHER)
+	}
 
-	npcStatus.score[npcStatus.maxElement] -= playerStatus.score.ETHER;
+	if (npcStatus.maxElement) {
+		npcStatus.score[npcStatus.maxElement] -= playerStatus.score.ETHER;
+		await DeductPoint(npc, npcStatus.maxElement, playerStatus.score.ETHER)
+	}
 }
 
 
@@ -83,11 +111,26 @@ async function ElementNullification(playerStatus, npcStatus) {
 	const playerOriginalStatus = Object.assign({}, playerStatus);
 	const npcOriginalStatus = Object.assign({}, npcStatus);
 
-	CONSTANT.ELEMENTS.map(element => {
+	CONSTANT.ELEMENTS.map(async (element) => {
+		if (element === CONSTANT.ELEMENT.ETHER) {
+			return;
+		}
 		const nullifyElement = CONSTANT.ELEMENT_NULLIFICATION[element];
 
-		playerStatus.score[nullifyElement] -= npcOriginalStatus.score[element];
+		const playerDeduction = playerStatus.score[nullifyElement] > npcOriginalStatus.score[element]
+			? npcOriginalStatus.score[element]
+			: playerStatus.score[nullifyElement];
 
-		npcStatus.score[nullifyElement] -= playerOriginalStatus.score[element];
+		playerStatus.score[nullifyElement] -= playerDeduction;
+
+		DeductPoint(player, nullifyElement, playerDeduction);
+
+		const npcDeduction = npcStatus.score[nullifyElement] > playerOriginalStatus.score[element]
+			? playerOriginalStatus.score[element]
+			: npcStatus.score[nullifyElement];
+
+
+		npcStatus.score[nullifyElement] -= npcDeduction;
+		await DeductPoint(npc, nullifyElement, npcDeduction);
 	})
 }

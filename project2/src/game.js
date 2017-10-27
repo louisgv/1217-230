@@ -12,15 +12,19 @@ function StartGame() {
 }
 
 // Start a new round
-function NewRound(firstPlayer) {
+async function NewRound(firstPlayer) {
 	const currentRound = CheckAndIncrement(STOREKEY.ROUND);
 
 	if (currentRound >= CONSTANT.ROUND_LIMIT) {
 
-		console.log("GAMEOVER");
+		Info("GAMEOVER");
 
 		return;
 	}
+
+	Info("ROUND " + currentRound, 1800);
+
+	await Wait(2000);
 
 	SetTurn(firstPlayer);
 
