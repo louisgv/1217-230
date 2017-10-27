@@ -44,6 +44,20 @@
   }
 }
 
+@keyframes ZoomIn {
+	0% {
+		opacity: 0;
+		border-width: 1px;
+	}
+	50% {
+		border-width: 5px;
+	}
+	100% {
+		opacity: 1;
+		border-width: 3px;
+	}
+}
+
 @keyframes Appear {
 	0% {
 		opacity: 0;

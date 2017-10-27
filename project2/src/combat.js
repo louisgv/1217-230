@@ -1,3 +1,14 @@
+const npcWins = document.querySelector('#NPCWins');
+const playerWins = document.querySelector('#PlayerWins');
+
+// Add a badge to the winning side
+function addWinningBadge(winSide){
+	const badge = createElementWithClass('span', 'oi')
+
+	badge.setAttribute('data-glyph', 'star');
+
+	winSide.appendChild(badge)
+}
 
 // The combat phase with all the math and calculation behind the scene
 async function combat() {
@@ -43,11 +54,17 @@ async function combat() {
 	else if (playerFinalScore > npcFinalScore) {
 		checkAndIncrement(STOREKEY.PLAYER_ROUND);
 		nextTurn = CONSTANT.TURN.PLAYER;
+
+		addWinningBadge(playerWins);
+
 		await announce('You won the round!')
 	}
 	else {
 		checkAndIncrement(STOREKEY.NPC_ROUND);
 		nextTurn = CONSTANT.TURN.NPC;
+
+		addWinningBadge(npcWins);
+
 		await announce('I got this round!')
 	}
 

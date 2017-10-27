@@ -33,6 +33,7 @@ function getRandomCard(
 		{ info : [`Nullifies ${CONSTANT.ELEMENT_NULLIFICATION[element]}`]});
 }
 
+// Generate a card element 
 function createCardEl(card = new Card(), clickCallback=()=>{}, classname = '') {
 	const cardEl = createElementWithClass('div', 'Card ' + classname);
 

@@ -36,6 +36,7 @@ function playerSetHero(heroCard) {
 	setEquipLimit(player, CONSTANT.EQUIP_LIMIT);
 }
 
+// Set score for an element of the player
 function playerSetScore({
 	element,
 	point

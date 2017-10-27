@@ -1,9 +1,11 @@
 const npc = getPlayingSide('#NPCSide')
 
+// Hide npc's stats
 function npcHideStats() {
 	npc.stats.classList.remove("Flip")
 }
 
+// Reveal npc's stats
 function npcRevealStats() {
 	npc.stats.classList.add("Flip")
 }
@@ -64,6 +66,7 @@ function npcPlayCard() {
 	npcSetScore(cardEl.card);
 }
 
+// Set score for an element of the npc
 function npcSetScore({
 	element,
 	point

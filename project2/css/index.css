@@ -29,9 +29,9 @@ body {
   /*background: #111;*/
 
 	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: flex-start;
+	flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 #PlayerSide {}
@@ -73,4 +73,31 @@ body {
 #NPCSide .Stats.Flip .Point {
 	transform: rotateY(360deg);
   background: white;
+}
+
+#NPCWins , #PlayerWins {
+	position: absolute;
+	z-index: 9999;
+}
+
+.WinBadgeContainer {
+  margin-left: 1em;
+	height: 1em;
+	display: flex;
+	flex-direction: column;
+}
+
+.WinBadgeContainer .oi {
+	color: white;
+  text-shadow: 3px 3px 3px black;
+  margin: 3px;
+  background: black;
+  color: yell;
+  border: 3px solid white;
+  border-radius: 100%;
+	padding-top: 2px;
+	padding-left: 1px;
+	padding-right: 1px;
+
+	animation: ZoomIn 1s ease-in;
 }

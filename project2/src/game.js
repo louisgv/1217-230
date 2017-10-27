@@ -7,6 +7,7 @@ function startGame() {
 		playerDrawCard();
 		npcDrawCard();
 	}
+	resetWinningRound()
 
 	newRound(getFirstTurnPlayer());
 }
