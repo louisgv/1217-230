@@ -60,6 +60,7 @@ async function combat() {
 	newRound(nextTurn);
 }
 
+// go through all score card and return the total point
 function getTotalPoint(playingSide) {
 	const pointEl = playingSide.point;
 

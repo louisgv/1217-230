@@ -11,27 +11,36 @@ function startGame() {
 	newRound(getFirstTurnPlayer());
 }
 
+// Reset the winning count for each player
+function resetWinningRound() {
+	setData(STOREKEY.PLAYER_ROUND, 0);
+	setData(STOREKEY.NPC_ROUND, 0);
+}
+
+// Check if game is over
 async function isGameOver() {
 
 	const playerRoundCount = getData(STOREKEY.PLAYER_ROUND);
 	const npcRoundCount = getData(STOREKEY.NPC_ROUND);
 
-	if (!playerRoundCount || !npcRoundCount) {
-		setData(STOREKEY.PLAYER_ROUND, 0);
-		setData(STOREKEY.NPC_ROUND, 0);
+	if (playerRoundCount === null || npcRoundCount === null) {
+		resetWinningRound()
 		return false;
 	}
 
-	if (playerRoundCount + npcRoundCount >= CONSTANT.ROUND_LIMIT) {
+	if (playerRoundCount > CONSTANT.ROUND_LIMIT / 2) {
+		resetWinningRound()
 
-		if (playerRoundCount > npcRoundCount) {
-			anounce("GAMEOVER, You Won!");
-		} else {
-			anounce("GAMEOVER, I Won!");
-		}
+		anounce("GAMEOVER, You Won!");
 
-		setData(STOREKEY.PLAYER_ROUND, 0);
-		setData(STOREKEY.NPC_ROUND, 0);
+		return true;
+	}
+
+	if (npcRoundCount > CONSTANT.ROUND_LIMIT / 2) {
+		resetWinningRound()
+
+		anounce("GAMEOVER, I Won!");
+
 		return true;
 	}
 
@@ -135,6 +144,7 @@ function switchTurn() {
 	setTurn(nextTurn);
 }
 
+// Set current turn, as well as animating NPC behavior
 async function setTurn(turn) {
 	setData(STOREKEY.TURN, turn);
 
