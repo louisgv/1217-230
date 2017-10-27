@@ -9,7 +9,7 @@ async function setup() {
 
 	await	spawnHeroSelectionCards();
 
-	// await tutorial();
+	await tutorial();
 
 	startGame();
 }

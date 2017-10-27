@@ -38,22 +38,20 @@ async function combat() {
 
 	if (playerFinalScore === npcFinalScore) {
 		nextTurn = CONSTANT.TURN.PLAYER;
-		info('DRAW!', 1800)
+		await announce('It was a draw!')
 	}
 	else if (playerFinalScore > npcFinalScore) {
-		nextTurn = CONSTANT.TURN.PLAYER;
-		info('YOU WON!', 1800)
 		checkAndIncrement(STOREKEY.PLAYER_ROUND);
+		nextTurn = CONSTANT.TURN.PLAYER;
+		await announce('You won the round!')
 	}
 	else {
-		nextTurn = CONSTANT.TURN.NPC;
-		info('I WON!', 1800)
 		checkAndIncrement(STOREKEY.NPC_ROUND);
+		nextTurn = CONSTANT.TURN.NPC;
+		await announce('I got this round!')
 	}
 
-	await wait(9000);
 	cleanUpEquip();
-
 	npcHideEquipment();
 	npcHideStats();
 
@@ -149,7 +147,7 @@ async function elementNullification(playerStatus, npcStatus) {
 	const playerOriginalStatus = Object.assign({}, playerStatus);
 	const npcOriginalStatus = Object.assign({}, npcStatus);
 
-	await Promise.all(CONSTANT.ELEMENTS.map(async (element) => {
+	return Promise.all(CONSTANT.ELEMENTS.map(async (element) => {
 		if (element === CONSTANT.ELEMENT.ETHER) {
 			return;
 		}

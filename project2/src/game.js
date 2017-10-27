@@ -28,18 +28,18 @@ async function isGameOver() {
 		return false;
 	}
 
-	if (playerRoundCount > CONSTANT.ROUND_LIMIT / 2) {
+	if (playerRoundCount > 1) {
 		resetWinningRound()
 
-		anounce("GAMEOVER, You Won!");
+		await announce("GAMEOVER, You Won!");
 
 		return true;
 	}
 
-	if (npcRoundCount > CONSTANT.ROUND_LIMIT / 2) {
+	if (npcRoundCount > 1) {
 		resetWinningRound()
 
-		anounce("GAMEOVER, I Won!");
+		await announce("GAMEOVER, I Won!");
 
 		return true;
 	}
@@ -54,8 +54,15 @@ async function newRound(firstPlayer) {
 	const endGame = await isGameOver();
 
 	if (endGame) {
+
+		await announce('New game starting...');
+
+		window.location.reload(true);
+
 		return;
 	}
+
+	await announce('New round starting...');
 
 	info("ROUND " + currentRound, 1800);
 

@@ -1,3 +1,4 @@
+/* Specific styling for the point card element */
 .Point {
   line-height: 1.414;
 
@@ -29,4 +30,14 @@
 .Point .Number {
 	line-height: 100%;
 	font-size: 3.6em;
+}
+
+@media only screen and (max-width: 630px) {
+  .Point .Number {
+		font-size: 1.8em;
+	}
+
+	.Point label {
+		font-size: 0.45em;
+	}
 }
