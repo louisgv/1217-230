@@ -113,6 +113,15 @@ function checkAndIncrement(key) {
 	return setData(key, next);
 }
 
+// Toggling the show class within the duration
+async function toggleShow(targetEl, duration) {
+	targetEl.classList.add("Show");
+
+	await wait(duration);
+
+	targetEl.classList.remove("Show");
+}
+
 // Return the default structure of stats group element
 function defaultStatsStructure() {
 	return `

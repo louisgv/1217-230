@@ -17,7 +17,7 @@
 	line-height: 2em;
 }
 
-#AnnounceOverlay.ShowAnnounce {
+#AnnounceOverlay.Show {
 	opacity: 1;
 	pointer-events: all;
 }
