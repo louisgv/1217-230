@@ -1,28 +1,28 @@
-const HeroSelectionOverlayEl = document.querySelector('#HeroSelectionOverlay');
+const heroSelectionOverlayEl = document.querySelector('#HeroSelectionOverlay');
 
 // Callback handle to log the selected hero and start the main game
-function OnHeroSelected(playerHeroCard) {
-  HeroSelectionOverlayEl.style.display = "none";
+function onHeroSelected(playerHeroCard) {
+  heroSelectionOverlayEl.style.display = "none";
 
-	SetData(STOREKEY.PLAYER_HERO, playerHeroCard);
+	setData(STOREKEY.PLAYER_HERO, playerHeroCard);
 
-  PlayerSetHero(playerHeroCard);
+  playerSetHero(playerHeroCard);
 
 	// document.body.style.background = CONSTANT.ELEMENT_COLOR[playerHeroCard.element]
 
-  const npcHeroCard = GetRandomCard();
+  const npcHeroCard = getRandomCard();
 
 	npcHeroCard.image = CONSTANT.ELEMENT_HERO_IMAGE[npcHeroCard.element]
 
-	SetData(STOREKEY.NPC_HERO, npcHeroCard);
+	setData(STOREKEY.NPC_HERO, npcHeroCard);
 
-  NPCSetHero(npcHeroCard);
+  npcSetHero(npcHeroCard);
 }
 
 // Spawn all of the hero selection cards
-function SpawnHeroSelectionCards() {
-	const HeroCardContainerEl = CreateElementWithId('div', 'HeroCardContainer');
-  HeroSelectionOverlayEl.appendChild(HeroCardContainerEl);
+function spawnHeroSelectionCards() {
+	const heroCardContainerEl = createElementWithId('div', 'HeroCardContainer');
+  heroSelectionOverlayEl.appendChild(heroCardContainerEl);
 
 	return new Promise(function(resolve, reject) {
 
@@ -35,12 +35,12 @@ function SpawnHeroSelectionCards() {
 					`Beats ${CONSTANT.ELEMENT_HIERARCHY[element].join(' and ')}`
 				] });
 
-			const elmCardEl = CreateCardEl(card, () => {
-				OnHeroSelected(card);
+			const elmCardEl = createCardEl(card, () => {
+				onHeroSelected(card);
 				resolve();
 			});
 
-			HeroCardContainerEl.appendChild(elmCardEl);
+			heroCardContainerEl.appendChild(elmCardEl);
 		})
 
 	});

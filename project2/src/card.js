@@ -14,8 +14,8 @@ class Card {
 }
 
 // Get a random card
-function GetRandomCard(
-	heroElement = GetRandomInArray(CONSTANT.ELEMENTS),
+function getRandomCard(
+	heroElement = getRandomInArray(CONSTANT.ELEMENTS),
 	point = 0,
 	threshold = CONSTANT.DEFAULT_THRESHOLD
 ) {
@@ -23,7 +23,7 @@ function GetRandomCard(
 
 	const element = prob < threshold
 		? heroElement
-		: GetRandomInArray(CONSTANT.ELEMENTS)
+		: getRandomInArray(CONSTANT.ELEMENTS)
 
 	const image = point > 0 && point <= CONSTANT.POINT_LIMIT
 		?	GIPHY_TABLE[element][point - 1]
@@ -33,17 +33,17 @@ function GetRandomCard(
 		{ info : [`Nullifies ${CONSTANT.ELEMENT_NULLIFICATION[element]}`]});
 }
 
-function CreateCardEl(card = new Card(), clickCallback=()=>{}, classname = '') {
-	const cardEl = CreateElementWithClass('div', 'Card ' + classname);
+function createCardEl(card = new Card(), clickCallback=()=>{}, classname = '') {
+	const cardEl = createElementWithClass('div', 'Card ' + classname);
 
-	const cardContainerEl = CreateElementWithClass('div', 'CardContainer');
+	const cardContainerEl = createElementWithClass('div', 'CardContainer');
 
-	const cardFaceEl = CreateElementWithClass('div', 'CardFace');
+	const cardFaceEl = createElementWithClass('div', 'CardFace');
 
-	const cardBackEl = CreateElementWithClass('div', 'CardBack');
+	const cardBackEl = createElementWithClass('div', 'CardBack');
 
 	if (card.point > 0) {
-		const cardPointEl = CreateElementWithClass('div', 'CardPoint');
+		const cardPointEl = createElementWithClass('div', 'CardPoint');
 
 		cardPointEl.innerHTML = card.point;
 
@@ -51,7 +51,7 @@ function CreateCardEl(card = new Card(), clickCallback=()=>{}, classname = '') {
 	}
 
 	if (card.image) {
-		const cardImageEl = CreateElementWithClass('img', 'CardImage');
+		const cardImageEl = createElementWithClass('img', 'CardImage');
 
 		cardImageEl.src = card.image;
 
@@ -69,7 +69,7 @@ function CreateCardEl(card = new Card(), clickCallback=()=>{}, classname = '') {
 	cardEl.addEventListener('click', clickCallback);
 	cardEl.card = card;
 
-	const tooltipEl = CreateElementWithClass('div', 'CardTooltip')
+	const tooltipEl = createElementWithClass('div', 'CardTooltip')
 
 	tooltipEl.innerHTML = `<p><b>Element</b>: ${card.element}</p>`;
 

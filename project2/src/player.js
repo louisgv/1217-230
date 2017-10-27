@@ -1,42 +1,42 @@
-const player = GetPlayingSide('#PlayerSide')
+const player = getPlayingSide('#PlayerSide')
 
 // Check if player equip exceeds limit
-function PlayerReachedEquipLimit() {
+function playerReachedEquipLimit() {
 	return player.equip.children.length >= CONSTANT.EQUIP_LIMIT;
 }
 
 // Check if player hand is less than limit
-function PlayerCanDraw() {
+function playerCanDraw() {
 	return player.hand.children.length < CONSTANT.CARD_LIMIT;
 }
 
 // Handle event when player clicked on a card
-function OnCardPlayed(event) {
+function onCardPlayed(event) {
 	event.preventDefault()
-	if(IsNPCTurn() || IsCombatPhase()) {
+	if(isNPCTurn() || isCombatPhase()) {
 		return;
 	}
 
-	this.removeEventListener('click', OnCardPlayed);
+	this.removeEventListener('click', onCardPlayed);
 
 	player.equip.appendChild(this);
 
-	PlayerSetScore(this.card);
+	playerSetScore(this.card);
 
-	SwitchTurn();
+	switchTurn();
 }
 
 // Set the hero card for the player
-function PlayerSetHero(heroCard) {
+function playerSetHero(heroCard) {
 
-	const heroCardEl = CreateCardEl(heroCard);
+	const heroCardEl = createCardEl(heroCard);
 
 	player.avatar.appendChild(heroCardEl);
 
-	SetEquipLimit(player, CONSTANT.EQUIP_LIMIT);
+	setEquipLimit(player, CONSTANT.EQUIP_LIMIT);
 }
 
-function PlayerSetScore({
+function playerSetScore({
 	element,
 	point
 }) {
@@ -49,15 +49,15 @@ function PlayerSetScore({
 }
 
 // Draw a card and append it to the player's hand
-function PlayerDrawCard() {
+function playerDrawCard() {
 
-	const hero = GetData(STOREKEY.PLAYER_HERO);
+	const hero = getData(STOREKEY.PLAYER_HERO);
 
-	const point = GetRandomInt(CONSTANT.POINT_LIMIT) + 1;
+	const point = getRandomInt(CONSTANT.POINT_LIMIT) + 1;
 
-	const card = GetRandomCard(hero.element, point);
+	const card = getRandomCard(hero.element, point);
 
-	const cardEl = CreateCardEl(card, OnCardPlayed);
+	const cardEl = createCardEl(card, onCardPlayed);
 
 	player.hand.appendChild(cardEl);
 }

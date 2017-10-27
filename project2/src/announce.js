@@ -1,14 +1,14 @@
-const AnnounceEl = document.querySelector('#AnnounceOverlay');
+const announceEl = document.querySelector('#AnnounceOverlay');
 
-const AnnounceText = InfoPopupEl.querySelector('#AnnounceText');
+const announceText = infoPopupEl.querySelector('#AnnounceText');
 
 // Flash announcement text popup, then hide it
-async function Announce(text, duration = 1800) {
-	AnnounceText.innerHTML = text;
+async function announce(text, duration = 1800) {
+	announceText.innerHTML = text;
 
-	AnnounceEl.classList.add("ShowAnnounce");
+	announceEl.classList.add("ShowAnnounce");
 
-	await Wait(duration);
+	await wait(duration);
 
-	AnnounceEl.classList.remove("ShowAnnounce");
+	announceEl.classList.remove("ShowAnnounce");
 }

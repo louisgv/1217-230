@@ -1,46 +1,46 @@
-const FooterEl = document.querySelector('footer')
+const footerEl = document.querySelector('footer')
 
-const CopyrightEl = document.querySelector('#Copyright');
+const copyrightEl = document.querySelector('#Copyright');
 
-const HideCopyrightEl = document.querySelector('#HideCopyright');
+const hidecopyrightEl = document.querySelector('#HideCopyright');
 
 // Change the state of the copyright notice based on its new state
-function ChangeCopyright(isShow, newState, background, color) {
-	CopyrightEl.style.opacity = isShow
+function changeCopyright(isShow, newState, background, color) {
+	copyrightEl.style.opacity = isShow
 		? 1
 		: 0;
-	CopyrightEl.style.pointerEvents = isShow
+	copyrightEl.style.pointerEvents = isShow
 	 	? "all"
 		: "none";
 
-	FooterEl.style.zIndex = isShow
+	footerEl.style.zIndex = isShow
 		? 999
 		: 0;
 
-	HideCopyrightEl.innerHTML = newState;
-	HideCopyrightEl.style.background = background;
-	HideCopyrightEl.style.color = color;
-	SetData(STOREKEY.COPYRIGHT_STATE, newState);
+	hidecopyrightEl.innerHTML = newState;
+	hidecopyrightEl.style.background = background;
+	hidecopyrightEl.style.color = color;
+	setData(STOREKEY.COPYRIGHT_STATE, newState);
 }
 
 // Switching between show and hide copyright element
-function ToggleCopyRight() {
-	if (GetData(STOREKEY.COPYRIGHT_STATE) === "show") {
-		ChangeCopyright(true, "hide", "yellow", "black");
+function toggleCopyRight() {
+	if (getData(STOREKEY.COPYRIGHT_STATE) === "show") {
+		changeCopyright(true, "hide", "yellow", "black");
 	} else {
-		ChangeCopyright(false, "show", "#222", "white");
+		changeCopyright(false, "show", "#222", "white");
 	}
 }
 
 // Restore the state of copyright footer from localStorage
-function RestoreCopyRightState() {
-	if (GetData(STOREKEY.COPYRIGHT_STATE) === "show") {
-		ChangeCopyright(false, "show", "#222", "white");
+function restoreCopyRightState() {
+	if (getData(STOREKEY.COPYRIGHT_STATE) === "show") {
+		changeCopyright(false, "show", "#222", "white");
 	} else {
-		ChangeCopyright(true, "hide", "yellow", "black");
+		changeCopyright(true, "hide", "yellow", "black");
 	}
 }
 
-HideCopyrightEl.addEventListener('click', ToggleCopyRight);
+hidecopyrightEl.addEventListener('click', toggleCopyRight);
 
-window.addEventListener('load', RestoreCopyRightState);
+window.addEventListener('load', restoreCopyRightState);

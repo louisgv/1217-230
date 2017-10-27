@@ -1,11 +1,11 @@
 // Re-fetch all the necessary giphy stamp for each element
 // and cache them
-async function RenewGiphyTable() {
+async function renewGiphyTable() {
 	// Fetch all the giphy related to each element
 	const results = await Promise.all(CONSTANT.ELEMENTS.map((element) => {
 		const query = CONSTANT.ELEMENT_KEYWORD[element];
 
-		const url = GetGiphyURL(query, CONSTANT.POINT_LIMIT)
+		const url = getGiphyURL(query, CONSTANT.POINT_LIMIT)
 		return fetch(url);
 	}))
 
@@ -20,13 +20,13 @@ async function RenewGiphyTable() {
 		GIPHY_TABLE[element] = data.map(d => d.images.fixed_width_small.url)
 	})
 
-	SetData(STOREKEY.GIPHY_TABLE, GIPHY_TABLE);
-	SetData(STOREKEY.GIPHY_TIMESTAMP, new Date());
+	setData(STOREKEY.GIPHY_TABLE, GIPHY_TABLE);
+	setData(STOREKEY.GIPHY_TIMESTAMP, new Date());
 }
 
 // Pre-populate the giphy table for ease of access later
-async function WarmUpGiphyTable() {
-	const giphyTimeString = GetData(STOREKEY.GIPHY_TIMESTAMP);
+async function warmUpGiphyTable() {
+	const giphyTimeString = getData(STOREKEY.GIPHY_TIMESTAMP);
 
 	const giphyTimestamp = giphyTimeString
 		? new Date(giphyTimeString).getTime()
@@ -35,12 +35,25 @@ async function WarmUpGiphyTable() {
 	// If giphy cached data seems outdated
 	if (Date.now() - giphyTimestamp > CONSTANT.GIPHY.TIMEOUT)
 		// Return after fetching a new giphy table
-		return await RenewGiphyTable();
+		return await renewGiphyTable();
 
 	// else revive the cached table
-	const giphyTable = GetData(STOREKEY.GIPHY_TABLE);
+	const giphyTable = getData(STOREKEY.GIPHY_TABLE);
 
 	CONSTANT.ELEMENTS.map((element) => {
 		GIPHY_TABLE[element] = giphyTable[element]
 	})
+}
+
+
+// Return a giphy url to search the query with the limit
+function getGiphyURL(query, limit) {
+	const {
+		URL,
+		API_KEY
+	} = CONSTANT.GIPHY;
+	return URL +
+		"api_key=" + API_KEY +
+		"&q=" + query +
+		"&limit=" + limit;
 }

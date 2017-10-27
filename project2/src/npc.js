@@ -1,70 +1,70 @@
-const npc = GetPlayingSide('#NPCSide')
+const npc = getPlayingSide('#NPCSide')
 
-function NPCHideStats() {
+function npcHideStats() {
 	npc.stats.classList.remove("Flip")
 }
 
-function NPCRevealStats() {
+function npcRevealStats() {
 	npc.stats.classList.add("Flip")
 }
 
 // Hide equipment cards
-function NPCHideEquipment() {
+function npcHideEquipment() {
 	npc.equip.classList.remove("Flip")
 }
 
 // Reveal npc's equip card
-function NPCRevealEquipment() {
+function npcRevealEquipment() {
 	npc.equip.classList.add("Flip")
 }
 
-// Check if NPC Equip exceed limit
-function NPCReachedEquipLimit() {
+// Check if npc Equip exceed limit
+function npcReachedEquipLimit() {
 	return npc.equip.children.length >= CONSTANT.EQUIP_LIMIT;
 }
 
-// Check if NPC Hand is below limit
-function NPCCanDraw(){
+// Check if npc Hand is below limit
+function npcCanDraw(){
 	return npc.hand.children.length < CONSTANT.CARD_LIMIT;
 }
 
-// Check if NPC has card on hand
-function NPCCanPlayCard() {
+// Check if npc has card on hand
+function npcCanPlayCard() {
 	return npc.hand.children.length > 0;
 }
 
-// Draw a card into the NPC's hand
-function NPCDrawCard() {
-	const hero = GetData(STOREKEY.NPC_HERO);
+// Draw a card into the npc's hand
+function npcDrawCard() {
+	const hero = getData(STOREKEY.NPC_HERO);
 
-	const point = GetRandomInt(CONSTANT.POINT_LIMIT) + 1;
+	const point = getRandomInt(CONSTANT.POINT_LIMIT) + 1;
 
-	const card = GetRandomCard(hero.element, point);
+	const card = getRandomCard(hero.element, point);
 
-  const cardEl = CreateCardEl(card);
+  const cardEl = createCardEl(card);
 
   npc.hand.appendChild(cardEl);
 }
 
 // Set the hero card for the player
-function NPCSetHero(heroCard) {
-  const heroCardEl = CreateCardEl(heroCard);
+function npcSetHero(heroCard) {
+  const heroCardEl = createCardEl(heroCard);
 
   npc.avatar.appendChild(heroCardEl);
 
-	SetEquipLimit(npc, CONSTANT.EQUIP_LIMIT);
+	setEquipLimit(npc, CONSTANT.EQUIP_LIMIT);
 }
 
-// Play a card from the NPC's hand
-function NPCPlayCard() {
-	const cardEl = GetRandomInArray(npc.hand.children);
+// Play a card from the npc's hand
+function npcPlayCard() {
+	const cardEl = getRandomInArray(npc.hand.children);
 
 	npc.equip.appendChild(cardEl);
 
-	NPCSetScore(cardEl.card);
+	npcSetScore(cardEl.card);
 }
 
-function NPCSetScore({
+function npcSetScore({
 	element,
 	point
 }) {

@@ -1,37 +1,37 @@
 const centralDeck = document.querySelector('#CentralDeck');
 
 // Start the game
-function StartGame() {
+function startGame() {
 
 	for(let i = 0; i < CONSTANT.INITIAL_CARD_COUNT; i++) {
-		PlayerDrawCard();
-		NPCDrawCard();
+		playerDrawCard();
+		npcDrawCard();
 	}
 
-	NewRound(GetFirstTurnPlayer());
+	newRound(getFirstTurnPlayer());
 }
 
-async function IsGameOver() {
+async function isGameOver() {
 
-	const playerRoundCount = GetData(STOREKEY.PLAYER_ROUND);
-	const npcRoundCount = GetData(STOREKEY.NPC_ROUND);
+	const playerRoundCount = getData(STOREKEY.PLAYER_ROUND);
+	const npcRoundCount = getData(STOREKEY.NPC_ROUND);
 
 	if (!playerRoundCount || !npcRoundCount) {
-		SetData(STOREKEY.PLAYER_ROUND, 0);
-		SetData(STOREKEY.NPC_ROUND, 0);
+		setData(STOREKEY.PLAYER_ROUND, 0);
+		setData(STOREKEY.NPC_ROUND, 0);
 		return false;
 	}
 
 	if (playerRoundCount + npcRoundCount >= CONSTANT.ROUND_LIMIT) {
 
 		if (playerRoundCount > npcRoundCount) {
-			Anounce("GAMEOVER, You Won!");
+			anounce("GAMEOVER, You Won!");
 		} else {
-			Anounce("GAMEOVER, I Won!");
+			anounce("GAMEOVER, I Won!");
 		}
 
-		SetData(STOREKEY.PLAYER_ROUND, 0);
-		SetData(STOREKEY.NPC_ROUND, 0);
+		setData(STOREKEY.PLAYER_ROUND, 0);
+		setData(STOREKEY.NPC_ROUND, 0);
 		return true;
 	}
 
@@ -39,33 +39,33 @@ async function IsGameOver() {
 }
 
 // Start a new round
-async function NewRound(firstPlayer) {
-	const currentRound = CheckAndIncrement(STOREKEY.ROUND);
+async function newRound(firstPlayer) {
+	const currentRound = checkAndIncrement(STOREKEY.ROUND);
 
-	const isGameOver = await IsGameOver();
+	const endGame = await isGameOver();
 
-	if (isGameOver) {
+	if (endGame) {
 		return;
 	}
 
-	Info("ROUND " + currentRound, 1800);
+	info("ROUND " + currentRound, 1800);
 
-	await Wait(2000);
+	await wait(2000);
 
-	SetTurn(firstPlayer);
+	setTurn(firstPlayer);
 
-	SetData(STOREKEY.PHASE, CONSTANT.PHASE.PREPARE);
+	setData(STOREKEY.PHASE, CONSTANT.PHASE.PREPARE);
 }
 
 // Implementing a 5-way rock paper scisor game to determine the first
 // to make a move
-function GetFirstTurnPlayer() {
+function getFirstTurnPlayer() {
 
-	const playerHero = GetData(STOREKEY.PLAYER_HERO);
+	const playerHero = getData(STOREKEY.PLAYER_HERO);
 
-	const npcHero = GetData(STOREKEY.NPC_HERO);
+	const npcHero = getData(STOREKEY.NPC_HERO);
 
-	// If the NPC element hiearchy has the player's element, this means NPC's element
+	// If the npc element hiearchy has the player's element, this means npc's element
 	// beats player's element
 	return (CONSTANT.ELEMENT_HIERARCHY[npcHero.element].includes(playerHero.element))
 		? CONSTANT.TURN.NPC
@@ -73,92 +73,92 @@ function GetFirstTurnPlayer() {
 }
 
 // Handle event when player click on the drawing deck
-function OnCentralDeckClicked() {
-  if (!IsPlayerTurn() || !PlayerCanDraw() || IsCombatPhase()) {
+function onCentralDeckClicked() {
+  if (!isPlayerTurn() || !playerCanDraw() || isCombatPhase()) {
 		// Show overlay saying max card
     return;
   }
 
-  PlayerDrawCard();
-  SwitchTurn();
+  playerDrawCard();
+  switchTurn();
 }
 
-// NPC behavior lies here
-function NPCMakeMove() {
-	if (IsCombatPhase()) {
+// npc behavior lies here
+function npcMakeMove() {
+	if (isCombatPhase()) {
 		return;
 	}
 
 	// If it can draw, assigns a random to it drawing chance
-	const willDraw = NPCCanDraw()
+	const willDraw = npcCanDraw()
 		? Math.random()
 		: 0;
 
 	// If it can play card, assigns a random to its playing chance
-	const willPlayCard = NPCCanPlayCard()
+	const willPlayCard = npcCanPlayCard()
 		? Math.random()
 		: 0;
 
 	// Based on the decision, it either draw or play
 	if (willDraw > willPlayCard) {
-		Info("DRAW CARD", 1800);
-		NPCDrawCard();
+		info("DRAW CARD", 1800);
+		npcDrawCard();
 	} else {
-		Info("PLAY CARD", 1800);
-		NPCPlayCard();
+		info("PLAY CARD", 1800);
+		npcPlayCard();
 	}
 }
 
 // Check if the combat phase should commence
-function ShouldCombat () {
-	return PlayerReachedEquipLimit() || NPCReachedEquipLimit();
+function shouldcombat () {
+	return playerReachedEquipLimit() || npcReachedEquipLimit();
 }
 
-// Handle switching turn and invoke NPC's logic
-function SwitchTurn() {
-	if (ShouldCombat()) {
-		Combat();
+// Handle switching turn and invoke npc's logic
+function switchTurn() {
+	if (shouldcombat()) {
+		combat();
 	}
 
-	if (IsCombatPhase()) {
+	if (isCombatPhase()) {
 		return;
 	}
 
 	// Check if it is npc turn
-	const isCurrentlyNPCTurn = IsNPCTurn();
+	const isCurrentlyNPCTurn = isNPCTurn();
 
 	// Switch turn
   const nextTurn = isCurrentlyNPCTurn
     ? CONSTANT.TURN.PLAYER
     : CONSTANT.TURN.NPC
 
-	SetTurn(nextTurn);
+	setTurn(nextTurn);
 }
 
-async function SetTurn(turn) {
-	SetData(STOREKEY.TURN, turn);
+async function setTurn(turn) {
+	setData(STOREKEY.TURN, turn);
 
-	Info(IsNPCTurn()
+	info(isNPCTurn()
 	? "MY TURN"
 	: "YOUR TURN", 1800)
 
 	// If after set turn, it is npc turn
-	if (IsNPCTurn()) {
+	if (isNPCTurn()) {
 		document.body.style.cursor = "progress";
-		await Wait(2000);
+		await wait(2000);
 
-		Info("THINKING", 1800);
+		info("THINKING", 1800);
 
-		await Wait(2000);
+		await wait(2000);
 
-		NPCMakeMove();
+		npcMakeMove();
 
-		await Wait(2000);
+		await wait(2000);
 
-		SwitchTurn();
+		switchTurn();
 
 		document.body.style.cursor = "default";
 	}
 }
 
-centralDeck.addEventListener('click', OnCentralDeckClicked)
+centralDeck.addEventListener('click', onCentralDeckClicked)

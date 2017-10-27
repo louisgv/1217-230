@@ -1,17 +1,17 @@
-// Setup the game and restore the state of previous game if exist
-async function Setup() {
-	await WarmUpGiphyTable();
+// setup the game and restore the state of previous game if exist
+async function setup() {
+	await warmUpGiphyTable();
 
 	// TODO: Improve this:
-	SetData(STOREKEY.ROUND, 0);
+	setData(STOREKEY.ROUND, 0);
 
-	Info("PICK HERO");
+	info("PICK HERO");
 
-	await	SpawnHeroSelectionCards();
+	await	spawnHeroSelectionCards();
 
-	// await Tutorial();
+	// await tutorial();
 
-	StartGame();
+	startGame();
 }
 
-window.addEventListener('load', Setup);
+window.addEventListener('load', setup);

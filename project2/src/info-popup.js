@@ -1,14 +1,14 @@
-const InfoPopupEl = document.querySelector('#InfoPopup');
+const infoPopupEl = document.querySelector('#InfoPopup');
 
-const InfoPopupText = InfoPopupEl.querySelector('#InfoText');
+const infoPopupText = infoPopupEl.querySelector('#InfoText');
 
 // Flash an info text popup, then retract it
-async function Info(text, duration = 3600) {
-	InfoPopupText.innerHTML = text;
+async function info(text, duration = 3600) {
+	infoPopupText.innerHTML = text;
 
-	InfoPopupEl.classList.add("ShowInfo");
+	infoPopupEl.classList.add("ShowInfo");
 
-	await Wait(duration);
+	await wait(duration);
 
-	InfoPopupEl.classList.remove("ShowInfo");
+	infoPopupEl.classList.remove("ShowInfo");
 }
