@@ -54,10 +54,12 @@ function getPlayingSide(sideId) {
 	};
 }
 
+// Check if current phase is prepare
 function isPreparePhase() {
 	return getData(STOREKEY.PHASE) === CONSTANT.PHASE.PREPARE;
 }
 
+// Check if current phase is combat
 function isCombatPhase() {
 	return getData(STOREKEY.PHASE) === CONSTANT.PHASE.COMBAT;
 }
