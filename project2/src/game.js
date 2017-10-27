@@ -92,6 +92,7 @@ function getFirstTurnPlayer() {
 function onCentralDeckClicked() {
   if (!isPlayerTurn() || !playerCanDraw() || isCombatPhase()) {
 		// Show overlay saying max card
+		announce("Card limit reached!");
     return;
   }
 
