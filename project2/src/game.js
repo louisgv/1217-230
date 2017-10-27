@@ -91,10 +91,16 @@ function getFirstTurnPlayer() {
 
 // Handle event when player click on the drawing deck
 function onCentralDeckClicked() {
-  if (!isPlayerTurn() || !playerCanDraw() || isCombatPhase()) {
-		// Show overlay saying max card
-		announce("Card limit reached!");
-    return;
+	if (isCombatPhase()) {
+		return announce("We are in combat phase!");
+	}
+
+	if (!isPlayerTurn() ) {
+		return announce("It's my turn!");
+	}
+
+  if (!playerCanDraw()) {
+    return announce("Card limit reached!");
   }
 
   playerDrawCard();
