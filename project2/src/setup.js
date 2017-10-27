@@ -9,9 +9,11 @@ async function setup() {
 
 	await	spawnHeroSelectionCards();
 
-	await tutorial();
+	await dialog("HELLO THERE")
 
-	startGame();
+	// await tutorial();
+
+	// startGame();
 }
 
 window.addEventListener('load', setup);

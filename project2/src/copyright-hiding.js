@@ -14,7 +14,7 @@ function changeCopyright(isShow, newState, background, color) {
 		: "none";
 
 	footerEl.style.zIndex = isShow
-		? 999
+		? 9999
 		: 0;
 
 	hidecopyrightEl.innerHTML = newState;
