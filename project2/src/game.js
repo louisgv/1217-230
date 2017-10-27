@@ -31,7 +31,7 @@ async function isGameOver() {
 	if (playerRoundCount > 1) {
 		resetWinningRound()
 
-		await announce("GAMEOVER, You Won!");
+		await announce("GAMEOVER <br/> You Won!");
 
 		return true;
 	}
@@ -39,7 +39,7 @@ async function isGameOver() {
 	if (npcRoundCount > 1) {
 		resetWinningRound()
 
-		await announce("GAMEOVER, I Won!");
+		await announce("GAMEOVER <br/> I Won!");
 
 		return true;
 	}
