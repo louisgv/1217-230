@@ -4,6 +4,8 @@ const heroSelectionOverlayEl = document.querySelector('#HeroSelectionOverlay');
 function onHeroSelected(playerHeroCard) {
   heroSelectionOverlayEl.style.display = "none";
 
+	playerHeroCard.data.info.pop();
+
 	setData(STOREKEY.PLAYER_HERO, playerHeroCard);
 
   playerSetHero(playerHeroCard);
@@ -11,6 +13,11 @@ function onHeroSelected(playerHeroCard) {
 	// document.body.style.background = CONSTANT.ELEMENT_COLOR[playerHeroCard.element]
 
   const npcHeroCard = getRandomCard();
+
+	npcHeroCard.data.info = [
+		`HERO CARD`,
+		`Higher chance of drawing ${npcHeroCard.element} card`
+	]
 
 	npcHeroCard.image = CONSTANT.ELEMENT_HERO_IMAGE[npcHeroCard.element]
 
@@ -23,7 +30,7 @@ function onHeroSelected(playerHeroCard) {
 function spawnHeroSelectionCards() {
 	const heroCardContainerEl = createElementWithId('div', 'HeroCardContainer');
 
-	heroSelectionOverlayEl.innerHTML = `<h1>Choose your avatar</h1>`;
+	heroSelectionOverlayEl.innerHTML = `<h1>Choose your hero card</h1>`;
 
 	heroSelectionOverlayEl.appendChild(heroCardContainerEl);
 
@@ -34,8 +41,9 @@ function spawnHeroSelectionCards() {
 
 			const card = new Card({ element, image : CONSTANT.ELEMENT_HERO_IMAGE[element] },
 				{ info: [
+					`HERO CARD`,
 					`Higher chance of drawing ${element} card`,
-					`Beats ${CONSTANT.ELEMENT_HIERARCHY[element].join(' and ')}`
+					`Beats ${CONSTANT.ELEMENT_HIERARCHY[element].join(' and ')} in rock paper scisor`
 				] });
 
 			const elmCardEl = createCardEl(card, () => {

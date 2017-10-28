@@ -3,20 +3,25 @@ async function setup() {
 
 	await Promise.all([
 		warmUpGiphyTable(),
-		tutorial()
+		introTutorial()
 	])
 
-
-	// TODO: Improve this:
 	setData(STOREKEY.ROUND, 0);
 
 	info("PICK HERO");
 
-	await	spawnHeroSelectionCards();
+	await Promise.all([
+		spawnHeroSelectionCards(),
+		heroTutorial()
+	])
 
-	await dialog("HELLO THERE")
+	await phaseTutorial();
 
-	// startGame();
+	await interfaceTutorial();
+
+	await licenseTutorial();
+
+	await startGame();
 }
 
 window.addEventListener('load', setup);

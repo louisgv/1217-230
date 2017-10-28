@@ -1,7 +1,7 @@
 const centralDeck = document.querySelector('#CentralDeck');
 
 // Start the game
-function startGame() {
+async function startGame() {
 
 	for(let i = 0; i < CONSTANT.INITIAL_CARD_COUNT; i++) {
 		playerDrawCard();
@@ -9,7 +9,7 @@ function startGame() {
 	}
 	resetWinningRound()
 
-	newRound(getFirstTurnPlayer());
+	await newRound(getFirstTurnPlayer());
 }
 
 // Reset the winning count for each player
@@ -32,7 +32,7 @@ async function isGameOver() {
 	if (playerRoundCount > 1) {
 		resetWinningRound()
 
-		await announce("GAMEOVER <br/> You Won!");
+		await announce("GAMEOVER <br/> You Won!", "Another game!");
 
 		return true;
 	}
@@ -40,7 +40,7 @@ async function isGameOver() {
 	if (npcRoundCount > 1) {
 		resetWinningRound()
 
-		await announce("GAMEOVER <br/> I Won!");
+		await dialog("GAMEOVER <br/> I Won!", "Another game!");
 
 		return true;
 	}
@@ -129,7 +129,7 @@ async function npcMakeMove() {
 		await info("I DRAW", 1800);
 	} else {
 		npcPlayCard();
-		await info("I PLAY", 1800);
+		await info("I EQUIP", 1800);
 	}
 }
 

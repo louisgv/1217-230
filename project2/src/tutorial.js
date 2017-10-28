@@ -1,69 +1,103 @@
 // Showing the tutorial sequence
-async function tutorial() {
+async function introTutorial() {
 	// If player is first timer
-	// if(getData(STOREKEY.TUTORIAL_DONE)) {
-	// 	return;
-	// }
+	if(getData(STOREKEY.INTRODUCTION_TUTORIAL)) {
+		return;
+	}
 
-	info("TUTORIAL");
-
-	await dialog("Seems like you are new here.")
+	info("INTRO");
 
 	await dialog(`
-		This is a push your luck card game.
+		Seems like you are new here.
 		<br/>
-		<br/>
-		The card you just chose
-		<br/>
-		is your hero card.
+		Welcome to L'eau.web
 		`)
 
 	await dialog(`
-		Each hero card represents a higher chance of
+		This is a turn-based push your luck card game.
 		<br/>
-		drawing cards of the same element
-		<br/>
-		as the hero card.
+		Winner of 2 rounds win the game.
 		`)
 
 	await dialog(`
-		There are five elements in the game:
+			First, let us choose our hero card!
+		`, "LET'S DO THIS!")
+
+	setData(STOREKEY.INTRODUCTION_TUTORIAL, true)
+}
+
+
+// Tutorial for the hero choosing
+async function heroTutorial() {
+	if(getData(STOREKEY.HERO_TUTORIAL)) {
+		return;
+	}
+
+	await dialog(`
+		The cards you and I choose will be compared
 		<br/>
-		WATER  ,  FIRE  ,  AERO  ,  EARTH
+	 	to determine the first to make a move.
+		`)
+
+	setData(STOREKEY.HERO_TUTORIAL, true)
+}
+
+async function elementTutorial() {
+	if(getData(STOREKEY.ELEMENT_TUTORIAL)) {
+		return;
+	}
+
+	await dialog(`
+		There are 5 types of card:
+		<br/>
+		WATER, FIRE, AERO, EARTH
 		<br/>
 		and ETHER
+	`)
+
+	setData(STOREKEY.ELEMENT_TUTORIAL, true)
+}
+
+// Tutorial on each phases of the game
+async function phaseTutorial() {
+	if(getData(STOREKEY.PHASE_TUTORIAL)) {
+		return;
+	}
+
+	await dialog(`
+		Each round in the game has two phases: <br/>
+		PREPARE and COMBAT
+	`)
+
+	await dialog(`
+		In the PREPARE phase, we will take turn to either
+		<br/>
+		<b>Draw a card</b> from the central deck
+		<br/>
+			or
+		<br/>
+		<b>Equip a card</b> from our hand.
 		`)
 
 	await dialog(`
-		The game has 3 rounds, each round
+		There are ${CONSTANT.EQUIP_LIMIT} equipment slots.
 		<br/>
-		has 2 phases:
+		The first player to fill up their slots
 		<br/>
-		<b>prepare</b> and <b>combat</b>.
+		will initiate the COMBAT phase.
 		`)
 
 	await dialog(`
-		In the prepare phase, we will take turn either
-		<br/>
-		<b>drawing a card</b> from the central deck
-		<br/>
-		or
-		<br/>
-		<b>playing a card</b> from our hand.
+		The goal of this phase is to accumulate <br/>
+		as many point as possible before COMBAT.
 		`)
 
 	await dialog(`
-		Whoever fill up all of their equipment slots first
+		In the COMBAT phase, our final score will be calculated using
 		<br/>
-		will commence the combat phase.
-		`)
-
-	await dialog(`
-		In the combat phase, our final score will be calculated
+	 	a 3 stages "nullification" process, which
 		<br/>
-		using a 3 stages nullification process, which
-		<br/>
- 		you can read more in the rule book.
+		you can read more in the rule book.
 		`)
 
 	await dialog(`
@@ -71,50 +105,14 @@ async function tutorial() {
 		<br/>
 		wins the round.
 		`)
+	setData(STOREKEY.PHASE_TUTORIAL, true)
+}
 
-	await dialog(`
-		The winner or 2 rounds wins the game.
-		`)
-
-	await dialog(`
-			The playing board are split into 3 sections:
-			`)
-
-	await dialog(`
-			Hand
-			<br/>
-			Cards we drew goes here.
-			<br/>
-			Maximum card	 we can hold is ${CONSTANT.CARD_LIMIT}.
-			`)
-
-	await dialog(`
-			Equip
-			<br/>
-			Cards we played goes here.
-			<br/>
-			Maximum equipment is ${CONSTANT.EQUIP_LIMIT}.
-			`)
-
-	await dialog(`
-		Status
-		<br/>
-		Shows our accumulated score and our avatar.
-		<br/>
-		During the combat phase, it will change to reflect the nullification process.
-		`)
-
-	await dialog(`
-		On the right hand side, you will find a
-		<br/>
-		card that says "Draw card".
-		`)
-
-	await dialog(`
-		Clicking it during prepare phase will
-		<br/>
-		add a card to your hand.
-		`)
+// Interface tutorial
+async function interfaceTutorial(){
+	if(getData(STOREKEY.INTERFACE_TUTORIAL)) {
+		return;
+	}
 
 	info('LIKE THIS')
 
@@ -134,14 +132,24 @@ async function tutorial() {
 		<br/>
 		the left side bar.
 		`)
+	setData(STOREKEY.INTERFACE_TUTORIAL, true)
+}
+
+
+// License notice tutorial
+async function licenseTutorial(){
+	if(getData(STOREKEY.LICENSE_TUTORIAL)) {
+		return;
+	}
+	await dialog(`
+		You will not see the tutorial again until you clean up your localstorage.
+		<br/>
+		Please agree to the GPLv3 license before copying this work.
+		`, 'I ACCEPT');
 
 	await dialog(`
-		You will not see this tutorial again until you clean up your localstorage.
-		<br/>
-		Please agree to the GPLv3 license before copying this works.
-		<br/>
-		Thank you for playing!
-		`)
+		Thank you for playing and I hope you enjoy the game.
+		`, 'START GAME');
 
-	setData(STOREKEY.TUTORIAL_DONE, true)
+	setData(STOREKEY.LICENSE_TUTORIAL, true)
 }

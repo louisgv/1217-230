@@ -11,9 +11,12 @@
 
 	transform-style: preserve-3d;
 
+	animation: RaiseUp 1s ease;
 }
 
 .Card:hover {
+	top: -10px;
+
 	cursor: pointer;
 
 	z-index: 10;
@@ -26,6 +29,15 @@
 	box-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15);
 
 	transition: 1s ease;
+}
+
+@keyframes RaiseUp {
+	0% {
+		top: -100px;
+	}
+	100% {
+		top: 0;
+	}
 }
 
 .CardPoint {
