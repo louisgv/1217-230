@@ -42,6 +42,7 @@ async function heroTutorial() {
 	setData(STOREKEY.HERO_TUTORIAL, true)
 }
 
+// Tutorial fo the element
 async function elementTutorial() {
 	if(getData(STOREKEY.ELEMENT_TUTORIAL)) {
 		return;
