@@ -22,7 +22,10 @@ function onHeroSelected(playerHeroCard) {
 // Spawn all of the hero selection cards
 function spawnHeroSelectionCards() {
 	const heroCardContainerEl = createElementWithId('div', 'HeroCardContainer');
-  heroSelectionOverlayEl.appendChild(heroCardContainerEl);
+
+	heroSelectionOverlayEl.innerHTML = `<h1>Choose your avatar</h1>`;
+
+	heroSelectionOverlayEl.appendChild(heroCardContainerEl);
 
 	return new Promise(function(resolve, reject) {
 
