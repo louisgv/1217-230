@@ -32,7 +32,7 @@ async function isGameOver() {
 	if (playerRoundCount > 1) {
 		resetWinningRound()
 
-		await announce("GAMEOVER <br/> You Won!", "Another game!");
+		await dialog("CONGRATULATION <br/> You Won!", "Another game!");
 
 		return true;
 	}

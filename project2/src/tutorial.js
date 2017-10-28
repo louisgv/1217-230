@@ -89,7 +89,7 @@ async function phaseTutorial() {
 		`)
 
 	await dialog(`
-		The goal of this phase is to accumulate <br/>
+		The goal of the PREPARE phase is to accumulate <br/>
 		as many point as possible before COMBAT.
 		`)
 
@@ -120,16 +120,14 @@ async function interfaceTutorial(){
 	await dialog(`
 		There will be notification popping up
 		<br/>
-		letting you know who turn or
-		<br/>
-		what phase we are in.
+		with useful information.
 		`)
 
 	showInterface()
 	await dialog(`
 		The detailed rule can be read in
 		<br/>
-		the rule book located on
+		the rulebook located on
 		<br/>
 		the left side bar.
 		`)
