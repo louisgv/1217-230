@@ -108,7 +108,7 @@ function onCentralDeckClicked() {
 }
 
 // npc behavior lies here
-function npcMakeMove() {
+async function npcMakeMove() {
 	if (isCombatPhase()) {
 		return;
 	}
@@ -125,11 +125,11 @@ function npcMakeMove() {
 
 	// Based on the decision, it either draw or play
 	if (willDraw > willPlayCard) {
-		info("DRAW CARD", 1800);
 		npcDrawCard();
+		await info("I DRAW", 1800);
 	} else {
-		info("PLAY CARD", 1800);
 		npcPlayCard();
+		await info("I PLAY", 1800);
 	}
 }
 
@@ -163,26 +163,22 @@ function switchTurn() {
 async function setTurn(turn) {
 	setData(STOREKEY.TURN, turn);
 
-	info(isNPCTurn()
-	? "MY TURN"
-	: "YOUR TURN", 1800)
-
 	// If after set turn, it is npc turn
 	if (isNPCTurn()) {
+		info("MY TURN");
+		await announce("It's my turn");
 		document.body.style.cursor = "progress";
-		await wait(2000);
 
-		info("THINKING", 1800);
+		// info("THINKING", 1800);
 
-		await wait(2000);
-
-		npcMakeMove();
-
-		await wait(2000);
+		await npcMakeMove();
 
 		switchTurn();
 
 		document.body.style.cursor = "default";
+	} else {
+		info("YOUR TURN");
+		announce("It's your turn");
 	}
 }
 

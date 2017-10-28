@@ -12,10 +12,10 @@ async function announce(text, duration = 1800, fadeDuration = 500) {
 }
 
 // Showing dialog modal
-async function dialog(text, fadeDuration = 500) {
+async function dialog(text, nextText = "NEXT", fadeDuration = 500) {
 	announceText.innerHTML = text;
 
-	const dialogButton = dialogCloseButton();
+	const dialogButton = dialogCloseButton(nextText);
 
 	announceEl.appendChild(dialogButton);
 	announceEl.classList.add("Show");
@@ -32,11 +32,11 @@ async function dialog(text, fadeDuration = 500) {
 }
 
 // Generate the dialog close button
-function dialogCloseButton() {
+function dialogCloseButton(text = "NEXT") {
 	const button = createElementWithClass('button', 'DialogButton');
 
 	button.innerHTML = `
-		next
+		${text}
 	`
 
 	return button;
