@@ -8,19 +8,25 @@ async function introTutorial() {
 	info("INTRO");
 
 	await dialog(`
-		Seems like you are new here.
-		<br/>
 		Welcome to L'eau.web
+		<br/>
+		Seems like you are new here.
+		`)
+
+	await dialog(`
+		My name is Lebot and I will be your opponent in this game.
+		<br/>
+		Disclaimer: I am a random bot.
 		`)
 
 	await dialog(`
 		This is a turn-based push your luck card game.
 		<br/>
-		Winner of 2 rounds win the game.
+		Winner of 2 rounds wins the game.
 		`)
 
 	await dialog(`
-			First, let us choose our hero card!
+			First, let us pick our hero card!
 		`, "LET'S DO THIS!")
 
 	setData(STOREKEY.INTRODUCTION_TUTORIAL, true)
@@ -36,7 +42,7 @@ async function heroTutorial() {
 	await dialog(`
 		The cards you and I choose will be compared
 		<br/>
-	 	to determine the first to make a move.
+	 	to select the first player.
 		`)
 
 	setData(STOREKEY.HERO_TUTORIAL, true)
@@ -59,9 +65,10 @@ async function elementTutorial() {
 	setData(STOREKEY.ELEMENT_TUTORIAL, true)
 }
 
-// Tutorial on each phases of the game
-async function phaseTutorial() {
-	if(getData(STOREKEY.PHASE_TUTORIAL)) {
+// Init Prepare tutorial
+async function initPrepareTutorial() {
+	const storekey = STOREKEY.INIT_PREPARE_TUTORIAL;
+	if(getData(storekey)) {
 		return;
 	}
 
@@ -80,6 +87,16 @@ async function phaseTutorial() {
 		<b>Equip a card</b> from our hand.
 		`)
 
+	setData(storekey, true)
+}
+
+// Tutorial for prepare phase
+async function prepareTutorial() {
+	const storekey = STOREKEY.PREPARE_TUTORIAL;
+	if(getData(storekey)) {
+		return;
+	}
+
 	await dialog(`
 		There are ${CONSTANT.EQUIP_LIMIT} equipment slots.
 		<br/>
@@ -93,6 +110,17 @@ async function phaseTutorial() {
 		as many point as possible before COMBAT.
 		`)
 
+	setData(storekey, true)
+}
+
+// Tutorial on each phases of the game
+async function combatTutorial() {
+	const storekey = STOREKEY.COMBAT_TUTORIAL;
+	if(getData(storekey)) {
+		return;
+	}
+	showInterface()
+	
 	await dialog(`
 		In the COMBAT phase, our final score will be calculated using
 		<br/>
@@ -106,7 +134,8 @@ async function phaseTutorial() {
 		<br/>
 		wins the round.
 		`)
-	setData(STOREKEY.PHASE_TUTORIAL, true)
+
+		setData(storekey, true)
 }
 
 // Interface tutorial

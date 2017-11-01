@@ -15,8 +15,6 @@ async function setup() {
 		heroTutorial()
 	])
 
-	await phaseTutorial();
-
 	await interfaceTutorial();
 
 	await licenseTutorial();

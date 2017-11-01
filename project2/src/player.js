@@ -11,7 +11,7 @@ function playerCanDraw() {
 }
 
 // Handle event when player clicked on a card
-function onCardPlayed(event) {
+async function onCardPlayed(event) {
 	event.preventDefault()
 	if(isNPCTurn() || isCombatPhase()) {
 		return;
@@ -20,6 +20,8 @@ function onCardPlayed(event) {
 	this.removeEventListener('click', onCardPlayed);
 
 	playingSidePlayCard(player, this);
+
+	await prepareTutorial();
 
 	switchTurn();
 }

@@ -67,7 +67,7 @@ async function newRound(firstPlayer) {
 
 	info("ROUND " + currentRound, 1800);
 
-	await wait(2000);
+	await	announce('PREPARE PHASE')
 
 	setTurn(firstPlayer);
 
@@ -177,8 +177,10 @@ async function setTurn(turn) {
 
 		document.body.style.cursor = "default";
 	} else {
+
 		info("YOUR TURN");
-		announce("It's your turn");
+		await announce("It's your turn");
+		await initPrepareTutorial();
 	}
 }
 

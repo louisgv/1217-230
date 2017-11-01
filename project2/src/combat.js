@@ -16,6 +16,10 @@ async function combat() {
 
 	info('combat!', 1800)
 
+	await	announce('COMBAT PHASE')
+
+	await combatTutorial();
+
 	npcRevealEquipment();
 
 	await wait(2000);
@@ -45,11 +49,21 @@ async function combat() {
 	// console.log(playerFinalScore);
 	// console.log(npcFinalScore);
 
+	const scoreReportString = `
+		Your total point is : ${playerFinalScore}
+		<br/>
+		My total point is		: ${npcFinalScore}
+		<br/>
+	`
+
 	let nextTurn;
 
 	if (playerFinalScore === npcFinalScore) {
 		nextTurn = CONSTANT.TURN.PLAYER;
-		await announce('It was a draw!')
+		await dialog(`
+				${scoreReportString}
+				It was a draw!
+			`)
 	}
 	else if (playerFinalScore > npcFinalScore) {
 		checkAndIncrement(STOREKEY.PLAYER_ROUND);
@@ -57,7 +71,10 @@ async function combat() {
 
 		addWinningBadge(playerWins);
 
-		await announce('You won the round!')
+		await dialog(`
+			${scoreReportString}
+			You won the round!
+		`)
 	}
 	else {
 		checkAndIncrement(STOREKEY.NPC_ROUND);
@@ -65,7 +82,10 @@ async function combat() {
 
 		addWinningBadge(npcWins);
 
-		await announce('I got this round!')
+		await dialog(`
+			${scoreReportString}
+			I got this round!
+		`)
 	}
 
 	cleanUpEquip();
