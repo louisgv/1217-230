@@ -119,23 +119,33 @@ async function combatTutorial() {
 	if(getData(storekey)) {
 		return;
 	}
-	showInterface()
-	
+
 	await dialog(`
 		In the COMBAT phase, our final score will be calculated using
 		<br/>
-	 	a 3 stages "nullification" process, which
-		<br/>
-		you can read more in the rule book.
+	 	a 3-stage "nullification" process.
 		`)
 
+	showInterface()
 	await dialog(`
-		Whoever has the higher score during the combat phase
+		You can read more about this process
+		<br/>
+		in the rule book.
+	`)
+
+	await dialog(`
+		Whoever has the highest score after the combat phase
 		<br/>
 		wins the round.
 		`)
 
-		setData(storekey, true)
+	await dialog(`
+		Score are accumulated and carried over to the next round.
+		<br/>
+		So plan your move!
+		`, 'Cool beans!')
+
+	setData(storekey, true)
 }
 
 // Interface tutorial
