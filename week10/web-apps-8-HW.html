@@ -25,7 +25,7 @@ let cars = [
  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
 */
 
-const classicCars = cars.filter((car) => car.year >= 1970)
+const classicCars = cars.filter((car) => car.year <= 1970)
 
 /*
  2 - Create a new array named 'sortedByYear' that contains the contents of the
@@ -35,7 +35,7 @@ const classicCars = cars.filter((car) => car.year >= 1970)
 
 */
 
-const sortedByYear = cars.sort((carA, carB)=> carA.year < carB.year)
+const sortedByYear = cars.sort((carA, carB)=> carA.year > carB.year)
 
 /*
  3 - Create a new array named 'newerYearsOnly' that contains only the .year property
