@@ -30,10 +30,7 @@ mainContainer.addChild(maggotSystem);
 // applyDragAndDrop(mainContainer)
 applyDropZone(app, loadAndProcessImage)
 
-async function loadAndProcessImage(fileBlob, {
-	x,
-	y
-}) {
+async function loadAndProcessImage(fileBlob, mousePos) {
 	const base64Data = await readFile(fileBlob);
 
 	const {
@@ -41,6 +38,8 @@ async function loadAndProcessImage(fileBlob, {
 	} = base64Data;
 
 	if(Store.hasImage(result)) {
+		// TODO: Show notification saying you can't feed them the same image
+
 		return;
 	}
 
@@ -48,27 +47,31 @@ async function loadAndProcessImage(fileBlob, {
 
 	PIXI.loader.add(imageHash, result)
 		.load((loader, resources) => {
-			const food = new PIXI.Sprite(resources[imageHash].texture);
-
-			const {
-				MAX_WIDTH
-			} = Store.getFood();
-
-			if(food.width > MAX_WIDTH) {
-				const ratio = food.height / food.width
-
-				food.width = MAX_WIDTH
-
-				food.height = MAX_WIDTH * ratio
-			}
-
-			food.position.x = x - food.width / 2;
-			food.position.y = y - food.height / 2;
-
-			mainContainer.addChild(food);
+			addFood(new PIXI.Sprite(resources[imageHash].texture), mousePos)
 		})
 }
 
+function addFood(food, {
+	x,
+	y
+}) {
+	const {
+		MAX_WIDTH
+	} = Store.getFood();
+
+	if(food.width > MAX_WIDTH) {
+		const ratio = food.height / food.width
+
+		food.width = MAX_WIDTH
+
+		food.height = MAX_WIDTH * ratio
+	}
+
+	food.position.x = x - food.width / 2;
+	food.position.y = y - food.height / 2;
+
+	mainContainer.addChild(food);
+}
 
 window.addEventListener('resize', (e) => {
 	app.view.style.width = `${window.innerWidth}px`;

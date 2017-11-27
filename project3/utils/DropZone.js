@@ -15,8 +15,6 @@ const applyDropZone = (app, callback) => {
 		const fileBlob = e.dataTransfer.files[0];
 
         const {x, y} = e;
-        console.log(x, y);
-
 
 		// If not image ignore
 		if(!fileBlob.type.match('image.*')) {
