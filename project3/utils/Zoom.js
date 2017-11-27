@@ -1,4 +1,4 @@
-// Apply zoom event to an app 
+// Apply zoom event to an app
 function applyZoom(app) {
 	app.view.addEventListener('mousewheel', ({
 		wheelDeltaY
@@ -7,7 +7,8 @@ function applyZoom(app) {
 			MAX,
 			MIN,
 			SCALE
-		} = ZOOM;
+		} = Store.getZoom();
+
 		const {
 			x,
 			y

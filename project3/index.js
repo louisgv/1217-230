@@ -14,23 +14,6 @@ const mainContainer = new PIXI.Container();
 
 app.stage.addChild(mainContainer);
 
-// applyZoom(app)
-applyDropZone(app, loadAndProcessImage)
-
-async function loadAndProcessImage(fileBlob, mousePos) {
-    const base64Data = await readFile(fileBlob);
-
-    console.log(base64Data);
-}
-
-
-window.addEventListener('resize', (e) => {
-	app.view.style.width = `${window.innerWidth}px`;
-	app.view.style.height = `${window.innerHeight}px`;
-
-	app.renderer.resize(window.innerWidth, window.innerHeight)
-}, false);
-
 const maggotSet = new Set()
 
 const maggotSystem = new PIXI.particles.ParticleContainer(10000, {
@@ -43,7 +26,56 @@ const maggotSystem = new PIXI.particles.ParticleContainer(10000, {
 
 mainContainer.addChild(maggotSystem);
 
-applyDragAndDrop(mainContainer)
+// applyZoom(app)
+// applyDragAndDrop(mainContainer)
+applyDropZone(app, loadAndProcessImage)
+
+async function loadAndProcessImage(fileBlob, {
+	x,
+	y
+}) {
+	const base64Data = await readFile(fileBlob);
+
+	const {
+		result
+	} = base64Data;
+
+	if(Store.hasImage(result)) {
+		return;
+	}
+
+	const imageHash = Store.addImage(result)
+
+	PIXI.loader.add(imageHash, result)
+		.load((loader, resources) => {
+			const food = new PIXI.Sprite(resources[imageHash].texture);
+
+			const {
+				MAX_WIDTH
+			} = Store.getFood();
+
+			if(food.width > MAX_WIDTH) {
+				const ratio = food.height / food.width
+
+				food.width = MAX_WIDTH
+
+				food.height = MAX_WIDTH * ratio
+			}
+
+			food.position.x = x - food.width / 2;
+			food.position.y = y - food.height / 2;
+
+			mainContainer.addChild(food);
+		})
+}
+
+
+window.addEventListener('resize', (e) => {
+	app.view.style.width = `${window.innerWidth}px`;
+	app.view.style.height = `${window.innerHeight}px`;
+
+	app.renderer.resize(window.innerWidth, window.innerHeight)
+}, false);
 
 main()
 

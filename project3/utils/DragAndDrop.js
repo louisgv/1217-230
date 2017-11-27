@@ -1,28 +1,32 @@
 // Apply drag and drop to the container inside the stage
 function applyDragAndDrop(container) {
 
-    container.interactive = true;
+	container.interactive = true;
 
 	let isDragging = false;
 	let prevX;
 	let prevY;
 
 	container.on('pointerdown', function ({
-		global
+		data
 	}) {
-        console.log("WHYYY");
+		const {
+			global
+		} = data;
 		prevX = global.x;
 		prevY = global.y;
 		isDragging = true;
 	})
 
 	container.on('pointermove', ({
-		global
+		data
 	}) => {
 		if(!isDragging) {
 			return
 		}
-
+		const {
+			global
+		} = data;
 		const dx = global.x - prevX;
 		const dy = global.y - prevY;
 
