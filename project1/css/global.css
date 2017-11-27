@@ -3,6 +3,8 @@
 body {
 	overflow-x: hidden;
 	margin: 0;
+	background: black;
+	color: white;
 }
 
 hr {
@@ -73,9 +75,9 @@ li {
 #Copyright {
 	bottom: 0;
 	width: 100vw;
-	color: gray;
+	color: lightgray;
 	text-align: center;
-  background: white;
+  	background: black;
 
 	opacity: 0;
 	animation: appear 0.5s ease-in forwards;
@@ -83,7 +85,7 @@ li {
 }
 
 #LicenseLogoAnchor:hover {
-	background: white;
+	/*background: white;*/
 }
 
 #CopyrightText {
