@@ -21,7 +21,7 @@ class Maggot extends PIXI.Sprite {
 		// different maggots, different sizes
 		this.scale.set(0.8 + Math.random() * 0.3);
 
-		this.tint = Math.random() * 0x808080;
+		this.tint = Math.random() * 0xFFFFFF;
 
 		// create a random direction in radians
 		this.direction = Math.random() * Math.PI * 2;

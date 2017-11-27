@@ -7,11 +7,11 @@ let dt = 0;
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 
 const app = new PIXI.Application(window.innerWidth, window.innerHeight, {
-	backgroundColor: 0xffffff
+	// backgroundColor: 0xffffff
+	backgroundColor: 0x000000
 });
 
 document.body.appendChild(app.view);
-
 
 const mainContainer = new PIXI.Container();
 
@@ -32,8 +32,6 @@ const foodSystem = new PIXI.Container();
 mainContainer.addChild(foodSystem);
 
 mainContainer.addChild(maggotSystem);
-
-
 
 
 // applyZoom(app)
@@ -116,22 +114,14 @@ function spawnMaggots(app, maggotSystem) {
 	}
 }
 
-async function setup() {
-
-}
-
-function start() {
-
-}
-
-function GetScreenBound(padding) {
+function getScreenBound(padding) {
 	return new PIXI.Rectangle(-padding, -padding,
 		app.renderer.width + padding * 2,
 		app.renderer.height + padding * 2
 	);
 }
 
-function GetBlackSolidCircle(radius) {
+function getBlackSolidCircle(radius) {
 	const solidCircle = new PIXI.Graphics();
 	solidCircle.beginFill(0x000000);
 	solidCircle.drawCircle(0, 0, radius);
@@ -141,11 +131,11 @@ function GetBlackSolidCircle(radius) {
 
 const maggotProps = {
 	boundsPadding: 100,
-	bounds: GetScreenBound(this.boundsPadding),
-	bite: GetBlackSolidCircle(10)
+	bounds: getScreenBound(this.boundsPadding),
+	bite: getBlackSolidCircle(10)
 }
 
-
+// Update run every ticker frame
 function update() {
 	// keep this commented out for now
 	if(paused) return;
@@ -157,7 +147,7 @@ function update() {
 	for(let maggot of maggotSet) {
 		maggot.move(maggotProps.bounds)
 		// maggotBite.position.copy(maggot)
-		// app.renderer.render(maggotBite, maggotBiteTexture, false, null, false)
+		// app.renderer.render(maggotBite, maggotBiteTexture, false, null, false)/
 	}
 }
 
