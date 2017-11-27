@@ -6,9 +6,12 @@ let dt = 0;
 
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 
-const app = new PIXI.Application(window.innerWidth, window.innerHeight);
+const app = new PIXI.Application(window.innerWidth, window.innerHeight, {
+	backgroundColor: 0xffffff
+});
 
 document.body.appendChild(app.view);
+
 
 const mainContainer = new PIXI.Container();
 
@@ -24,7 +27,14 @@ const maggotSystem = new PIXI.particles.ParticleContainer(10000, {
 	alpha: true
 });
 
+const foodSystem = new PIXI.Container();
+
+mainContainer.addChild(foodSystem);
+
 mainContainer.addChild(maggotSystem);
+
+
+
 
 // applyZoom(app)
 // applyDragAndDrop(mainContainer)
@@ -70,7 +80,7 @@ function addFood(food, {
 	food.position.x = x - food.width / 2;
 	food.position.y = y - food.height / 2;
 
-	mainContainer.addChild(food);
+	foodSystem.addChild(food);
 }
 
 window.addEventListener('resize', (e) => {
@@ -102,7 +112,6 @@ function spawnMaggots(app, maggotSystem) {
 		})
 
 		maggotSet.add(maggotInstance);
-
 		maggotSystem.addChild(maggotInstance);
 	}
 }
@@ -115,12 +124,27 @@ function start() {
 
 }
 
-const maggotBoundsPadding = 100;
+function GetScreenBound(padding) {
+	return new PIXI.Rectangle(-padding, -padding,
+		app.renderer.width + padding * 2,
+		app.renderer.height + padding * 2
+	);
+}
 
-const maggotBounds = new PIXI.Rectangle(-maggotBoundsPadding, -maggotBoundsPadding,
-	app.renderer.width + maggotBoundsPadding * 2,
-	app.renderer.height + maggotBoundsPadding * 2
-);
+function GetBlackSolidCircle(radius) {
+	const solidCircle = new PIXI.Graphics();
+	solidCircle.beginFill(0x000000);
+	solidCircle.drawCircle(0, 0, radius);
+	solidCircle.endFill()
+	return solidCircle;
+}
+
+const maggotProps = {
+	boundsPadding: 100,
+	bounds: GetScreenBound(this.boundsPadding),
+	bite: GetBlackSolidCircle(10)
+}
+
 
 function update() {
 	// keep this commented out for now
@@ -131,7 +155,9 @@ function update() {
 	if(dt > 1 / 12) dt = 1 / 12;
 
 	for(let maggot of maggotSet) {
-		maggot.move(maggotBounds)
+		maggot.move(maggotProps.bounds)
+		// maggotBite.position.copy(maggot)
+		// app.renderer.render(maggotBite, maggotBiteTexture, false, null, false)
 	}
 }
 

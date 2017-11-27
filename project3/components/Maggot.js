@@ -14,6 +14,8 @@ class Maggot extends PIXI.Sprite {
 		this.x = x;
 		this.y = y;
 
+		this.zOrder = 9;
+
 		this.anchor.set(0.5);
 
 		// different maggots, different sizes
@@ -34,6 +36,7 @@ class Maggot extends PIXI.Sprite {
 	}
 
 	move(bounds){
+		// console.log(this.x, this,y);
 		this.direction += this.turningSpeed * 0.01;
 		this.x += Math.sin(this.direction) * (this.speed * this.scale.y);
 		this.y += Math.cos(this.direction) * (this.speed * this.scale.y);
