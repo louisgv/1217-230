@@ -114,6 +114,11 @@ function blooming() {
 			y: UNIT_SIZE / 2
 		}))
 
+		svg.appendChild(outlineDiamond({
+			x: UNIT_SIZE / 2,
+			y: UNIT_SIZE / 2
+		}))
+
 		const {
 			x,
 			y
@@ -121,11 +126,20 @@ function blooming() {
 
 		const masterNode = getMatrixPos(x, y);
 
-		svg.appendChild(outlinePath(masterNode, getMatrixPos(1, 0)))
+		svg.appendChild(outlinePath(
+			masterNode,
+			getMatrixPos(1, 0),
+		))
 
-		svg.appendChild(outlinePath( getMatrixPos(2, 0), masterNode))
+		svg.appendChild(outlinePath(
+			getMatrixPos(2, 0),
+			masterNode,
+		))
 
-		svg.appendChild(outlinePath(masterNode, getMatrixPos(2, 1)))
+		svg.appendChild(outlinePath(
+			masterNode,
+			getMatrixPos(2, 1),
+		))
 	}
 }
 
@@ -255,6 +269,57 @@ function outlineRect({
 
 	rect.setAttribute('x', x);
 	rect.setAttribute('y', y);
+
+	return rect;
+}
+
+const OUTLINE_PATH = [{
+		x: 0,
+		y: 2
+}, {
+		x: 1,
+		y: 2.5
+}, {
+		x: 2,
+		y: 2
+}, {
+		x: 2.5,
+		y: 1
+}, {
+		x: 2,
+		y: 0
+}, {
+		x: 1,
+		y: -0.5
+}, {
+		x: 0,
+		y: 0
+}, {
+		x: -0.5,
+		y: 1
+}, {
+		x: 0,
+		y: 2
+}].map(({
+		x,
+		y
+	}) => getMatrixPos(x, y))
+	.map(({
+		x,
+		y
+	}) => {
+		return `${x},${y}`
+	})
+	.join(" ")
+
+function outlineDiamond() {
+	const rect = document.createElementNS(xmlns, 'polygon');
+	rect.setAttribute("fill", "none");
+
+	rect.setAttribute('stroke', '#fff');
+	rect.setAttribute('stroke-width', '9');
+
+	rect.setAttribute('points', OUTLINE_PATH);
 
 	return rect;
 }
