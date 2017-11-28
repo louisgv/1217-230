@@ -45,7 +45,7 @@ for(let x = 0; x < COUNT; x++) {
 
 		circle.setAttribute('r', RADIUS);
 
-        // fill="none" stroke="#fff" stroke-width="5" stroke-miterlimit="10"
+		// fill="none" stroke="#fff" stroke-width="5" stroke-miterlimit="10"
 		setPosition(circle, {
 			x: SIZE / 2,
 			y: SIZE / 2
@@ -63,17 +63,17 @@ for(let x = 0; x < COUNT; x++) {
 
 		circle.finalRadius = RADIUS * 0.45;
 
-        circle.setAttribute('fill', '#fff');
+		circle.setAttribute('fill', '#fff');
 
-        if(x === MASTER_NODE.x && y === MASTER_NODE.y) {
+		if(x === MASTER_NODE.x && y === MASTER_NODE.y) {
 
 			circle.finalRadius = RADIUS * 1.17;
 		} else {
-            // circle.setAttribute('fill', 'none');
-            // circle.setAttribute('stroke', '#fff');
-            // circle.setAttribute('stroke-width', '9');
-            // circle.setAttribute('stroke-miterlimit', '30');
-        }
+			// circle.setAttribute('fill', 'none');
+			// circle.setAttribute('stroke', '#fff');
+			// circle.setAttribute('stroke-width', '9');
+			// circle.setAttribute('stroke-miterlimit', '30');
+		}
 
 		if(!circleMatrix[x]) {
 			circleMatrix[x] = []
@@ -101,18 +101,57 @@ function blooming() {
 	if(matrixAnimation(moveToFinalPos)) {
 		activeAnim = bursting
 
-        svg.appendChild(orbitPath({
-			x: INIT_OFFSET + UNIT_SIZE * (MASTER_NODE.x + 0.5),
-			y: INIT_OFFSET + UNIT_SIZE * (MASTER_NODE.y - 0.5)
-		 }))
+		// masterNode.setAttribute('fill', 'none');
+		// masterNode.setAttribute('stroke', '#fff');
+		// masterNode.setAttribute('stroke-width', '13.5');
 
-        const masterNode = circleMatrix[MASTER_NODE.x][MASTER_NODE.y];
-        // masterNode.setAttribute('fill', 'none');
-        // masterNode.setAttribute('stroke', '#fff');
-        // masterNode.setAttribute('stroke-width', '13.5');
+		// svg.appendChild(orbitPath({
+		// 	x: INIT_OFFSET + UNIT_SIZE * (MASTER_NODE.x + 0.5),
+		// 	y: INIT_OFFSET + UNIT_SIZE * (MASTER_NODE.y - 0.5)
+		// }))
+		svg.appendChild(outlineRect({
+			x: UNIT_SIZE / 2,
+			y: UNIT_SIZE / 2
+		}))
 
-        svg.appendChild(outlineRect())
+		const {
+			x,
+			y
+		} = MASTER_NODE;
+
+		const masterNode = getMatrixPos(x, y);
+
+		svg.appendChild(outlinePath(masterNode, getMatrixPos(1, 0)))
+
+		svg.appendChild(outlinePath( getMatrixPos(2, 0), masterNode))
+
+		svg.appendChild(outlinePath(masterNode, getMatrixPos(2, 1)))
 	}
+}
+
+function getMatrixPos(x, y) {
+	return {
+		x: INIT_OFFSET + UNIT_SIZE * x,
+		y: INIT_OFFSET + UNIT_SIZE * y,
+	}
+}
+
+function outlinePath(from, to) {
+	// <line x1="20" y1="100" x2="100" y2="20"
+	//   stroke-width="2" stroke="black"/>
+
+	const path = document.createElementNS(xmlns, 'line');
+
+	path.setAttribute('stroke', '#fff');
+	path.setAttribute('stroke-width', '9');
+
+	path.setAttribute('x1', from.x);
+	path.setAttribute('y1', from.y);
+
+	path.setAttribute('x2', to.x);
+	path.setAttribute('y2', to.y);
+
+	return path;
 }
 
 function bursting() {
@@ -132,37 +171,37 @@ const animLoop = setInterval(function () {
 
 
 function expandSize(circle) {
-    if (circle.expandSize) {
-        return true;
-    }
+	if(circle.expandSize) {
+		return true;
+	}
 
 	const currentRadius = parseFloat(circle.getAttribute('r'));
 
-	if(Math.round(currentRadius) === Math.round(circle.finalRadius) ) {
-        circle.expandSize = true;
-        return true;
+	if(Math.round(currentRadius) === Math.round(circle.finalRadius)) {
+		circle.expandSize = true;
+		return true;
 	}
 
-    const radius = lerp(currentRadius, circle.finalRadius, 0.1);
+	const radius = lerp(currentRadius, circle.finalRadius, 0.1);
 
-    circle.setAttribute('r', radius);
+	circle.setAttribute('r', radius);
 
 	return false;
 }
 
 function moveToFinalPos(circle) {
-    if (circle.moveToFinalPos) {
-        return true;
-    }
+	if(circle.moveToFinalPos) {
+		return true;
+	}
 	const currentX = parseFloat(circle.getAttribute('cx'));
 	const currentY = parseFloat(circle.getAttribute('cy'));
 
 	if(Math.round(currentX) === Math.round(circle.finalPos.x) &&
 		Math.round(currentY) === Math.round(circle.finalPos.y)) {
-        circle.moveToFinalPos = true;
+		circle.moveToFinalPos = true;
 		return true;
 	}
-    const x = cosineInterpolate(currentX, circle.finalPos.x, 0.1);
+	const x = cosineInterpolate(currentX, circle.finalPos.x, 0.1);
 	const y = cosineInterpolate(currentY, circle.finalPos.y, 0.1);
 
 	setPosition(circle, {
@@ -178,7 +217,7 @@ function orbitPath({
 	y
 }) {
 	const group = document.createElementNS(xmlns, 'g');
-    // group.setAttribute("transform", `matrix(1, -1, 0.45, 0.45, ${x}, ${y})`)
+	// group.setAttribute("transform", `matrix(1, -1, 0.45, 0.45, ${x}, ${y})`)
 	group.setAttribute("transform", `matrix(1, -1, 1, 1, ${x}, ${y})`)
 	const path = document.createElementNS(xmlns, 'path');
 
@@ -202,17 +241,20 @@ function orbitPath({
 	return group;
 }
 
-function outlineRect() {
-    const rect = document.createElementNS(xmlns, 'rect');
-    rect.setAttribute("fill", "none");
-    rect.setAttribute("height", SIZE - UNIT_SIZE);
-    rect.setAttribute("width", SIZE - UNIT_SIZE);
+function outlineRect({
+	x,
+	y
+}) {
+	const rect = document.createElementNS(xmlns, 'rect');
+	rect.setAttribute("fill", "none");
+	rect.setAttribute("height", SIZE - UNIT_SIZE);
+	rect.setAttribute("width", SIZE - UNIT_SIZE);
 
-    rect.setAttribute('stroke', '#fff');
-    rect.setAttribute('stroke-width', '9');
+	rect.setAttribute('stroke', '#fff');
+	rect.setAttribute('stroke-width', '9');
 
-    rect.setAttribute('x', UNIT_SIZE/2);
-    rect.setAttribute('y', UNIT_SIZE/2);
+	rect.setAttribute('x', x);
+	rect.setAttribute('y', y);
 
-    return rect;
+	return rect;
 }
