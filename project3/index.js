@@ -49,7 +49,10 @@ mainContainer.addChild(bitemarkSystem);
 
 mainContainer.addChild(maggotSystem);
 uiContainer.addChild(UserInterface.getInstruction())
-
+uiContainer.addChild(UserInterface.getScore())
+uiContainer.addChild(UserInterface.getFooter())
+uiContainer.addChild(UserInterface.getDocumentationButton())
+uiContainer.addChild(UserInterface.errorNotification())
 
 // applyZoom(app)
 // applyDragAndDrop(mainContainer)
