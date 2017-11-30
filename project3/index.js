@@ -1,5 +1,4 @@
 "use strict";
-
 let paused = false;
 
 let dt = 0;
