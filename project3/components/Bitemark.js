@@ -5,7 +5,9 @@
 "use strict";
 
 class Bitemark extends PIXI.Graphics {
-	constructor(container, {x, y}, radius, color = 0x000000, duration = 9000) {
+	constructor(container, {x, y}, radius,
+		color = 0x000000, 
+		duration = 9000) {
 		super();
 		if (!this.renderable) {
 			return

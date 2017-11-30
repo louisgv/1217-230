@@ -6,12 +6,14 @@ let dt = 0;
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 
 const app = new PIXI.Application(window.innerWidth, window.innerHeight, {
-	backgroundColor: 0xffffff
-	// backgroundColor: 0x000000
+	// backgroundColor: 0xffffff
+	backgroundColor: 0x000000
 });
 
 const sceneWidth = app.view.width;
 const sceneHeight = app.view.height;
+
+const sceneCenter = new de.math.Vector(sceneWidth/2, sceneHeight/2);
 
 const soundManager = new Sound();
 
@@ -49,6 +51,7 @@ uiContainer.addChild(UserInterface.getInstruction())
 // applyDragAndDrop(mainContainer)
 applyDropZone(app, loadAndProcessDrop)
 
+// Process the dropped data
 async function loadAndProcessDrop(data, mousePos, isUrl) {
 
 	if(isUrl) {
@@ -64,6 +67,7 @@ async function loadAndProcessDrop(data, mousePos, isUrl) {
 	processDroppedImage(result, mousePos);
 }
 
+// Process the image and check for duplication
 function processDroppedImage(image, mousePos) {
 	if(Store.hasImage(image)) {
 		// TODO: Show notification saying you can't feed them the same image
@@ -79,6 +83,7 @@ function processDroppedImage(image, mousePos) {
 		})
 }
 
+// Add a food item at the specified location
 function addFood(food, {
 	x,
 	y
@@ -95,12 +100,16 @@ function addFood(food, {
 		food.height = MAX_WIDTH * ratio
 	}
 
-	food.position.x = x - food.width / 2;
-	food.position.y = y - food.height / 2;
+	food.anchor.x = 0.5;
+	food.anchor.y = 0.5;
+
+	food.x = x;
+	food.y = y;
 
 	foodSystem.addChild(food);
 }
 
+// Resize the renderer
 window.addEventListener('resize', (e) => {
 	app.view.style.width = `${window.innerWidth}px`;
 	app.view.style.height = `${window.innerHeight}px`;
@@ -116,15 +125,13 @@ async function main() {
 
 	soundManager.playWalking();
 
-	spawnMaggots(app, maggotSystem);
+	spawnMaggots();
 
 	app.ticker.add(update);
 }
 
 // Batch spawning the maggots
-function spawnMaggots(app, maggotSystem) {
-	const maggotCount = 9;
-
+function spawnMaggots(maggotCount = 18) {
 	for(let i = 0; i < maggotCount; i++) {
 		const maggotInstance = new Maggot({
 			x: Math.random() * app.renderer.width,
@@ -136,10 +143,6 @@ function spawnMaggots(app, maggotSystem) {
 	}
 }
 
-const maggotBound = {
-	x: sceneWidth,
-	y: sceneHeight
-}
 
 // Update run every ticker frame
 function update() {
@@ -150,13 +153,28 @@ function update() {
 	dt = 1 / app.ticker.FPS;
 	if(dt > 1 / 12) dt = 1 / 12;
 
-	for(let maggot of maggotSet) {
-		maggot.move(maggotBound, dt)
+	const neighbors = maggotSystem.children.map(({x,y}) => new de.math.Vector(x, y))
 
-		// new Bitemark(bitemarkSystem, maggot.position, 5)
+	const headingDirections = maggotSystem.children.map(({rotation}) => de.math.Vector.fromRad(rotation))
+
+	const firstFood = foodSystem.children[0];
+
+	const target = firstFood
+		? new de.math.Vector(firstFood.x, firstFood.y)
+		: null
+
+	for(let maggot of maggotSet) {
+		maggot.updateVelocity(neighbors, headingDirections, sceneCenter, target)
+
+		if (target && rectsIntersect(maggot, firstFood)) {
+			new Bitemark(
+				bitemarkSystem,
+				maggot.position, 5)
+		}
 	}
 }
 
+// End simulation method, call once all maggot died
 function end() {
 
 }
