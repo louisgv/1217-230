@@ -27,12 +27,21 @@ const maggotSystem = new PIXI.particles.ParticleContainer(10000, {
 	alpha: true
 });
 
+const bitemarkSystem = new PIXI.particles.ParticleContainer(10000, {
+	scale: true,
+	position: true,
+	rotation: false,
+	uvs: true,
+	alpha: true
+});
+
 const foodSystem = new PIXI.Container();
 
 mainContainer.addChild(foodSystem);
 
-mainContainer.addChild(maggotSystem);
+mainContainer.addChild(bitemarkSystem);
 
+mainContainer.addChild(maggotSystem);
 
 // applyZoom(app)
 // applyDragAndDrop(mainContainer)
@@ -146,6 +155,8 @@ function update() {
 
 	for(let maggot of maggotSet) {
 		maggot.move(maggotProps.bounds)
+
+		// bitemarkSystem
 		// maggotBite.position.copy(maggot)
 		// app.renderer.render(maggotBite, maggotBiteTexture, false, null, false)/
 	}

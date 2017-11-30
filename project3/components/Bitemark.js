@@ -4,22 +4,21 @@
 
 "use strict";
 
-class Maggot extends PIXI.Sprite {
+class Bitemark extends PIXI.Sprite {
 	constructor({
 		x = 0,
-		y = 0
+		y = 0,
+        scale = 1
 	}) {
-		super(PIXI.loader.resources["assets/Maggot.png"].texture);
+		super(PIXI.loader.resources["bitemark"].texture);
 
 		this.x = x;
 		this.y = y;
 
-		this.anchor.set(0.5);
-
 		// different maggots, different sizes
-		this.scale.set(0.8 + Math.random() * 0.3);
+		this.scale.set(scale);
 
-		this.tint = Math.random() * 0xFFFFFF;
+		this.tint = 0xFFFFFF;
 
 		// create a random direction in radians
 		this.direction = Math.random() * Math.PI * 2;
