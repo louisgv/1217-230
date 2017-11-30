@@ -170,6 +170,7 @@ function update() {
 			new Bitemark(
 				bitemarkSystem,
 				maggot.position, 5)
+			
 		}
 	}
 }
