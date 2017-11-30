@@ -1,7 +1,10 @@
 
 class Text extends PIXI.Text {
 
-  constructor(text = 'Message', color = '#d6e4f9', x=0, y=0) {
+  constructor(text = 'Message', color = '#d6e4f9', x=0, y=0, {
+    right,
+    bottom
+  } = {}) {
 
     const style = new PIXI.TextStyle({
         fontFamily: 'Arial',
@@ -21,5 +24,12 @@ class Text extends PIXI.Text {
     this.x = x;
     this.y = y;
 
+    if (right) {
+      this.x = this.x - this.width
+    }
+
+    if (bottom) {
+      this.y = this.y - this.height
+    }
   }
 }

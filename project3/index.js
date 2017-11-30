@@ -11,6 +11,9 @@ const app = new PIXI.Application(window.innerWidth, window.innerHeight, {
   backgroundColor: 0x000000
 });
 
+const sceneWidth = app.view.width;
+const sceneHeight = app.view.height;
+
 const soundManager = new Sound();
 
 document.body.appendChild(app.view);
@@ -37,16 +40,8 @@ mainContainer.addChild(foodSystem);
 
 mainContainer.addChild(maggotSystem);
 
-// var richText1 = new PIXI.Text('Drag and drop pictures from your computer so the grubs can grub', style1);
-// richText1.x = 800;
-// richText1.y = 180;
+uiContainer.addChild(UserInterface.getInstruction())
 
-const dragAndDrop = new Text('HUMAN', '#d6e4f9', 0, 0);
-
-const teDrop = new Text('SUCKS', '#00FF00', 90, 0);
-
-uiContainer.addChild(dragAndDrop)
-uiContainer.addChild(teDrop)
 
 // applyZoom(app)
 // applyDragAndDrop(mainContainer)
