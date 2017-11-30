@@ -9,7 +9,7 @@ class Maggot extends PIXI.Sprite {
 		x = 0,
 		y = 0
 	}) {
-		super(PIXI.loader.resources["assets/Maggot.png"].texture);
+		super(PIXI.loader.resources["images/Maggot.png"].texture);
 
 		this.x = x;
 		this.y = y;

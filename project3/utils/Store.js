@@ -12,8 +12,8 @@ const ZOOM = {
 	SCALE: 0.1
 }
 
-const ASSETS = [
-    "assets/Maggot.png"
+const IMAGES = [
+    "images/Maggot.png"
 ]
 
 const IMAGE_HASH_SET = new Set();
@@ -27,8 +27,8 @@ class Store {
 		return ZOOM;
 	}
 
-	static getAssets() {
-		return ASSETS;
+	static getImages() {
+		return IMAGES;
 	}
 
 	static addImage(base64Data) {

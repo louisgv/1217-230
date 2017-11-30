@@ -11,6 +11,8 @@ const app = new PIXI.Application(window.innerWidth, window.innerHeight, {
 	backgroundColor: 0x000000
 });
 
+const soundManager = new Sound();
+
 document.body.appendChild(app.view);
 
 const mainContainer = new PIXI.Container();
@@ -92,7 +94,9 @@ main()
 
 // Main startup logic
 async function main() {
-	await loadAssets()
+	await loadImages()
+
+	soundManager.playWalking();
 
 	spawnMaggots(app, maggotSystem);
 
