@@ -1,5 +1,4 @@
 "use strict";
-
 let paused = false;
 
 let dt = 0;
@@ -34,12 +33,21 @@ const maggotSystem = new PIXI.particles.ParticleContainer(10000, {
   alpha: true
 });
 
+const bitemarkSystem = new PIXI.particles.ParticleContainer(10000, {
+	scale: true,
+	position: true,
+	rotation: false,
+	uvs: true,
+	alpha: true
+});
+
 const foodSystem = new PIXI.Container();
 
 mainContainer.addChild(foodSystem);
 
-mainContainer.addChild(maggotSystem);
+mainContainer.addChild(bitemarkSystem);
 
+mainContainer.addChild(maggotSystem);
 uiContainer.addChild(UserInterface.getInstruction())
 
 
@@ -148,18 +156,20 @@ const maggotProps = {
 
 // Update run every ticker frame
 function update() {
-  // keep this commented out for now
-  if (paused) return;
+	// keep this commented out for now
+	if(paused) return;
 
-  // #1 - Calculate "delta time"
-  dt = 1 / app.ticker.FPS;
-  if (dt > 1 / 12) dt = 1 / 12;
+	// #1 - Calculate "delta time"
+	dt = 1 / app.ticker.FPS;
+	if(dt > 1 / 12) dt = 1 / 12;
 
-  for (let maggot of maggotSet) {
-    maggot.move(maggotProps.bounds)
-    // maggotBite.position.copy(maggot)
-    // app.renderer.render(maggotBite, maggotBiteTexture, false, null, false)/
-  }
+	for(let maggot of maggotSet) {
+		maggot.move(maggotProps.bounds)
+
+		// bitemarkSystem
+		// maggotBite.position.copy(maggot)
+		// app.renderer.render(maggotBite, maggotBiteTexture, false, null, false)/
+	}
 }
 
 function end() {

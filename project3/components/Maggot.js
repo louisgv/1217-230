@@ -14,8 +14,6 @@ class Maggot extends PIXI.Sprite {
 		this.x = x;
 		this.y = y;
 
-		this.zOrder = 9;
-
 		this.anchor.set(0.5);
 
 		// different maggots, different sizes

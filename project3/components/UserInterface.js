@@ -18,7 +18,6 @@ class UserInterface {
 
   static getScore() {
     // lt
-    
   }
 
   static getFooter() {
