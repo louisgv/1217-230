@@ -12,15 +12,30 @@ const applyDropZone = (app, callback) => {
 		e.stopPropagation(); // Stops some browsers from redirecting.
 		e.preventDefault();
 
+		const {
+			x,
+			y
+		} = e;
+
+		const imageUrl = e.dataTransfer.getData('URL');
+
+		if(imageUrl && imageUrl.match(/\.(jpeg|jpg|png)$/) != null) {
+			return callback(imageUrl, {
+				x,
+				y
+			}, true)
+		}
+
 		const fileBlob = e.dataTransfer.files[0];
 
-        const {x, y} = e;
-
-		// If not image ignore
-		if(!fileBlob.type.match('image.*')) {
+		if(!fileBlob || !fileBlob.type.match('image.*')) {
 			return;
 		}
 
-		callback(fileBlob, {x, y})
+		// If not image ignore
+		callback(fileBlob, {
+			x,
+			y
+		})
 	}, false)
 }
