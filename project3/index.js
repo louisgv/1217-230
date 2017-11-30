@@ -6,8 +6,8 @@ let dt = 0;
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 
 const app = new PIXI.Application(window.innerWidth, window.innerHeight, {
-	// backgroundColor: 0xffffff
-	backgroundColor: 0x000000
+	backgroundColor: 0xffffff
+	// backgroundColor: 0x000000
 });
 
 const sceneWidth = app.view.width;
@@ -51,7 +51,7 @@ applyDropZone(app, loadAndProcessDrop)
 
 async function loadAndProcessDrop(data, mousePos, isUrl) {
 
-	if (isUrl) {
+	if(isUrl) {
 		return processDroppedImage(data, mousePos);
 	}
 
@@ -136,25 +136,9 @@ function spawnMaggots(app, maggotSystem) {
 	}
 }
 
-function getScreenBound(padding) {
-	return new PIXI.Rectangle(-padding, -padding,
-		sceneWidth + padding * 2,
-		sceneHeight + padding * 2
-	);
-}
-
-function getBlackSolidCircle(radius) {
-	const solidCircle = new PIXI.Graphics();
-	solidCircle.beginFill(0xFFFFFF);
-	solidCircle.drawCircle(0, 0, radius);
-	solidCircle.endFill()
-	return solidCircle;
-}
-
-const maggotProps = {
-	boundsPadding: 100,
-	bounds: getScreenBound(this.boundsPadding),
-	bite: getBlackSolidCircle(10)
+const maggotBound = {
+	x: sceneWidth,
+	y: sceneHeight
 }
 
 // Update run every ticker frame
@@ -167,7 +151,7 @@ function update() {
 	if(dt > 1 / 12) dt = 1 / 12;
 
 	for(let maggot of maggotSet) {
-		maggot.move(maggotProps.bounds)
+		maggot.move(maggotBound, dt)
 
 		// new Bitemark(bitemarkSystem, maggot.position, 5)
 	}
