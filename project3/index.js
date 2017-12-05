@@ -50,6 +50,12 @@ uiContainer.addChild(UserInterface.getFooter())
 uiContainer.addChild(UserInterface.getDocumentationButton())
 uiContainer.addChild(UserInterface.errorNotification())
 
+const docButton = new Button("Document", ()=>{
+	console.log("POP");
+});
+
+uiContainer.addChild(docButton);
+
 // applyZoom(app)
 // applyDragAndDrop(mainContainer)
 applyDropZone(app, loadAndProcessDrop)
@@ -173,7 +179,7 @@ function update() {
 			new Bitemark(
 				bitemarkSystem,
 				maggot.position, 5)
-			
+
 		}
 	}
 }

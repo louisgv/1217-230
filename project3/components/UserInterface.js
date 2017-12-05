@@ -76,11 +76,7 @@ class UserInterface {
     // rt
     const documentContainer = new PIXI.Container();
 
-    const theDoc = new Text('Documentation Button', '#d6e4f9', -10, 10, {
-      right: true
-    });
 
-    documentContainer.addChild(theDoc);
     documentContainer.position.x = sceneWidth;
 
     return documentContainer
