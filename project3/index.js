@@ -88,34 +88,8 @@ function processDroppedImage(image, mousePos) {
 
 	PIXI.loader.add(imageHash, image)
 		.load((loader, resources) => {
-			addFood(new PIXI.Sprite(resources[imageHash].texture), mousePos)
+			new Food(resources[imageHash].texture, mousePos, foodSystem)
 		})
-}
-
-// Add a food item at the specified location
-function addFood(food, {
-	x,
-	y
-}) {
-	const {
-		MAX_WIDTH
-	} = Store.getFood();
-
-	if(food.width > MAX_WIDTH) {
-		const ratio = food.height / food.width
-
-		food.width = MAX_WIDTH
-
-		food.height = MAX_WIDTH * ratio
-	}
-
-	food.anchor.x = 0.5;
-	food.anchor.y = 0.5;
-
-	food.x = x;
-	food.y = y;
-
-	foodSystem.addChild(food);
 }
 
 // Resize the renderer
@@ -180,6 +154,7 @@ function update() {
 				bitemarkSystem,
 				maggot.position, 5)
 
+			firstFood.getConsumed(bitemarkSystem);
 		}
 	}
 }

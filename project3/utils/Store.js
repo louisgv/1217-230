@@ -3,7 +3,8 @@
 // const MOUNT_ID = 'game-root'
 
 const FOOD = {
-	MAX_WIDTH: 100
+	MAX_WIDTH: 100,
+	MAX_HEIGHT: 100,
 }
 
 const ZOOM = {

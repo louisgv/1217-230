@@ -1,5 +1,6 @@
 /*
   Maggot behavior class
+  Author: LAB
 */
 
 "use strict";
