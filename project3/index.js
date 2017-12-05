@@ -35,7 +35,13 @@ const maggotSystem = new PIXI.particles.ParticleContainer(10000, {
 	alpha: true
 });
 
-const bitemarkSystem = new PIXI.Container();
+const bitemarkSystem = new PIXI.particles.ParticleContainer(10000, {
+	scale: true,
+	position: true,
+	rotation: false,
+	uvs: false,
+	alpha: false
+});
 
 const foodSystem = new PIXI.Container();
 
@@ -116,13 +122,12 @@ async function main() {
 // Batch spawning the maggots
 function spawnMaggots(maggotCount = 18) {
 	for(let i = 0; i < maggotCount; i++) {
-		const maggotInstance = new Maggot({
+ 		new Maggot({
 			x: Math.random() * app.renderer.width,
-			y: Math.random() * app.renderer.height
+			y: Math.random() * app.renderer.height,
+			maggotSet,
+			maggotSystem
 		})
-
-		maggotSet.add(maggotInstance);
-		maggotSystem.addChild(maggotInstance);
 	}
 }
 
@@ -154,9 +159,20 @@ function update() {
 				bitemarkSystem,
 				maggot.position, 5)
 
-			firstFood.getConsumed(bitemarkSystem);
+			maggot.grow(dt)
+
+			firstFood.getConsumed(foodConsumed);
 		}
 	}
+}
+
+// Callback when a piece of food is consumed
+function foodConsumed() {
+	// Cleanup the bitemarks on the table
+	bitemarkSystem.removeChildren()
+
+	// Adding score and so on here
+
 }
 
 // End simulation method, call once all maggot died

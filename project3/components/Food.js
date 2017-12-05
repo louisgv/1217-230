@@ -45,15 +45,15 @@ class Food extends PIXI.Sprite {
 	}
 
 	// Destroy itself after a certain amount of time if it is being consumed
-	async getConsumed(bitemarkSystem) {
+	async getConsumed(callback) {
 		if (this.isBeingConsumed) {
 			return;
 		}
 		this.isBeingConsumed = true;
 
-		await wait(getRandom(7200, 9000));
+		await wait(getRandom(3600, 5400));
 
-		bitemarkSystem.removeChildren()
+		callback()
 
 		this
 			.container

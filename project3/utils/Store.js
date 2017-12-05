@@ -14,7 +14,8 @@ const ZOOM = {
 }
 
 const IMAGES = [
-    "images/Maggot.png"
+    "images/Maggot.png",
+	"images/Bitemark.png"
 ]
 
 const IMAGE_HASH_SET = new Set();

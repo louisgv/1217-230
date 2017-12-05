@@ -9,7 +9,9 @@ class Maggot extends PIXI.Sprite {
 	// Initialize a new maggot
 	constructor({
 		x = 0,
-		y = 0
+		y = 0,
+		maggotSet,
+		maggotSystem
 	}) {
 		super(PIXI.loader.resources["images/Maggot.png"].texture);
 
@@ -21,7 +23,7 @@ class Maggot extends PIXI.Sprite {
 
 		this.velocity = {
 			x: 0,
-			y: 0,
+			y: 0
 		};
 
 		this.maxVelocity = 2.7;
@@ -33,14 +35,62 @@ class Maggot extends PIXI.Sprite {
 			.set(0.36 + Math.random() * 0.18);
 
 		this.tint = Math.random() * 0xFFFFFF;
+
+		this.maxScale = 1.0;
+
+		this.growthRate = Math.random() * 0.01
+
+		this.maggotSystem = maggotSystem;
+		this.maggotSet = maggotSet;
+
+		maggotSet.add(this);
+		maggotSystem.addChild(this);
+	}
+
+	// Give birth to 9 more baby maggot
+	giveBirth() {
+		// Give birth
+		for (let i = 0; i < 9; i++) {
+			new Maggot(this)
+		}
+
+		this.killYourSelf()
+	}
+
+	// Self destruct
+	killYourSelf() {
+		this.maggotSystem.removeChild(this);
+		this.maggotSet.delete(this);
+
+		this.destroy()
+	}
+
+	// Maggot will grow a little bit as it eat more and more
+	grow(dt) {
+		const {scale, maxScale} = this;
+		if (scale.x < maxScale) {
+			this
+				.scale
+				.set(scale.x + this.growthRate * dt)
+		} else {
+			this.giveBirth()
+		}
 	}
 
 	// Update the maggot velocity
 	updateVelocity(neighbors, headingDirections, center, target) {
-		const position = new de.math.Vector(this.x, this.y);
-		const forward = de.math.Vector.fromRad(this.rotation).scale(0.5);
+		const position = new de
+			.math
+			.Vector(this.x, this.y);
+		const forward = de
+			.math
+			.Vector
+			.fromRad(this.rotation)
+			.scale(0.5);
 
-		const totalVelocity = new de.math.Vector(0, 0);
+		const totalVelocity = new de
+			.math
+			.Vector(0, 0);
 		// Separation force
 		totalVelocity.add(de.steer.behaviors.seperate(position, neighbors).scale(0.01))
 		// Cohesion force
@@ -64,14 +114,21 @@ class Maggot extends PIXI.Sprite {
 		this.move(totalVelocity)
 	}
 
-
 	// Move the maggot
 	move(desiredVelocity) {
-		const velocity = new de.math.Vector(this.velocity.x, this.velocity.y)
+		const velocity = new de
+			.math
+			.Vector(this.velocity.x, this.velocity.y)
 
-		const steeringForce = de.math.Vector.sub2(desiredVelocity, velocity).truncate(this.maxForce);
+		const steeringForce = de
+			.math
+			.Vector
+			.sub2(desiredVelocity, velocity)
+			.truncate(this.maxForce);
 
-		velocity.add(steeringForce).truncate(this.maxVelocity)
+		velocity
+			.add(steeringForce)
+			.truncate(this.maxVelocity)
 
 		this.velocity.x = velocity.x;
 		this.velocity.y = velocity.y;
