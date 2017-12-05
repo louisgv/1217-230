@@ -43,7 +43,7 @@ class Maggot extends PIXI.Sprite {
 		// Separation force
 		totalVelocity.add(de.steer.behaviors.seperate(position, neighbors).scale(0.01))
 		// Cohesion force
-		totalVelocity.add(de.steer.behaviors.cohese(position, neighbors).scale(0.01))
+		// totalVelocity.add(de.steer.behaviors.cohese(position, neighbors).scale(0.01))
 		// Alignment force
 		totalVelocity.add(de.steer.behaviors.align(forward, headingDirections).scale(0.015))
 
@@ -52,11 +52,12 @@ class Maggot extends PIXI.Sprite {
 			totalVelocity.add(de.steer.behaviors.seek(position, target).scale(0.005))
 		} else {
 			// Wandering force
-			totalVelocity.add(de.steer.behaviors.wander(this.rotation).scale(0.25))
+
 		}
+		totalVelocity.add(de.steer.behaviors.wander(this.rotation).scale(1))
 
 		// Centering force
-		totalVelocity.add(de.steer.behaviors.seek(position, center).scale(0.0001))
+		totalVelocity.add(de.steer.behaviors.seek(position, center).scale(0.00045))
 
 		// console.log(totalVelocity);
 		this.move(totalVelocity)
