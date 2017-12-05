@@ -7,30 +7,30 @@ class UserInterface {
     const dragAndDropContainer = new PIXI.Container();
 
     dragAndDropContainer.addChild(
-      new Text('Drag', '#00FF00', 0, 0, {
+      new Text('Drag', '#ff1505', -80, 0, {
         right: true
       }))
 
     dragAndDropContainer.addChild(
-      new Text('and', '#d6e4f9', 50, 0, {
+      new Text('and', '#d6e4f9', -40, 0, {
       right: true
     }));
 
     dragAndDropContainer.addChild(
-      new Text('Drop', '#00FF00', 90, 0, {
+      new Text('Drop', '#ff1505', 10, 0, {
         right: true
       })
     )
 
-    const theimages = new Text('images from your computer', "#d6e4f9", 0, 20, {
+    const theimages = new Text('images from your computer', "#d6e4f9", 7, 20, {
       right: true
     });
 
-    const theGrub = new Text('so the grubs can', "#d6e4f9", -50, 40, {
+    const theGrub = new Text('so the grubs can', "#d6e4f9", -40, 40, {
       right: true
     });
 
-    const theFeast = new Text('feast', "#00FF00", 0, 40, {
+    const theFeast = new Text('feast', "#ff1505", 8, 40, {
       right: true
     });
 
@@ -50,7 +50,7 @@ class UserInterface {
     // lt
     const scoreContainer = new PIXI.Container();
 
-    const theScore = new Text('Score: 0', '#d6e4f9', 0, 0);
+    const theScore = new Text('Score: 0', '#ff1505', 10, 10);
 
     scoreContainer.addChild(theScore);
 
@@ -61,7 +61,7 @@ class UserInterface {
     // bc
     const theFooter = new PIXI.Container();
 
-    const theCopy = new Text('Ⓒ Stoney Reed and Lab', '#d6e4f9', 0, 0, {
+    const theCopy = new Text('Ⓒ Stoney Reed and Lab', '#d6e4f9', 0, -10, {
       bottom: true
     });
 
@@ -76,7 +76,7 @@ class UserInterface {
     // rt
     const documentContainer = new PIXI.Container();
 
-    const theDoc = new Text('Documentation Button', '#d6e4f9', 0, 0, {
+    const theDoc = new Text('Documentation Button', '#d6e4f9', -10, 10, {
       right: true
     });
 
