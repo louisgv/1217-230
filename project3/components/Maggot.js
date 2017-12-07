@@ -38,7 +38,7 @@ class Maggot extends PIXI.Sprite {
 
 		this.maxScale = 1.0;
 
-		this.growthRate = Math.random() * 0.01
+		this.growthRate = Math.random() * 0.1
 
 		this.maggotSystem = maggotSystem;
 		this.maggotSet = maggotSet;

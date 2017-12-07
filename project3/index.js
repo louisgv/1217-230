@@ -50,17 +50,15 @@ mainContainer.addChild(foodSystem);
 mainContainer.addChild(bitemarkSystem);
 
 mainContainer.addChild(maggotSystem);
+
 uiContainer.addChild(UserInterface.getInstruction())
-uiContainer.addChild(UserInterface.getScore())
 uiContainer.addChild(UserInterface.getFooter())
 uiContainer.addChild(UserInterface.getDocumentationButton())
 uiContainer.addChild(UserInterface.errorNotification())
 
-const docButton = new Button("Document", ()=>{
-	console.log("POP");
-});
+const score = new Score(18)
 
-uiContainer.addChild(docButton);
+uiContainer.addChild(score)
 
 // applyZoom(app)
 // applyDragAndDrop(mainContainer)
@@ -170,9 +168,8 @@ function update() {
 function foodConsumed() {
 	// Cleanup the bitemarks on the table
 	bitemarkSystem.removeChildren()
-
 	// Adding score and so on here
-
+	score.setScore(maggotSystem.children.length);
 }
 
 // End simulation method, call once all maggot died

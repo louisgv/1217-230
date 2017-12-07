@@ -22,15 +22,15 @@ class UserInterface {
       })
     )
 
-    const theimages = new Text('images from your computer', "#d6e4f9", 7, 20, {
+    const theimages = new Text('images from your computer', "#d6e4f9", 10, 20, {
       right: true
     });
 
-    const theGrub = new Text('so the grubs can', "#d6e4f9", -40, 40, {
+    const theGrub = new Text('so the maggots can', "#d6e4f9", -45, 40, {
       right: true
     });
 
-    const theFeast = new Text('feast', "#ff1505", 8, 40, {
+    const theFeast = new Text('Feast', "#ff1505", 10, 40, {
       right: true
     });
 
@@ -46,22 +46,11 @@ class UserInterface {
     return instructionContainer
   }
 
-  static getScore() {
-    // lt
-    const scoreContainer = new PIXI.Container();
-
-    const theScore = new Text('Score: 0', '#ff1505', 10, 10);
-
-    scoreContainer.addChild(theScore);
-
-    return scoreContainer
-  }
-
   static getFooter() {
     // bc
     const theFooter = new PIXI.Container();
 
-    const theCopy = new Text('Ⓒ Stoney Reed and Lab', '#d6e4f9', 0, -10, {
+    const theCopy = new Text('Ⓒ Stoney Lab under a GPLv3 license', '#d6e4f9', 0, -10, {
       bottom: true
     });
 
@@ -72,16 +61,14 @@ class UserInterface {
     return theFooter
   }
 
+
   static getDocumentationButton() {
-    // rt
-    const documentContainer = new PIXI.Container();
-
-
-    documentContainer.position.x = sceneWidth;
-
-    return documentContainer
+      return new Button("Document", ()=>{
+      	window.open("https://people.rit.edu/hhn2884/230/project3/documentation/", "_blank");
+      }, sceneWidth - 125)
   }
 
+  // Rendering any error
   static errorNotification() {
     const instructionContainer = new PIXI.Container();
 

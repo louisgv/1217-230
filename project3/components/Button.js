@@ -1,66 +1,73 @@
-
+/*
+    Generic button class
+*/
 class Button extends PIXI.Container {
 
-  constructor(
-    text = 'Message', clickCallBack=()=>{},
-    width = 100, height=100, x=-5, y=5, {
-      right,
-      bottom
-    } = {}) {
+	constructor(text = 'Message', clickCallBack = () => {}, x = 5, y = 5, width = 110, height = 30,  {right, bottom} = {}) {
 
-    // text middle aligned using height of text
-    // constructor defines position, width and height
-    // white button black text
-    // interacive and hover
-    // white boarder, black background and white text
-    // on hover white border and white background, black text
+		// text middle aligned using height of text
+		// constructor defines position, width and height
+		// white button black text
+		// interacive and hover
+		// white boarder, black background and white text
+		// on hover white border and white background, black text
 
-    super();
+		super();
 
-    //const textElement = new Text(text, '#FFFFFF', 0, 0);
+        this.x = x;
+        this.y = y;
 
-    this.button = new PIXI.Graphics();
+        this.buttonWidth = width;
+        this.buttonHeight = height;
 
-    this.renderBody(0x000000, 0xff1505)
+		this.button = new PIXI.Graphics();
 
-    this.button.x = x;
-    this.button.y = y;
-    this.button.buttonMode = true;
-    this.button.interactive = true;
+		this.renderBody(0x000000, 0xff1505)
 
-    this.button.on('pointerover', ()=>{
-      this.renderBody(0xffffff, 0xffffff)
-    });
+		this.button.buttonMode = true;
+		this.button.interactive = true;
 
-    this.button.on('pointerout', ()=>{
-      this.renderBody(0x000000, 0xff1505)
-    });
+		this
+			.button
+			.on('pointerover', () => {
+				this.renderBody(0xffffff, 0xffffff)
+			})
+            .on('pointerout', () => {
+				this.renderBody(0x000000, 0xff1505)
+			})
+            .on('pointerdown', clickCallBack);
+		// square.on('pointerup', e=>{e.target.tint=0xffffff});
+		// square.on('pointerout', e=>{e.target.tint=0xffffff});
+		// square.on('pointerupoutside', e=>{e.target.tint=0xffffff});
 
-    this.button.on('pointerdown', clickCallBack);
-    // square.on('pointerup', e=>{e.target.tint=0xffffff});
-    // square.on('pointerout', e=>{e.target.tint=0xffffff});
-    // square.on('pointerupoutside', e=>{e.target.tint=0xffffff});
+		const buttonText = new Text(text, "#ffffff", width/2, height/3);
 
-    const buttonText = new Text(text, "#ffffff",  0, 15);
+        buttonText.anchor.x=0.5;
+        // buttonText.anchor.y=0.5;
 
-    buttonText.ineractive = true;
-    buttonText.buttonMode = true;
+		buttonText.ineractive = true;
+		buttonText.buttonMode = true;
 
-    //this.addChild(textElement);
-    //buttonContainer.addChild(this.button);
-    //buttonContainer.addChild(buttonText);
-    this.addChild(this.button);
-    this.addChild(buttonText);
-    this.position.x = sceneWidth - 120;
-  }
+		this.addChild(this.button);
+		this.addChild(buttonText);
+	}
 
-  // Render the body of the button
-  renderBody(color, line){
-    this.button.beginFill(color); 	// red in hexadecimal
-    this.button.lineStyle(3, line, 1); // lineWidth,color in hex, alpha
+	// Render the body of the button
+	renderBody(color, line) {
+		this
+			.button
+			.beginFill(color);
 
-    this.button.drawRect(0,10,110,30); 	// x,y,width,height
+        this
+			.button
+			.lineStyle(3, line, 1); // lineWidth,color in hex, alpha
 
-    this.button.endFill();
-  }
+		this
+			.button
+			.drawRect(0, 10, this.buttonWidth, this.buttonHeight); // x,y,width,height
+
+		this
+			.button
+			.endFill();
+	}
 }
