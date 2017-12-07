@@ -84,7 +84,10 @@ async function loadAndProcessDrop(data, mousePos, isUrl) {
 function processDroppedImage(image, mousePos) {
 	if(Store.hasImage(image)) {
 		// TODO: Show notification saying you can't feed them the same image
-
+		new Notification(Store.getRandomWarning(), uiContainer, {
+			x: sceneWidth / 2,
+			y: 10
+		}, '#ff0000')
 		return;
 	}
 
@@ -149,6 +152,8 @@ function update() {
 		? new de.math.Vector(firstFood.x, firstFood.y)
 		: null
 
+	let isEating = false;
+
 	for(let maggot of maggotSet) {
 		maggot.updateVelocity(neighbors, headingDirections, sceneCenter, target)
 
@@ -160,7 +165,15 @@ function update() {
 			maggot.grow(dt)
 
 			firstFood.getConsumed(foodConsumed);
+
+			isEating = true;
 		}
+	}
+
+	if (isEating) {
+		soundManager.playEating()
+	} else {
+		soundManager.stopEating()
 	}
 }
 

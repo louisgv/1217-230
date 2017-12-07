@@ -11,6 +11,10 @@ const DEFAULT_TEXT_STYLE = {
     wordWrapWidth: 440
 };
 
+/*
+    Generic text class
+*/
+
 class Text extends PIXI.Text {
 
   constructor(text = 'Message', color = '#d6e4f9', x=0, y=0, {
@@ -36,6 +40,7 @@ class Text extends PIXI.Text {
     }
   }
 
+  // An example dynamic style
   active() {
     // this.setStyle(Object.assign(DEFAULT_TEXT_STYLE, {
     //     fill: ['#000000'], // gradient

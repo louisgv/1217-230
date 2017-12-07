@@ -1,16 +1,15 @@
 /*
-    Generic button class
+    Generic button class with following layout:
+    // text middle aligned using height of text
+    // constructor defines position, width and height
+    // white button black text
+    // interacive and hover
+    // white boarder, black background and white text
+    // on hover white border and white background, black text
 */
 class Button extends PIXI.Container {
 
 	constructor(text = 'Message', clickCallBack = () => {}, x = 5, y = 5, width = 110, height = 30,  {right, bottom} = {}) {
-
-		// text middle aligned using height of text
-		// constructor defines position, width and height
-		// white button black text
-		// interacive and hover
-		// white boarder, black background and white text
-		// on hover white border and white background, black text
 
 		super();
 
