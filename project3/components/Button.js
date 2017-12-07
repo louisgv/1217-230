@@ -40,15 +40,18 @@ class Button extends PIXI.Container {
     // square.on('pointerup', e=>{e.target.tint=0xffffff});
     // square.on('pointerout', e=>{e.target.tint=0xffffff});
     // square.on('pointerupoutside', e=>{e.target.tint=0xffffff});
-    this.addChild(this.button);
 
-
-    const buttonText = new Text(text, "#ffffff",  590, 15);
+    const buttonText = new Text(text, "#ffffff",  0, 15);
 
     buttonText.ineractive = true;
     buttonText.buttonMode = true;
+
     //this.addChild(textElement);
+    //buttonContainer.addChild(this.button);
+    //buttonContainer.addChild(buttonText);
+    this.addChild(this.button);
     this.addChild(buttonText);
+    this.position.x = sceneWidth - 120;
   }
 
   // Render the body of the button
@@ -56,7 +59,7 @@ class Button extends PIXI.Container {
     this.button.beginFill(color); 	// red in hexadecimal
     this.button.lineStyle(3, line, 1); // lineWidth,color in hex, alpha
 
-    this.button.drawRect(590,10,110,30); 	// x,y,width,height
+    this.button.drawRect(0,10,110,30); 	// x,y,width,height
 
     this.button.endFill();
   }
