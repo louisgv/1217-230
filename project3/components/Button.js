@@ -19,33 +19,32 @@ class Button extends PIXI.Container {
 
     //const textElement = new Text(text, '#FFFFFF', 0, 0);
 
-    this.body = new PIXI.Graphics();
+    this.button = new PIXI.Graphics();
 
     this.renderBody(0x000000, 0xff1505)
 
-    this.body.x = x;
-    this.body.y = y;
-    this.body.buttonMode = true;
-    this.body.interactive = true;
+    this.button.x = x;
+    this.button.y = y;
+    this.button.buttonMode = true;
+    this.button.interactive = true;
 
-    this.body.on('pointerover', ()=>{
+    this.button.on('pointerover', ()=>{
       this.renderBody(0xffffff, 0xffffff)
     });
 
-    this.body.on('pointerout', ()=>{
+    this.button.on('pointerout', ()=>{
       this.renderBody(0x000000, 0xff1505)
     });
 
-    this.body.on('pointerdown', clickCallBack);
+    this.button.on('pointerdown', clickCallBack);
     // square.on('pointerup', e=>{e.target.tint=0xffffff});
     // square.on('pointerout', e=>{e.target.tint=0xffffff});
     // square.on('pointerupoutside', e=>{e.target.tint=0xffffff});
-    this.addChild(this.body);
+    this.addChild(this.button);
 
 
-    const buttonText = new Text(text, "#ffffff",  100, 100 );
-    buttonText.x = 590;
-    buttonText.y = 15;
+    const buttonText = new Text(text, "#ffffff",  590, 15);
+
     buttonText.ineractive = true;
     buttonText.buttonMode = true;
     //this.addChild(textElement);
@@ -54,11 +53,11 @@ class Button extends PIXI.Container {
 
   // Render the body of the button
   renderBody(color, line){
-    this.body.beginFill(color); 	// red in hexadecimal
-    this.body.lineStyle(3, line, 1); // lineWidth,color in hex, alpha
+    this.button.beginFill(color); 	// red in hexadecimal
+    this.button.lineStyle(3, line, 1); // lineWidth,color in hex, alpha
 
-    this.body.drawRect(590,10,110,30); 	// x,y,width,height
+    this.button.drawRect(590,10,110,30); 	// x,y,width,height
 
-    this.body.endFill();
+    this.button.endFill();
   }
 }
