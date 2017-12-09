@@ -29,6 +29,7 @@ const UNIQUE_WARNING = [
 
 const IMAGE_HASH_SET = new Set();
 
+// The Store abstract all of storage/database interaction
 class Store {
 	// Return the food config
 	static getFood() {

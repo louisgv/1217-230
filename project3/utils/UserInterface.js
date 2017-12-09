@@ -1,5 +1,9 @@
+/*
+    Implement user interface for the game
+*/
 class UserInterface {
 
+    // Instruction text
   static getInstruction() {
     // rm
     const instructionContainer = new PIXI.Container();
@@ -46,6 +50,7 @@ class UserInterface {
     return instructionContainer
   }
 
+  // Generate the footer
   static getFooter() {
     // bc
     const theFooter = new PIXI.Container();
@@ -61,7 +66,7 @@ class UserInterface {
     return theFooter
   }
 
-
+  // Generate the documentation button
   static getDocumentationButton() {
       return new Button("Document", ()=>{
       	window.open("https://people.rit.edu/hhn2884/230/project3/documentation/", "_blank");
