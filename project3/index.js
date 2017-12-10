@@ -115,7 +115,7 @@ async function main() {
 
 	soundManager.playWalking();
 
-	spawnMaggots();
+	spawnMaggots(Store.getMaggotCount());
 
 	app.ticker.add(update);
 }
@@ -182,7 +182,11 @@ function foodConsumed() {
 	// Cleanup the bitemarks on the table
 	bitemarkSystem.removeChildren()
 	// Adding score and so on here
-	score.setScore(maggotSystem.children.length);
+	const maggotCount = maggotSystem.children.length;
+
+	score.setScore(maggotCount);
+
+	setMaggotCount(maggotCount);
 }
 
 // End simulation method, call once all maggot died

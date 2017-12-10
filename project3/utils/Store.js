@@ -4,7 +4,7 @@
 
 const FOOD = {
 	MAX_WIDTH: 100,
-	MAX_HEIGHT: 100,
+	MAX_HEIGHT: 100
 }
 
 const ZOOM = {
@@ -13,10 +13,9 @@ const ZOOM = {
 	SCALE: 0.1
 }
 
-const IMAGES = [
-    "images/Maggot.png",
-	"images/Bitemark.png"
-]
+const INIT_MAGGOT_COUNT = 18;
+
+const IMAGES = ["images/Maggot.png", "images/Bitemark.png"]
 
 const UNIQUE_WARNING = [
 	"You cannot feed the same image twice",
@@ -29,11 +28,28 @@ const UNIQUE_WARNING = [
 
 const IMAGE_HASH_SET = new Set();
 
+const MAGGOT_ID = "TAMAGGOTCHI_MAGGOT_COUNT"
+
 // The Store abstract all of storage/database interaction
 class Store {
 	// Return the food config
 	static getFood() {
 		return FOOD;
+	}
+
+	// Save the maggot count to localstorage
+	static setMaggotCount(count) {
+		localStorage.setItem(MAGGOT_ID, JSON.stringify(count));
+	}
+
+	//Return the maggot count from local storage
+	static getMaggotCount() {
+		//Retrieve an array from localStorage
+		let count = localStorage.getItem(MAGGOT_ID);
+		if (!count) {
+			return INIT_MAGGOT_COUNT;
+		}
+		return JSON.parse(count);
 	}
 
 	// Return the zoom config
@@ -47,7 +63,7 @@ class Store {
 	}
 
 	// Return a random warning for variety sake
-	static getRandomWarning(){
+	static getRandomWarning() {
 		return UNIQUE_WARNING[Math.floor(Math.random() * UNIQUE_WARNING.length)]
 	}
 
@@ -57,13 +73,13 @@ class Store {
 
 		IMAGE_HASH_SET.add(imageHash)
 
-        return imageHash;
+		return imageHash;
 	}
 
 	// Check if image is already in the hashset
 	static hasImage(base64Data) {
-        const imageHash = keccak512(base64Data)
+		const imageHash = keccak512(base64Data)
 
-		return(IMAGE_HASH_SET.has(imageHash))
+		return (IMAGE_HASH_SET.has(imageHash))
 	}
 }
