@@ -29,11 +29,29 @@ const UNIQUE_WARNING = [
 
 const IMAGE_HASH_SET = new Set();
 
+const MAGGOT_ID = "taMAGGOTchi-storage";
+
+
+//Stores class to abstracting data interaction
 class Store {
 	// Return the food config
 	static getFood() {
 		return FOOD;
 	}
+
+	//Return the maggot count from local storage
+	static getMaggotCount() {
+		//Retrieve an array from localStorage
+		localStorage.getItem(MAGGOT_ID) = JSON.parse(items);
+	}
+
+	static setMaggotCount(count) {
+		// Save an array to localStorage
+		items = JSON.stringify(items); 			// now it's a String
+		localStorage.setItem(MAGGOT_ID, items);
+
+	}
+
 
 	// Return the zoom config
 	static getZoom() {
