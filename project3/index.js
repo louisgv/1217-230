@@ -183,6 +183,9 @@ function foodConsumed() {
 	bitemarkSystem.removeChildren()
 	// Adding score and so on here
 	score.setScore(maggotSystem.children.length);
+
+	let maggotCount = maggotSystem.children.length;
+	setMaggotCount(maggotCount);
 }
 
 // End simulation method, call once all maggot died
