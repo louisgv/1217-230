@@ -56,7 +56,7 @@ uiContainer.addChild(UserInterface.getFooter())
 uiContainer.addChild(UserInterface.getDocumentationButton())
 uiContainer.addChild(UserInterface.errorNotification())
 
-const score = new Score(18)
+const score = new Score(Store.getMaggotCount())
 
 uiContainer.addChild(score)
 
@@ -186,7 +186,7 @@ function foodConsumed() {
 
 	score.setScore(maggotCount);
 
-	setMaggotCount(maggotCount);
+	Store.setMaggotCount(maggotCount);
 }
 
 // End simulation method, call once all maggot died
