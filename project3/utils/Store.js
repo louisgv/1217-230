@@ -39,18 +39,22 @@ class Store {
 		return FOOD;
 	}
 
+	static setMaggotCount(count) {
+		// Save an array to localStorage
+		let items = count;
+		items = JSON.stringify(items);
+		return localStorage.setItem(MAGGOT_ID, items);
+	}
+
 	//Return the maggot count from local storage
 	static getMaggotCount() {
 		//Retrieve an array from localStorage
-		localStorage.getItem(MAGGOT_ID) = JSON.parse(items);
-	}
+		let items = localStorage.getItem(MAGGOT_ID);
+		items = JSON.parse(items);
+    return items;
+}
 
-	static setMaggotCount(count) {
-		// Save an array to localStorage
-		items = JSON.stringify(items); 			// now it's a String
-		localStorage.setItem(MAGGOT_ID, items);
 
-	}
 
 
 	// Return the zoom config
