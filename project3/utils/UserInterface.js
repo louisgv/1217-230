@@ -68,7 +68,7 @@ class UserInterface {
 
   // Generate the documentation button
   static getDocumentationButton() {
-      return new Button("Document", ()=>{
+      return new Button("Documentation", ()=>{
       	window.open("https://people.rit.edu/hhn2884/230/project3/documentation/", "_blank");
       }, sceneWidth - 125)
   }
