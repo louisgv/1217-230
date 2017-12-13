@@ -20,7 +20,7 @@
   width: 100%;
   height: 45px;
   text-decoration: none;
-  color: dodgerblue;
+  color: red;
   background: black;
   font-family: monospace;
   font-size: 1.44em;
@@ -36,7 +36,7 @@
 }
 
 .InterfaceButton:hover {
-  background: darkblue;
+  background: darkred;
   color: white;
   text-decoration: none;
   padding-right: 2em;
@@ -47,14 +47,14 @@
 }
 
 .InterfaceButton:visited:hover {
-  background: darkblue;
+  background: darkred;
   color: white;
   text-decoration: none;
   padding-right: 2em;
 }
 
 .ActiveButton {
-  background: dodgerblue;
+  background: red;
   color: white;
   padding-right: 2em;
 }
