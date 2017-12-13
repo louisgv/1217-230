@@ -70,7 +70,7 @@ class UserInterface {
   static getDocumentationButton() {
       return new Button("Documentation", ()=>{
       	window.open("https://people.rit.edu/hhn2884/230/project3/documentation/", "_blank");
-      }, sceneWidth - 125)
+    }, sceneWidth - 190, 5, 180)
   }
 
   // Rendering any error

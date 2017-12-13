@@ -39,31 +39,31 @@
 			<hr/>
 			<ul>
 				<li>
-					For our HTML5 feature we used localStorage to save the number of maggots on the screen.
+					We used localStorage to save the image hash set as well as the number of maggots on the scene.
 				</li>
 				<li>
-					We created a system that allows a user to drag and drop images onto the screen.
+					We created a system that allows player to drag and drop images from the desktop (Binary form) or from other website (URL form) onto the screen.
 				</li>
 				<li>
-					We have created a large network of classes and containers.
+					We have created a large network of classes and containers. (8 classes)
 				</li>
 				<li>
-					Our game has steering behaviors for each of the maggots.
+					The maggots move using a customized steering behavior that is wandering focused, which make them more interesting.
 				</li>
 				<li>
-					We have a spawning system for maggots that eat enough images.
+					We integrated the web's File API with PixiJS's Loader, Texture and Sprite API
+				</li>
+				<li>
+					The maggot consumes the image to grow and multiply organically.
 				</li>
 				<li>
 					The application has sounds for the maggots moving and for the maggots eating.
 				</li>
 				<li>
-					We have a maggot counter that counts all the maggots on the screen.
-				</li>
-				<li>
 					Some of the challenges we faced was figuring out the layout of our code, getting the maggots to eat the images and learning PixiJS as we worked.
 				</li>
 				<li>
-					The work was done by Lab and Stoney Reed. The project we have created is a Tamagotchi game in which you feed your pet maggots and watch them multiply. 
+					The work was done by Lab and Stoney Reed. The project we have created is a Tamagotchi game in which you feed your pet maggots and watch them multiply.
 				</li>
 			</ul>
 		</article>
@@ -131,6 +131,21 @@
 				<li> Text class </li>
 				<li> Store utilities </li>
 				<li> Documentation page </li>
+			</ul>
+		</article>
+
+		<article class="ChangeLog">
+			<h2>
+				Notes
+			</h2>
+			<hr/>
+			<ul>
+				<li>
+					Dropping image from remote location might result in the image not showing. This is due to the CORS config of the remote host.
+				</li>
+				<li>
+					Upon resetting the game, the image that was once used can now be re-used. We don't save the image hash table into the local storage.
+				</li>
 			</ul>
 		</article>
 

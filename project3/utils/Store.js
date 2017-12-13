@@ -26,9 +26,11 @@ const UNIQUE_WARNING = [
 	"That food is old"
 ]
 
-const IMAGE_HASH_SET = new Set();
+let imageHashSet = new Set();
 
-const MAGGOT_ID = "TAMAGGOTCHI_MAGGOT_COUNT"
+const MAGGOT_COUNT_KEY = "TAMAGGOTCHI_MAGGOT_COUNT"
+
+const MAGGOT_HASH_KEY = "TAMAGGOTCHI_MAGGOT_HASH"
 
 // The Store abstract all of storage/database interaction
 class Store {
@@ -39,13 +41,13 @@ class Store {
 
 	// Save the maggot count to localstorage
 	static setMaggotCount(count) {
-		localStorage.setItem(MAGGOT_ID, JSON.stringify(count));
+		localStorage.setItem(MAGGOT_COUNT_KEY, JSON.stringify(count));
 	}
 
 	//Return the maggot count from local storage
 	static getMaggotCount() {
 		//Retrieve an array from localStorage
-		let count = localStorage.getItem(MAGGOT_ID);
+		let count = localStorage.getItem(MAGGOT_COUNT_KEY);
 		if (!count) {
 			return INIT_MAGGOT_COUNT;
 		}
@@ -67,11 +69,29 @@ class Store {
 		return UNIQUE_WARNING[Math.floor(Math.random() * UNIQUE_WARNING.length)]
 	}
 
+	// Initialize the image hash set from local storage
+	static initializeImageHashSet() {
+		const cachedSet = localStorage.getItem(MAGGOT_HASH_KEY);
+
+		if (!cachedSet) {
+			return Store.serializeImageHashSet()
+		}
+
+		imageHashSet = new Set(JSON.parse(cachedSet))
+	}
+
+	// Serialize and store the image set into local storage
+	static serializeImageHashSet() {
+		const serializableData = Array.from(imageHashSet);
+
+		localStorage.setItem(MAGGOT_HASH_KEY, JSON.stringify(serializableData));
+	}
+
 	// Add a new image into the hash list
 	static addImage(base64Data) {
 		const imageHash = keccak512(base64Data)
 
-		IMAGE_HASH_SET.add(imageHash)
+		imageHashSet.add(imageHash)
 
 		return imageHash;
 	}
@@ -80,6 +100,6 @@ class Store {
 	static hasImage(base64Data) {
 		const imageHash = keccak512(base64Data)
 
-		return (IMAGE_HASH_SET.has(imageHash))
+		return (imageHashSet.has(imageHash))
 	}
 }

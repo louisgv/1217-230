@@ -107,6 +107,11 @@ window.addEventListener('resize', (e) => {
 	app.renderer.resize(window.innerWidth, window.innerHeight)
 }, false);
 
+window.addEventListener('load', Store.initializeImageHashSet);
+
+window.addEventListener('unload', Store.serializeImageHashSet);
+
+
 main()
 
 // Main startup logic
